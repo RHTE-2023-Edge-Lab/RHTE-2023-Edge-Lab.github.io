@@ -1,0 +1,5 @@
+baseURL = 'http://RHTE-2023-Edge-Lab.github.io/'
+languageCode = 'en-us'
+title = 'RHTE 2023 Edge Lab'
+
+theme = 'PaperMod'
