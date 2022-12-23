@@ -10,20 +10,4 @@ pre = "<b>1. </b>"
 
 # Pre-requisites
 
-In order to run that lab, you will need to install some tools on your laptop :
-- oc cli
-- git
-- vscode (or your favorite IDE)
-- platformIO IDE plugin (https://docs.platformio.org/en/latest/integration/ide/)
-
-
-# Setup platformIO IDE plugin
-
-Once platformIO IDE plgin installed, create a new project :
-- Board Name: Espressif ESP32 Dev Module
-- Framework: Arduino
-
-In PIO Home, add the library MFRC522 by Miguel André Balboa (search for header:MFRC522.h).
-
-Add the library PubSubClient by Nick O'Leary.
-
+Pick the section that matches your Operating System and install the pre-requisites.

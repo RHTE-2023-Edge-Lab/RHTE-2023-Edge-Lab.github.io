@@ -1,16 +1,31 @@
 ---
-title: "RHTE 2023 Edge Lab"
+title: "Welcome"
 date: 2022-12-13T15:22:04+01:00
 draft: false
 ---
 
-From the ESP32 to the OpenShift cluster: discover what Red Hat can offer for the Edge computing!
+# RHTE 2023 Edge Lab
 
-Through the common theme of "shipment tracking", this lab will help you understand what Red Hat can offer for the Edge computing.
+Welcome, dear Red Hatter, in this Lab where you will discover a part of the Red Hat Edge offering.
 
-In this lab, you will be at the head of a "parcel shipment hub" and you will deploy a everything needed to : read the parcel RFID (using arduino and ESP32), send data to a MQTT broker over wifi, transform those data using Camel-K and send relevant events to the headquarter for reporting.
+You will play with the following technologies: 
+
+* ESP8266
+* MQTT
+* AMQ Broker
+* AMQ Streams (Apache Kafka Broker & MirrorMaker2)
+* OpenShift
+* Camel-K
+
+And if you plan to have a look under the hood, you will learn about:
+
+* Quarkus
+* ArgoCD
+* Camel
+* Kafka Streams
+
+In this lab, you will be at the head of a shipping and delivery company, with multiple warehouses and you will deploy everything needed to: read the parcel RFID (using arduino and ESP32), send data to a MQTT broker over wifi, transform those data using Camel-K and send relevant events to the headquarter for reporting.
 
 An application at the headquarter will display the parcels moving from one hub to another in realtime.
 
-Fun is expected !
-
+Team work and fun are expected ahead!
