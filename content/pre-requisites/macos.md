@@ -16,6 +16,12 @@ Install git.
 brew install git
 ```
 
+Install mosquitto (for MQTT tests).
+
+```sh
+brew install mosquitto
+```
+
 Install VScode.
 
 ```sh
