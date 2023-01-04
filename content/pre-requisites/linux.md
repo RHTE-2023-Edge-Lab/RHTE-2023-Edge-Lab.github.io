@@ -28,3 +28,4 @@ sudo dnf install code
 ```
 
 Open VScode and install the [PlatformIO IDE plugin](https://docs.platformio.org/en/latest/integration/ide/).
+
