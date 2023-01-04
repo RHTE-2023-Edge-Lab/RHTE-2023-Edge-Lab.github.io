@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>MQTT Broker :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1672850031 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1672850031 rel=stylesheet>
-<link href=/css/hybrid.css?1672850031 rel=stylesheet>
-<link href=/css/featherlight.min.css?1672850031 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1672850031 rel=stylesheet>
-<link href=/css/auto-complete.css?1672850031 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1672850031 rel=stylesheet>
-<link href=/css/theme.css?1672850031 rel=stylesheet>
-<link href=/css/tabs.css?1672850031 rel=stylesheet>
-<link href=/css/hugo-theme.css?1672850031 rel=stylesheet>
-<link href=/css/theme-red.css?1672850031 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1672850031></script>
+<link href=/css/nucleus.css?1672851552 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1672851552 rel=stylesheet>
+<link href=/css/hybrid.css?1672851552 rel=stylesheet>
+<link href=/css/featherlight.min.css?1672851552 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1672851552 rel=stylesheet>
+<link href=/css/auto-complete.css?1672851552 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1672851552 rel=stylesheet>
+<link href=/css/theme.css?1672851552 rel=stylesheet>
+<link href=/css/tabs.css?1672851552 rel=stylesheet>
+<link href=/css/hugo-theme.css?1672851552 rel=stylesheet>
+<link href=/css/theme-red.css?1672851552 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1672851552></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=/mqtt-broker/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1672850031></script>
-<script type=text/javascript src=/js/auto-complete.js?1672850031></script>
+<script type=text/javascript src=/js/lunr.min.js?1672851552></script>
+<script type=text/javascript src=/js/auto-complete.js?1672851552></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1672850031></script>
+<script type=text/javascript src=/js/search.js?1672851552></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -180,8 +180,66 @@ active">
 <div id=chapter>
 <div id=body-inner>
 <h3 id=duo-a--b>Duo A & B</h3>
-<h1 id=install-the-mqtt-broker>Install the MQTT Broker</h1>
-<p>TODO</p>
+<h1 id=deploy-the-mqtt-broker-in-your-namespace>Deploy the MQTT Broker in your namespace</h1>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>apiVersion: broker.amq.io/v1beta1
+kind: ActiveMQArtemis
+metadata:
+  name: mqtt
+  namespace: &lt;your_namespace&gt;
+spec:
+  acceptors:
+  - connectionsAllowed: <span style=color:#ae81ff>5</span>
+    expose: true
+    name: mqtt
+    port: <span style=color:#ae81ff>1883</span>
+    protocols: mqtt
+    sslEnabled: false
+  adminPassword: public
+  adminUser: admin
+  console:
+    expose: true
+  deploymentPlan:
+    image: placeholder
+    jolokiaAgentEnabled: false
+    journalType: nio
+    managementRBACEnabled: true
+    messageMigration: false
+    persistenceEnabled: false
+    requireLogin: true
+    size: <span style=color:#ae81ff>1</span>
+</code></pre></div><h1 id=deploy-an-amq-broker-address-for-your-mqtt-broker>Deploy an AMQ Broker Address for your MQTT Broker</h1>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>kind: ActiveMQArtemisAddress
+apiVersion: broker.amq.io/v1beta1
+metadata:
+  name: address
+  namespace: &lt;your_namespace&gt;
+spec:
+  addressName: esp8266
+  queueName: myQueue0
+  routingType: anycast
+</code></pre></div><h1 id=deploy-your-service-in-loadbalancer-type>Deploy your Service in LoadBalancer type</h1>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>apiVersion: v1
+kind: Service
+metadata:
+  name: mqtt-lb
+  namespace: &lt;your_namespace&gt;
+spec:
+  ports:
+  - name: mqtt-lb
+    port: <span style=color:#ae81ff>1883</span>
+    protocol: TCP
+    targetPort: <span style=color:#ae81ff>1883</span>
+  selector:
+    ActiveMQArtemis: mqtt
+    application: mqtt-app
+  type: LoadBalancer
+</code></pre></div><h1 id=result>Result</h1>
+<h2 id=mqtt-instances>MQTT Instances</h2>
+<p><img src=/images/mqtt-instances.png alt="MQTT Instances"></p>
+<h2 id=mqtt-pods>MQTT Pods</h2>
+<p><img src=/images/mqtt-pods.png alt="MQTT pods"></p>
+<h2 id=mqtt-services>MQTT Services</h2>
+<p><img src=/images/mqtt-services.png alt="MQTT Instances"></p>
 <footer class=footline>
 </footer>
 </div>
@@ -195,17 +253,17 @@ active">
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1672850031></script>
-<script src=/js/perfect-scrollbar.min.js?1672850031></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1672850031></script>
-<script src=/js/jquery.sticky.js?1672850031></script>
-<script src=/js/featherlight.min.js?1672850031></script>
-<script src=/js/highlight.pack.js?1672850031></script>
+<script src=/js/clipboard.min.js?1672851552></script>
+<script src=/js/perfect-scrollbar.min.js?1672851552></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1672851552></script>
+<script src=/js/jquery.sticky.js?1672851552></script>
+<script src=/js/featherlight.min.js?1672851552></script>
+<script src=/js/highlight.pack.js?1672851552></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1672850031></script>
-<script src=/js/learn.js?1672850031></script>
-<script src=/js/hugo-learn.js?1672850031></script>
-<script src=/mermaid/mermaid.js?1672850031></script>
+<script src=/js/modernizr.custom-3.6.0.js?1672851552></script>
+<script src=/js/learn.js?1672851552></script>
+<script src=/js/hugo-learn.js?1672851552></script>
+<script src=/mermaid/mermaid.js?1672851552></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
