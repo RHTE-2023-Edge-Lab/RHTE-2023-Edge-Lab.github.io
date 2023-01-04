@@ -1,7 +1,7 @@
 ---
 title: "Linux"
 draft: false
-weight: 1
+weight: 2
 ---
 
 ## OpenShift CLI

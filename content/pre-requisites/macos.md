@@ -1,7 +1,7 @@
 ---
 title: "MacOS"
 draft: false
-weight: 2
+weight: 3
 ---
 
 Install the OpenShift CLI.
