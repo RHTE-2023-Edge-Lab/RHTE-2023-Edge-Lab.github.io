@@ -111,3 +111,7 @@ for i in {1..200}; do mosquitto_pub -t <MQTT addressName> -h '<AWS LB address fo
 #Example
 #for i in {1..200}; do mosquitto_pub -t esp32 -h 'aa47f83e624da4e639f5be6109757355-1944403232.eu-west-1.elb.amazonaws.com' -p 1883 -u admin -P public -m message$i; done
 ```
+
+
+
+![MQTT test](/images/mqtt-sub.png)
