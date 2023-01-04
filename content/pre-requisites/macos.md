@@ -24,6 +24,6 @@ https://code.visualstudio.com/download
 
 Open VScode and install the [PlatformIO IDE plugin](https://docs.platformio.org/en/latest/integration/ide/).
 
-![Install1](images/install_platformio_1.png)
+![Install1](../pre-requisites/images/install_platformio_1.png)
 
-![Install2](images/install_platformio_2.png)
+![Install2](../pre-requisites/images/install_platformio_2.png)
