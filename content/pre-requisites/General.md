@@ -26,18 +26,18 @@ OpenShift cluster is already deployed via **RHPDS** environment and **"OpenSHift
 
 All needed operators are already installed on the Openshift cluster and you will just need to consume CRD provided by these operators during this session :
 
-* **Red Hat Integration - AMQ Broker for RHEL 8 (Multiarch)**
+* **Red Hat Integration - AMQ Broker for RHEL 8 (Multiarch)**  
 AMQ Broker Operator for RHEL 8 (Multiarch) provides the ability to deploy and manage stateful AMQ Broker broker clusters
 
 
-* **Red Hat Integration - AMQ Streams**
+* **Red Hat Integration - AMQ Streams**  
 Red Hat AMQ Streams is a massively scalable, distributed, and high performance data streaming platform based on the Apache Kafka® project. AMQ Streams provides an event streaming backbone that allows microservices and other application components to exchange data with extremely high throughput and low latency. The core capabilities include: * A pub/sub messaging model, similar to a traditional enterprise messaging system, in which application components publish and consume events to/from an ordered stream
 
 - The long term, fault-tolerant storage of events
 - The ability for a consumer to replay streams of events
 - The ability to partition topics for horizontal scalability
 
-* **Red Hat Integration - Camel K**
+* **Red Hat Integration - Camel K**  
 Red Hat Integration - Camel K is a lightweight integration platform, born on Kubernetes, with serverless superpowers.
 
 ![Openshift Operators](/images/operatos.png)

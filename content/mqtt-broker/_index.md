@@ -7,6 +7,8 @@ pre = "<b>A & B. </b>"
 
 ### Duo A & B
 
+
+
 # Deploy the MQTT Broker in your namespace
 
 ```sh
@@ -52,6 +54,8 @@ spec:
   routingType: anycast
 ```
 
+
+
 # Deploy your Service in LoadBalancer type   
 
 ```sh
@@ -71,6 +75,8 @@ spec:
     application: mqtt-app
   type: LoadBalancer
   ```
+
+
 
 # Result
 
