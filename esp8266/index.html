@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Program the ESP8266 :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1672852795 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1672852795 rel=stylesheet>
-<link href=/css/hybrid.css?1672852795 rel=stylesheet>
-<link href=/css/featherlight.min.css?1672852795 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1672852795 rel=stylesheet>
-<link href=/css/auto-complete.css?1672852795 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1672852795 rel=stylesheet>
-<link href=/css/theme.css?1672852795 rel=stylesheet>
-<link href=/css/tabs.css?1672852795 rel=stylesheet>
-<link href=/css/hugo-theme.css?1672852795 rel=stylesheet>
-<link href=/css/theme-red.css?1672852795 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1672852795></script>
+<link href=/css/nucleus.css?1672869372 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1672869372 rel=stylesheet>
+<link href=/css/hybrid.css?1672869372 rel=stylesheet>
+<link href=/css/featherlight.min.css?1672869372 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1672869372 rel=stylesheet>
+<link href=/css/auto-complete.css?1672869372 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1672869372 rel=stylesheet>
+<link href=/css/theme.css?1672869372 rel=stylesheet>
+<link href=/css/tabs.css?1672869372 rel=stylesheet>
+<link href=/css/hugo-theme.css?1672869372 rel=stylesheet>
+<link href=/css/theme-red.css?1672869372 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1672869372></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=/esp8266/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1672852795></script>
-<script type=text/javascript src=/js/auto-complete.js?1672852795></script>
+<script type=text/javascript src=/js/lunr.min.js?1672869372></script>
+<script type=text/javascript src=/js/auto-complete.js?1672869372></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1672852795></script>
+<script type=text/javascript src=/js/search.js?1672869372></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -181,7 +181,119 @@ active">
 <div id=body-inner>
 <h3 id=duo-a--b>Duo A & B</h3>
 <h1 id=program-the-esp8266>Program the ESP8266</h1>
+<h2 id=1-connect-your-esp8266>1. Connect your ESP8266</h2>
 <p>TODO</p>
+<h2 id=2-create-new-project-in-plaformio-vscode-plugin>2. Create new project in PlaformIO VSCode plugin</h2>
+<p>TODO</p>
+<h2 id=3-add-specific-libraries-in-your-new-create-project>3. Add specific libraries in your new create project</h2>
+<p>TODO</p>
+<h2 id=4-deploy-build-and-upload-code-on-your-esp8266>4. Deploy, build and upload code on your ESP8266</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=color:#75715e>#include &lt;Arduino.h&gt;</span>
+<span style=color:#75715e>#include &lt;SPI.h&gt;</span>
+<span style=color:#75715e>#include &lt;MFRC522.h&gt;</span>
+<span style=color:#75715e>#include &lt;ESP8266WiFi.h&gt;</span>
+<span style=color:#75715e>#include &lt;PubSubClient.h&gt;</span>
+
+MFRC522 mfrc522;
+WiFiClient espClient;
+PubSubClient client<span style=color:#f92672>(</span>espClient<span style=color:#f92672>)</span>;
+
+//WIFI
+const char* ssid <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&lt;wifi_ssid&gt;&#34;</span>;  //  SSID Wifi
+const char* password <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&lt;wifi_password&gt;&#34;</span>;  //mot de passe Wifi
+
+
+// MQTT Broker
+const char *mqtt_broker <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&lt;AWS LB address for MQTT service&gt;&#34;</span>;
+const char *mqtt_topic <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&lt;MQTT addressName&gt;&#34;</span>;
+const char *mqtt_username <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&lt;MQTT user&gt;&#34;</span>;
+const char *mqtt_password <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&lt;MQTT password&gt;&#34;</span>;
+const int mqtt_port <span style=color:#f92672>=</span> &lt;MQTT port&gt;;
+
+void setup<span style=color:#f92672>()</span>
+<span style=color:#f92672>{</span>
+  Serial.begin<span style=color:#f92672>(</span>9600<span style=color:#f92672>)</span>;     // Initialize serial communications with the PC
+  <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>!Serial<span style=color:#f92672>)</span>;        // Do nothing <span style=color:#66d9ef>if</span> no serial port is opened <span style=color:#f92672>(</span>added <span style=color:#66d9ef>for</span> Arduinos based on ATMEGA32U4<span style=color:#f92672>)</span>
+  Serial.println<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Initializing...&#34;</span><span style=color:#f92672>)</span>;
+  SPI.begin<span style=color:#f92672>()</span>;            // Init SPI bus
+  mfrc522.PCD_Init<span style=color:#f92672>()</span>;     // Init MFRC522
+  delay<span style=color:#f92672>(</span>4<span style=color:#f92672>)</span>;               // Optional delay.
+
+  <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>!mfrc522.PCD_PerformSelfTest<span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+    Serial.println<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;MFRC522 not ready !&#34;</span><span style=color:#f92672>)</span>;
+  <span style=color:#f92672>}</span>
+  Serial.println<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Ready !&#34;</span><span style=color:#f92672>)</span>;
+
+  // Wifi initialization
+  WiFi.mode<span style=color:#f92672>(</span>WIFI_STA<span style=color:#f92672>)</span>;
+  WiFi.begin<span style=color:#f92672>(</span>ssid, password<span style=color:#f92672>)</span>;
+  Serial.print<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Connecting to Wifi...&#34;</span><span style=color:#f92672>)</span>;
+  <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>WiFi.status<span style=color:#f92672>()</span> !<span style=color:#f92672>=</span> WL_CONNECTED<span style=color:#f92672>)</span>
+  <span style=color:#f92672>{</span>
+    delay<span style=color:#f92672>(</span>500<span style=color:#f92672>)</span>;
+    Serial.print<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;.&#34;</span><span style=color:#f92672>)</span>;
+  <span style=color:#f92672>}</span>
+  Serial.println<span style=color:#f92672>()</span>;
+  Serial.print<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Connected, IP address: &#34;</span><span style=color:#f92672>)</span>;
+  Serial.println<span style=color:#f92672>(</span>WiFi.localIP<span style=color:#f92672>())</span>;
+  randomSeed<span style=color:#f92672>(</span>micros<span style=color:#f92672>())</span>;
+
+  // MQTT initialization
+  client.setServer<span style=color:#f92672>(</span>mqtt_broker, mqtt_port<span style=color:#f92672>)</span>;
+<span style=color:#f92672>}</span>
+
+void reconnect<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+  // Loop <span style=color:#66d9ef>until</span> we<span style=color:#960050;background-color:#1e0010>&#39;</span>re reconnected
+  <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>!client.connected<span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+    Serial.print<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Attempting MQTT connection...&#34;</span><span style=color:#f92672>)</span>;
+    // Create a random client ID
+    String clientId <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;ESP8266Client-&#34;</span>;
+    clientId <span style=color:#f92672>+=</span> String<span style=color:#f92672>(</span>random<span style=color:#f92672>(</span>0xffff<span style=color:#f92672>)</span>, HEX<span style=color:#f92672>)</span>;
+    // Attempt to connect
+    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>client.connect<span style=color:#f92672>(</span>clientId.c_str<span style=color:#f92672>()</span>, mqtt_username, mqtt_password<span style=color:#f92672>))</span> <span style=color:#f92672>{</span>
+      Serial.println<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;connected to MQTT Broker&#34;</span><span style=color:#f92672>)</span>;
+    <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+      Serial.print<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;failed, rc=&#34;</span><span style=color:#f92672>)</span>;
+      Serial.print<span style=color:#f92672>(</span>client.state<span style=color:#f92672>())</span>;
+      Serial.println<span style=color:#f92672>(</span><span style=color:#e6db74>&#34; try again in 5 seconds&#34;</span><span style=color:#f92672>)</span>;
+      // Wait <span style=color:#ae81ff>5</span> seconds before retrying
+      delay<span style=color:#f92672>(</span>5000<span style=color:#f92672>)</span>;
+    <span style=color:#f92672>}</span>
+  <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+
+void loop<span style=color:#f92672>()</span>
+<span style=color:#f92672>{</span>
+  // MQTT connection to the broker + protocol handling
+  <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>!client.connected<span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+    reconnect<span style=color:#f92672>()</span>;
+  <span style=color:#f92672>}</span>
+  client.loop<span style=color:#f92672>()</span>;
+
+  // Reset the loop <span style=color:#66d9ef>if</span> no new card present on the sensor/reader. This saves the entire process when idle.
+  <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span> ! mfrc522.PICC_IsNewCardPresent<span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>return</span>;
+  <span style=color:#f92672>}</span>
+
+  // Select one of the cards
+  <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span> ! mfrc522.PICC_ReadCardSerial<span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>return</span>;
+  <span style=color:#f92672>}</span>
+
+  // Compute and print UID
+  char uid<span style=color:#f92672>[</span>30<span style=color:#f92672>]</span>;
+  char * buffer <span style=color:#f92672>=</span> uid;
+  <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span>byte i <span style=color:#f92672>=</span> 0; i &lt; mfrc522.uid.size; i++<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    int n <span style=color:#f92672>=</span> sprintf<span style=color:#f92672>(</span>buffer, <span style=color:#e6db74>&#34;%s%02x&#34;</span>, i &gt; <span style=color:#ae81ff>0</span> ? <span style=color:#e6db74>&#34;:&#34;</span> : <span style=color:#e6db74>&#34;&#34;</span>, mfrc522.uid.uidByte<span style=color:#f92672>[</span>i<span style=color:#f92672>])</span>;
+    <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>n &gt; 0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      buffer <span style=color:#f92672>+=</span> n;
+    <span style=color:#f92672>}</span>
+  <span style=color:#f92672>}</span>
+  Serial.println<span style=color:#f92672>(</span>uid<span style=color:#f92672>)</span>;
+  client.publish<span style=color:#f92672>(</span>mqtt_topic, uid<span style=color:#f92672>)</span>;
+  delay<span style=color:#f92672>(</span>500<span style=color:#f92672>)</span>;
+<span style=color:#f92672>}</span>
+</code></pre></div>
 <footer class=footline>
 </footer>
 </div>
@@ -195,17 +307,17 @@ active">
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1672852795></script>
-<script src=/js/perfect-scrollbar.min.js?1672852795></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1672852795></script>
-<script src=/js/jquery.sticky.js?1672852795></script>
-<script src=/js/featherlight.min.js?1672852795></script>
-<script src=/js/highlight.pack.js?1672852795></script>
+<script src=/js/clipboard.min.js?1672869372></script>
+<script src=/js/perfect-scrollbar.min.js?1672869372></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1672869372></script>
+<script src=/js/jquery.sticky.js?1672869372></script>
+<script src=/js/featherlight.min.js?1672869372></script>
+<script src=/js/highlight.pack.js?1672869372></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1672852795></script>
-<script src=/js/learn.js?1672852795></script>
-<script src=/js/hugo-learn.js?1672852795></script>
-<script src=/mermaid/mermaid.js?1672852795></script>
+<script src=/js/modernizr.custom-3.6.0.js?1672869372></script>
+<script src=/js/learn.js?1672869372></script>
+<script src=/js/hugo-learn.js?1672869372></script>
+<script src=/mermaid/mermaid.js?1672869372></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
