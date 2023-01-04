@@ -6,7 +6,7 @@ weight: 1
 
 ## OpenShift Cluster
 
-![RHPDS Service](../pre-requisites/images/rhpds_service.png)
+![RHPDS Service](/images/rhpds_service.png)
 
 OpenShift cluster is already deployed via **RHPDS** environment and **"OpenSHift 4.11 Workshop"** service. The headquarter and warehouses corresponding to different namespace on this Openshift cluster on this way :
 
@@ -40,6 +40,6 @@ Red Hat AMQ Streams is a massively scalable, distributed, and high performance d
 * **Red Hat Integration - Camel K**
 Red Hat Integration - Camel K is a lightweight integration platform, born on Kubernetes, with serverless superpowers.
 
-![Openshift Operators](../pre-requisites/images/operatos.png)
+![Openshift Operators](/images/operatos.png)
 
 
