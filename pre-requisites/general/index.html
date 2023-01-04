@@ -5,7 +5,7 @@
 <meta name=generator content="Hugo 0.91.2">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
-<title>Categories :: RHTE 2023 Edge Lab</title>
+<title>General :: RHTE 2023 Edge Lab</title>
 <link href=/css/nucleus.css?1672849769 rel=stylesheet>
 <link href=/css/fontawesome-all.min.css?1672849769 rel=stylesheet>
 <link href=/css/hybrid.css?1672849769 rel=stylesheet>
@@ -20,7 +20,7 @@
 <script src=/js/jquery-3.3.1.min.js?1672849769></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
-<body data-url=/categories/>
+<body data-url=/pre-requisites/general/>
 <nav id=sidebar class=showVisitedLinks>
 <div id=header-wrapper>
 <div id=header>
@@ -76,13 +76,14 @@ Ice Breaker
 </li>
 </ul>
 </li>
-<li data-nav-id=/pre-requisites/ title="Pre Requisites" class=dd-item>
+<li data-nav-id=/pre-requisites/ title="Pre Requisites" class="dd-item
+parent">
 <a href=/pre-requisites/>
 <b>1. </b>Pre Requisites
 <i class="fas fa-check read-icon"></i>
 </a>
 <ul>
-<li data-nav-id=/pre-requisites/general/ title=General class=dd-item>
+<li data-nav-id=/pre-requisites/general/ title=General class="dd-item active">
 <a href=/pre-requisites/general/>
 General
 <i class="fas fa-check read-icon"></i>
@@ -169,11 +170,17 @@ Windows
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=/>Welcome</a> > Categories
+<a href=/>Welcome</a> > <a href=/pre-requisites/>Pre Requisites</a> > General
 </span>
 </div>
 <div class=progress>
 <div class=wrapper>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#openshift-cluster>OpenShift Cluster</a></li>
+<li><a href=#openshift-operators>OpenShift Operators</a></li>
+</ul>
+</nav>
 </div>
 </div>
 </div>
@@ -182,17 +189,53 @@ Windows
 </div>
 <div id=body-inner>
 <h1>
-category ::
-Categories
+General
 </h1>
+<h2 id=openshift-cluster>OpenShift Cluster</h2>
+<p>![RHPDS Service][images/rhpds_service.png]</p>
+<p>OpenShift cluster is already deployed via <strong>RHPDS</strong> environment and <strong>&ldquo;OpenSHift 4.11 Workshop&rdquo;</strong> service. The headquarter and warehouses corresponding to different namespace on this Openshift cluster on this way :</p>
 <ul>
+<li>Namespace n°1 : headquarter</li>
+<li>Namespace n°2 : warehouse-athens</li>
+<li>Namespace n°3 : warehouse-brno</li>
+<li>Namespace n°4 : warehouse-brussels</li>
+<li>Namespace n°5 : warehouse-bucharest</li>
+<li>Namespace n°6 : warehouse-dublin</li>
+<li>Namespace n°7 : warehouse-lisboa</li>
+<li>Namespace n°8 : warehouse-london</li>
+<li>Namespace n°9 : warehouse-paris</li>
+<li>Namespace n°10 : warehouse-stockolm</li>
+<li>Namespace n°11 : warehouse-vasovia</li>
 </ul>
+<h2 id=openshift-operators>OpenShift Operators</h2>
+<p>All needed operators are already installed on the Openshift cluster and you will just need to consume CRD provided by these operators during this session :</p>
+<ul>
+<li>
+<p><strong>Red Hat Integration - AMQ Broker for RHEL 8 (Multiarch)</strong>
+AMQ Broker Operator for RHEL 8 (Multiarch) provides the ability to deploy and manage stateful AMQ Broker broker clusters</p>
+</li>
+<li>
+<p><strong>Red Hat Integration - AMQ Streams</strong>
+Red Hat AMQ Streams is a massively scalable, distributed, and high performance data streaming platform based on the Apache Kafka® project. AMQ Streams provides an event streaming backbone that allows microservices and other application components to exchange data with extremely high throughput and low latency. The core capabilities include: * A pub/sub messaging model, similar to a traditional enterprise messaging system, in which application components publish and consume events to/from an ordered stream</p>
+</li>
+</ul>
+<ul>
+<li>The long term, fault-tolerant storage of events</li>
+<li>The ability for a consumer to replay streams of events</li>
+<li>The ability to partition topics for horizontal scalability</li>
+</ul>
+<ul>
+<li><strong>Red Hat Integration - Camel K</strong>
+Red Hat Integration - Camel K is a lightweight integration platform, born on Kubernetes, with serverless superpowers.</li>
+</ul>
+<p>![Openshift Operators][images/operators.png]</p>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-next" href=/use-case/ title="Use Case" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=/pre-requisites/ title="Pre Requisites"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/pre-requisites/linux/ title=Linux style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
