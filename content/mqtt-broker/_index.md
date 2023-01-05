@@ -5,11 +5,10 @@ chapter = true
 pre = "<b>A & B. </b>"
 +++
 
-### Duo A & B
 
-# Deploy the MQTT Broker in your namespace
+# MQTT Broker in each warehouse
 
-## Duo A - MQTT for entrance paquets
+## Duo A & B - Deploy your MQTT Broker in your dedicated namespace corresponding to your warehouse
 
 ```sh
 apiVersion: broker.amq.io/v1beta1
@@ -40,23 +39,7 @@ spec:
     size: 1
 ```
 
-# Deploy an AMQ Broker Address for your MQTT Broker
-
-```sh
-kind: ActiveMQArtemisAddress
-apiVersion: broker.amq.io/v1beta1
-metadata:
-  name: address
-  namespace: <your_namespace>
-spec:
-  addressName: esp8266
-  queueName: myQueue0
-  routingType: anycast
-```
-
-
-
-# Deploy your Service in LoadBalancer type   
+## Duo A & B - Deploy your Service in LoadBalancer type   
 
 ```sh
 apiVersion: v1
@@ -77,21 +60,49 @@ spec:
   ```
 
 
+## Duo A - Deploy your AMQ Broker Address for your MQTT topic IN for entrance packets
 
-# Result
+```sh
+kind: ActiveMQArtemisAddress
+apiVersion: broker.amq.io/v1beta1
+metadata:
+  name: esp8266-in
+  namespace: <your_namespace>
+spec:
+  addressName: esp8266-in
+  queueName: myQueue0
+  routingType: anycast
+```
 
-## MQTT Instances
+## Duo B - Deploy your AMQ Broker Address for your MQTT topic OUT for output packets
+
+```sh
+kind: ActiveMQArtemisAddress
+apiVersion: broker.amq.io/v1beta1
+metadata:
+  name: esp8266-out
+  namespace: <your_namespace>
+spec:
+  addressName: esp8266-out
+  queueName: myQueue0
+  routingType: anycast
+```
+
+
+## Result
+
+### MQTT Instances
 ![MQTT Instances](/images/mqtt-instances.png)
 
-## MQTT Pods
+### MQTT Pods
 ![MQTT pods](/images/mqtt-pods.png)
 
-## MQTT Services
+### MQTT Services
 ![MQTT Instances](/images/mqtt-services.png)
 
 
 
-# Test your MQTT deployment
+## Test your MQTT deployment
 
 1. Connect to your MQTT Broker to read messages
 
