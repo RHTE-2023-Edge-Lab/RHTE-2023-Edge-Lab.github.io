@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Program the ESP8266 :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1672926031 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1672926031 rel=stylesheet>
-<link href=/css/hybrid.css?1672926031 rel=stylesheet>
-<link href=/css/featherlight.min.css?1672926031 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1672926031 rel=stylesheet>
-<link href=/css/auto-complete.css?1672926031 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1672926031 rel=stylesheet>
-<link href=/css/theme.css?1672926031 rel=stylesheet>
-<link href=/css/tabs.css?1672926031 rel=stylesheet>
-<link href=/css/hugo-theme.css?1672926031 rel=stylesheet>
-<link href=/css/theme-red.css?1672926031 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1672926031></script>
+<link href=/css/nucleus.css?1672929991 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1672929991 rel=stylesheet>
+<link href=/css/hybrid.css?1672929991 rel=stylesheet>
+<link href=/css/featherlight.min.css?1672929991 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1672929991 rel=stylesheet>
+<link href=/css/auto-complete.css?1672929991 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1672929991 rel=stylesheet>
+<link href=/css/theme.css?1672929991 rel=stylesheet>
+<link href=/css/tabs.css?1672929991 rel=stylesheet>
+<link href=/css/hugo-theme.css?1672929991 rel=stylesheet>
+<link href=/css/theme-red.css?1672929991 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1672929991></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=/esp8266/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1672926031></script>
-<script type=text/javascript src=/js/auto-complete.js?1672926031></script>
+<script type=text/javascript src=/js/lunr.min.js?1672929991></script>
+<script type=text/javascript src=/js/auto-complete.js?1672929991></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1672926031></script>
+<script type=text/javascript src=/js/search.js?1672929991></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -198,6 +198,7 @@ active">
 <p><img src=/images/platformIO-add-library4.png alt="PlatformIO add library"></p>
 <p><img src=/images/platformIO-add-library5.png alt="PlatformIO add library"></p>
 <h2 id=4-duo-a---deploy-build-and-upload-code-on-your-esp8266-dedicated-for-entrence-packets>4. Duo A - Deploy, build and upload code on your ESP8266 dedicated for entrence packets</h2>
+<h3 id=adapt-this-code-in-the-srcmaincpp-file-of-your-plarformio-project>Adapt this code in the src/main.cpp file of your plarformIO project</h3>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=color:#75715e>#include &lt;Arduino.h&gt;</span>
 <span style=color:#75715e>#include &lt;SPI.h&gt;</span>
 <span style=color:#75715e>#include &lt;MFRC522.h&gt;</span>
@@ -303,7 +304,16 @@ void loop<span style=color:#f92672>()</span>
   client.publish<span style=color:#f92672>(</span>mqtt_topic, uid<span style=color:#f92672>)</span>;
   delay<span style=color:#f92672>(</span>500<span style=color:#f92672>)</span>;
 <span style=color:#f92672>}</span>
-</code></pre></div><h2 id=4-duo-b---deploy-build-and-upload-code-on-your-esp8266-dedicated-for-output-packets>4. Duo B - Deploy, build and upload code on your ESP8266 dedicated for output packets</h2>
+</code></pre></div><h3 id=compile-your-code>Compile your code</h3>
+<p><img src=/images/platformIO-esp-build.png alt="PlatformIO build"></p>
+<h3 id=flash-your-esp8266-with-your-code>Flash your ESP8266 with your code</h3>
+<p><img src=/images/platformIO-esp-write.png alt="PlatformIO write"></p>
+<h3 id=connect-to-your-esp8266-console>Connect to your ESP8266 console</h3>
+<p><img src=/images/platformIO-esp-console.png alt="PlatformIO console"></p>
+<h3 id=result>Result</h3>
+<p><img src=/images/platformIO-esp-test.png alt="PlatformIO result"></p>
+<h2 id=4-duo-b---deploy-build-and-upload-code-on-your-esp8266-dedicated-for-output-packets>4. Duo B - Deploy, build and upload code on your ESP8266 dedicated for output packets</h2>
+<h3 id=adapt-this-code-in-the-srcmaincpp-file-of-your-plarformio-project-1>Adapt this code in the src/main.cpp file of your plarformIO project</h3>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=color:#75715e>#include &lt;Arduino.h&gt;</span>
 <span style=color:#75715e>#include &lt;SPI.h&gt;</span>
 <span style=color:#75715e>#include &lt;MFRC522.h&gt;</span>
@@ -409,7 +419,14 @@ void loop<span style=color:#f92672>()</span>
   client.publish<span style=color:#f92672>(</span>mqtt_topic, uid<span style=color:#f92672>)</span>;
   delay<span style=color:#f92672>(</span>500<span style=color:#f92672>)</span>;
 <span style=color:#f92672>}</span>
-</code></pre></div>
+</code></pre></div><h3 id=compile-your-code-1>Compile your code</h3>
+<p><img src=/images/platformIO-esp-build.png alt="PlatformIO build"></p>
+<h3 id=flash-your-esp8266-with-your-code-1>Flash your ESP8266 with your code</h3>
+<p><img src=/images/platformIO-esp-write.png alt="PlatformIO write"></p>
+<h3 id=connect-to-your-esp8266-console-1>Connect to your ESP8266 console</h3>
+<p><img src=/images/platformIO-esp-console.png alt="PlatformIO console"></p>
+<h3 id=result-1>Result</h3>
+<p><img src=/images/platformIO-esp-test.png alt="PlatformIO result"></p>
 <footer class=footline>
 </footer>
 </div>
@@ -423,17 +440,17 @@ void loop<span style=color:#f92672>()</span>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1672926031></script>
-<script src=/js/perfect-scrollbar.min.js?1672926031></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1672926031></script>
-<script src=/js/jquery.sticky.js?1672926031></script>
-<script src=/js/featherlight.min.js?1672926031></script>
-<script src=/js/highlight.pack.js?1672926031></script>
+<script src=/js/clipboard.min.js?1672929991></script>
+<script src=/js/perfect-scrollbar.min.js?1672929991></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1672929991></script>
+<script src=/js/jquery.sticky.js?1672929991></script>
+<script src=/js/featherlight.min.js?1672929991></script>
+<script src=/js/highlight.pack.js?1672929991></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1672926031></script>
-<script src=/js/learn.js?1672926031></script>
-<script src=/js/hugo-learn.js?1672926031></script>
-<script src=/mermaid/mermaid.js?1672926031></script>
+<script src=/js/modernizr.custom-3.6.0.js?1672929991></script>
+<script src=/js/learn.js?1672929991></script>
+<script src=/js/hugo-learn.js?1672929991></script>
+<script src=/mermaid/mermaid.js?1672929991></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
