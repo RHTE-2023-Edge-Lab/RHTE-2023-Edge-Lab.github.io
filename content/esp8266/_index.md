@@ -63,7 +63,7 @@ const char* password = "<wifi_password>";  //mot de passe Wifi
 
 // MQTT Broker
 const char *mqtt_broker = "<AWS LB address for MQTT service>";
-const char *mqtt_topic = "esp8266-int";
+const char *mqtt_topic = "esp8266-in";
 const char *mqtt_username = "<MQTT user>";
 const char *mqtt_password = "<MQTT password>";
 const int mqtt_port = <MQTT port>;
