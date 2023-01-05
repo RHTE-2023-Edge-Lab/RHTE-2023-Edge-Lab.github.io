@@ -59,6 +59,7 @@ kind: KafkaTopic
 apiVersion: kafka.strimzi.io/v1beta2
 metadata:
   name: warehouse-in
+  namespace: <your_namespace>
   labels:
     strimzi.io/cluster: warehouse
 spec:
@@ -70,6 +71,7 @@ kind: KafkaTopic
 apiVersion: kafka.strimzi.io/v1beta2
 metadata:
   name: warehouse-out
+  namespace: <your_namespace>
   labels:
     strimzi.io/cluster: warehouse
 spec:
