@@ -110,19 +110,22 @@ spec:
 mosquitto_sub -t <MQTT addressName> -h '<AWS LB address for MQTT service>' -p <port> -u <MQTT user> -P <MQTT password>
 
 #Example
-#mosquitto_sub -t esp32 -h 'a32ba3beef5cf47ba907ca93f911bd94-62424187.eu-west-1.elb.amazonaws.com' -p 1883 -u admin -P public
+#mosquitto_sub -t esp8266-in -h 'a32ba3beef5cf47ba907ca93f911bd94-62424187.eu-west-1.elb.amazonaws.com' -p 1883 -u admin -P public
 ```
 
 
 2. Push new messages to your MQTT Broker
 
 ```sh
-for i in {1..200}; do mosquitto_pub -t <MQTT addressName> -h '<AWS LB address for MQTT service>' -p <port> -u <MQTT user> -P <MQTT password> -m message$i; done
+for i in {1..200}; do mosquitto_pub -t <MQTT addressName> -h '<AWS LB address for MQTT service>' -p <port> -u <MQTT user> -P <MQTT password> -m in$i; done
 
 #Example
-#for i in {1..200}; do mosquitto_pub -t esp32 -h 'aa47f83e624da4e639f5be6109757355-1944403232.eu-west-1.elb.amazonaws.com' -p 1883 -u admin -P public -m message$i; done
+#for i in {1..200}; do mosquitto_pub -t esp8266-in -h 'aa47f83e624da4e639f5be6109757355-1944403232.eu-west-1.elb.amazonaws.com' -p 1883 -u admin -P public -m in$i; done
 ```
 
 
 
-![MQTT test](/images/mqtt-sub.png)
+![MQTT topi IN](/images/mqtt-sub-in.png)
+
+
+![MQTT topi OUT](/images/mqtt-sub-out.png)
