@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Camel-K Integration :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1672929991 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1672929991 rel=stylesheet>
-<link href=/css/hybrid.css?1672929991 rel=stylesheet>
-<link href=/css/featherlight.min.css?1672929991 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1672929991 rel=stylesheet>
-<link href=/css/auto-complete.css?1672929991 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1672929991 rel=stylesheet>
-<link href=/css/theme.css?1672929991 rel=stylesheet>
-<link href=/css/tabs.css?1672929991 rel=stylesheet>
-<link href=/css/hugo-theme.css?1672929991 rel=stylesheet>
-<link href=/css/theme-red.css?1672929991 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1672929991></script>
+<link href=/css/nucleus.css?1672931188 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1672931188 rel=stylesheet>
+<link href=/css/hybrid.css?1672931188 rel=stylesheet>
+<link href=/css/featherlight.min.css?1672931188 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1672931188 rel=stylesheet>
+<link href=/css/auto-complete.css?1672931188 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1672931188 rel=stylesheet>
+<link href=/css/theme.css?1672931188 rel=stylesheet>
+<link href=/css/tabs.css?1672931188 rel=stylesheet>
+<link href=/css/hugo-theme.css?1672931188 rel=stylesheet>
+<link href=/css/theme-red.css?1672931188 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1672931188></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=/kafka-broker/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1672929991></script>
-<script type=text/javascript src=/js/auto-complete.js?1672929991></script>
+<script type=text/javascript src=/js/lunr.min.js?1672931188></script>
+<script type=text/javascript src=/js/auto-complete.js?1672931188></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1672929991></script>
+<script type=text/javascript src=/js/search.js?1672931188></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -174,9 +174,73 @@ active">
 </div>
 <div id=chapter>
 <div id=body-inner>
-<h3 id=duo-c>Duo C</h3>
 <h1 id=develop-the-camel-k-integration>Develop the Camel-K Integration</h1>
-<p>TODO</p>
+<h2 id=duo-c---create-your-kafka-broker-in-your-warehouse-namespace>Duo C - Create your Kafka broker in your warehouse namespace</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>apiVersion: kafka.strimzi.io/v1beta2
+kind: Kafka
+metadata:
+  name: warehouse
+  namespace: &lt;your_namespace&gt;
+spec:
+  kafka:
+    config:
+      offsets.topic.replication.factor: <span style=color:#ae81ff>3</span>
+      transaction.state.log.replication.factor: <span style=color:#ae81ff>3</span>
+      transaction.state.log.min.isr: <span style=color:#ae81ff>2</span>
+      default.replication.factor: <span style=color:#ae81ff>3</span>
+      min.insync.replicas: <span style=color:#ae81ff>2</span>
+      inter.broker.protocol.version: <span style=color:#e6db74>&#39;3.2&#39;</span>
+    storage:
+      type: ephemeral
+    listeners:
+      - authentication:
+          type: scram-sha-512
+        name: plain
+        port: <span style=color:#ae81ff>9092</span>
+        type: internal
+        tls: false
+      - authentication:
+          type: scram-sha-512
+        name: tls
+        port: <span style=color:#ae81ff>9093</span>
+        type: route
+        tls: true
+    version: 3.2.3
+    replicas: <span style=color:#ae81ff>3</span>
+  entityOperator:
+    topicOperator: <span style=color:#f92672>{}</span>
+    userOperator: <span style=color:#f92672>{}</span>
+  zookeeper:
+    storage:
+      type: ephemeral
+    replicas: <span style=color:#ae81ff>3</span>
+</code></pre></div><h2 id=duo-c---create-your-kafka-in-and-out-topics-in-your-broker>Duo C - Create your Kafka IN and OUT topics in your broker</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>kind: KafkaTopic
+apiVersion: kafka.strimzi.io/v1beta2
+metadata:
+  name: warehouse-in
+  labels:
+    strimzi.io/cluster: warehouse
+spec:
+  config:
+    retention.ms: <span style=color:#ae81ff>604800000</span>
+    segment.bytes: <span style=color:#ae81ff>1073741824</span>
+---
+kind: KafkaTopic
+apiVersion: kafka.strimzi.io/v1beta2
+metadata:
+  name: warehouse-out
+  labels:
+    strimzi.io/cluster: warehouse
+spec:
+  config:
+    retention.ms: <span style=color:#ae81ff>604800000</span>
+    segment.bytes: <span style=color:#ae81ff>1073741824</span>
+</code></pre></div><h2 id=result>Result</h2>
+<p>Kafka pods</p>
+<p><img src=/images/warehouse-kafka-pods.png alt="KAFKA pods"></p>
+<p>Kafka instances</p>
+<p><img src=/images/warehouse-kafka-instances.png alt="KAFKA instances"></p>
 <footer class=footline>
 </footer>
 </div>
@@ -190,17 +254,17 @@ active">
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1672929991></script>
-<script src=/js/perfect-scrollbar.min.js?1672929991></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1672929991></script>
-<script src=/js/jquery.sticky.js?1672929991></script>
-<script src=/js/featherlight.min.js?1672929991></script>
-<script src=/js/highlight.pack.js?1672929991></script>
+<script src=/js/clipboard.min.js?1672931188></script>
+<script src=/js/perfect-scrollbar.min.js?1672931188></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1672931188></script>
+<script src=/js/jquery.sticky.js?1672931188></script>
+<script src=/js/featherlight.min.js?1672931188></script>
+<script src=/js/highlight.pack.js?1672931188></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1672929991></script>
-<script src=/js/learn.js?1672929991></script>
-<script src=/js/hugo-learn.js?1672929991></script>
-<script src=/mermaid/mermaid.js?1672929991></script>
+<script src=/js/modernizr.custom-3.6.0.js?1672931188></script>
+<script src=/js/learn.js?1672931188></script>
+<script src=/js/hugo-learn.js?1672931188></script>
+<script src=/mermaid/mermaid.js?1672931188></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
