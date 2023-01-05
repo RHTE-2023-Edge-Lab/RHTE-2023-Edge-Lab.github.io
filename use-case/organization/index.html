@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Organization :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1672907873 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1672907873 rel=stylesheet>
-<link href=/css/hybrid.css?1672907873 rel=stylesheet>
-<link href=/css/featherlight.min.css?1672907873 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1672907873 rel=stylesheet>
-<link href=/css/auto-complete.css?1672907873 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1672907873 rel=stylesheet>
-<link href=/css/theme.css?1672907873 rel=stylesheet>
-<link href=/css/tabs.css?1672907873 rel=stylesheet>
-<link href=/css/hugo-theme.css?1672907873 rel=stylesheet>
-<link href=/css/theme-red.css?1672907873 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1672907873></script>
+<link href=/css/nucleus.css?1672917949 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1672917949 rel=stylesheet>
+<link href=/css/hybrid.css?1672917949 rel=stylesheet>
+<link href=/css/featherlight.min.css?1672917949 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1672917949 rel=stylesheet>
+<link href=/css/auto-complete.css?1672917949 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1672917949 rel=stylesheet>
+<link href=/css/theme.css?1672917949 rel=stylesheet>
+<link href=/css/tabs.css?1672917949 rel=stylesheet>
+<link href=/css/hugo-theme.css?1672917949 rel=stylesheet>
+<link href=/css/theme-red.css?1672917949 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1672917949></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=/use-case/organization/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1672907873></script>
-<script type=text/javascript src=/js/auto-complete.js?1672907873></script>
+<script type=text/javascript src=/js/lunr.min.js?1672917949></script>
+<script type=text/javascript src=/js/auto-complete.js?1672917949></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1672907873></script>
+<script type=text/javascript src=/js/search.js?1672917949></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -175,7 +175,12 @@ Windows
 </div>
 <div class=progress>
 <div class=wrapper>
-<nav id=TableOfContents></nav>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#steps>Steps</a></li>
+<li><a href=#schema>Schema</a></li>
+</ul>
+</nav>
 </div>
 </div>
 </div>
@@ -193,6 +198,16 @@ Organization
 <li>Duo <strong>C</strong> is in charge of setting up Kafka Broker, MirrorMaker2 and implementing the Camel-K integration.</li>
 <li>Duo <strong>A</strong> or <strong>B</strong> (whoever finishes first) is in charge of deploying the MQTT broker.</li>
 </ul>
+<h2 id=steps>Steps</h2>
+<p><strong>1.</strong> Scan entrance and output packets via the ESP8266 RFID scanner. One ESP8266 dedicated for entrance packets and one ESP8266 dedicated for output packets.
+<strong>2.</strong> The ESP8266 dedicated for entrance packets write the <strong>RFID id</strong> in mqtt the <strong>mqtt-in</strong>. The ESP8266 dedicated for output packets write the <strong>RFID id</strong> in the mqtt <strong>mqtt-out</strong>.
+<strong>3.</strong> Camel K operator transform and enrich mqtt data stored in mqtt topics and inject these enriched data in <strong>kafka-in</strong> and <strong>kafka-out</strong> topics.
+<strong>4.</strong> <strong>Kafka Mirror Maker</strong> mirror in synchrone mode each topic of each warehouse (10) to headquarter to centralize data.
+<strong>5.</strong> <strong>Camel Quarkus</strong> help us to have more complex data transformation to aggregate data stored in all regional kafka topics in one and uniq kafka topic.
+<strong>6.</strong>
+<strong>7.</strong></p>
+<h2 id=schema>Schema</h2>
+<p><img src=/images/detailled-schema.svg alt=use_case></p>
 <footer class=footline>
 </footer>
 </div>
@@ -205,17 +220,17 @@ Organization
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1672907873></script>
-<script src=/js/perfect-scrollbar.min.js?1672907873></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1672907873></script>
-<script src=/js/jquery.sticky.js?1672907873></script>
-<script src=/js/featherlight.min.js?1672907873></script>
-<script src=/js/highlight.pack.js?1672907873></script>
+<script src=/js/clipboard.min.js?1672917949></script>
+<script src=/js/perfect-scrollbar.min.js?1672917949></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1672917949></script>
+<script src=/js/jquery.sticky.js?1672917949></script>
+<script src=/js/featherlight.min.js?1672917949></script>
+<script src=/js/highlight.pack.js?1672917949></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1672907873></script>
-<script src=/js/learn.js?1672907873></script>
-<script src=/js/hugo-learn.js?1672907873></script>
-<script src=/mermaid/mermaid.js?1672907873></script>
+<script src=/js/modernizr.custom-3.6.0.js?1672917949></script>
+<script src=/js/learn.js?1672917949></script>
+<script src=/js/hugo-learn.js?1672917949></script>
+<script src=/mermaid/mermaid.js?1672917949></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
