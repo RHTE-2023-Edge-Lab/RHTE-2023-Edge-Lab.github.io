@@ -15,13 +15,33 @@ Connect ESP8266 to your computer via USB connector.
 
 ## 2. Duo A & B - Create new project in PlaformIO VSCode plugin
 
-TODO
+![PlatformIO Home](/images/platformIO-home.png)
+
+![PlatformIO New project](/images/platformIO-new-project1.png)
+
+![PlatformIO New project](/images/platformIO-new-project2.png)
+
+![PlatformIO New project](/images/platformIO-new-project3.png)
 
 ## 3. Duo A & B - Add specific libraries in your new create project
 
-TODO
+* Library **MFRC522 by Miguel André Balboa** : Arduino RFID Library for MFRC522 (SPI). Read/Write a RFID Card or Tag using the ISO/IEC 14443A/MIFARE interface.  
+  
+  
+* Library **PubSubClient by Nick O'Leary** : A client library for MQTT messaging. MQTT is a lightweight messaging protocol ideal for small devices. This library allows you to send and receive MQTT messages. It supports the latest MQTT 3.1.1 protocol and can be configured to use the older MQTT 3.1 if needed. It supports all Arduino Ethernet Client compatible hardware, including the Intel Galileo/Edison, ESP8266 and TI CC3000.  
 
-## 4. Duo A - Deploy, build and upload code on your ESP8266 dedicated for intrence packets 
+
+![PlatformIO add library](/images/platformIO-add-library1.png)
+
+![PlatformIO add library](/images/platformIO-add-library2.png)
+
+![PlatformIO add library](/images/platformIO-add-library3.png)
+
+![PlatformIO add library](/images/platformIO-add-library4.png)
+
+![PlatformIO add library](/images/platformIO-add-library5.png)
+
+## 4. Duo A - Deploy, build and upload code on your ESP8266 dedicated for entrence packets 
 
 ```sh
 #include <Arduino.h>
