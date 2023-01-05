@@ -20,7 +20,7 @@ OpenShift cluster is already deployed via **RHPDS** environment and **"OpenSHift
 * Namespace n°8 :   warehouse-london  
 * Namespace n°9 :   warehouse-paris
 * Namespace n°10 :   warehouse-stockolm 
-* Namespace n°11 :   warehouse-vasovia
+* Namespace n°11 :   warehouse-varsovia
 
 ## OpenShift Operators
 

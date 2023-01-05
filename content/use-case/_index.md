@@ -17,3 +17,5 @@ Currently, the company has one **Headquarter** and ten **Warehouses** spread acr
 You and your team (watch around you, there are people around your table!) have been hired to setup the required IT infrastructure to track parcels along their journey.
 
 
+
+![use_case](/images/use-case.png)
