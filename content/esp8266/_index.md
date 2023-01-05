@@ -43,6 +43,8 @@ Connect ESP8266 to your computer via USB connector.
 
 ## 4. Duo A - Deploy, build and upload code on your ESP8266 dedicated for entrence packets 
 
+### Adapt this code in the src/main.cpp file of your plarformIO project
+
 ```sh
 #include <Arduino.h>
 #include <SPI.h>
@@ -151,7 +153,26 @@ void loop()
 }
 ```
 
+### Compile your code
+
+![PlatformIO build](/images/platformIO-esp-build.png)
+
+### Flash your ESP8266 with your code
+
+![PlatformIO write](/images/platformIO-esp-write.png)
+
+### Connect to your ESP8266 console
+
+![PlatformIO console](/images/platformIO-esp-console.png)
+
+### Result
+
+![PlatformIO result](/images/platformIO-esp-test.png)
+
+
 ## 4. Duo B - Deploy, build and upload code on your ESP8266 dedicated for output packets 
+
+### Adapt this code in the src/main.cpp file of your plarformIO project
 
 ```sh
 #include <Arduino.h>
@@ -260,3 +281,19 @@ void loop()
   delay(500);
 }
 ```
+
+### Compile your code
+
+![PlatformIO build](/images/platformIO-esp-build.png)
+
+### Flash your ESP8266 with your code
+
+![PlatformIO write](/images/platformIO-esp-write.png)
+
+### Connect to your ESP8266 console
+
+![PlatformIO console](/images/platformIO-esp-console.png)
+
+### Result
+
+![PlatformIO result](/images/platformIO-esp-test.png)
