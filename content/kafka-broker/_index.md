@@ -1,13 +1,11 @@
 +++
-title = "Camel-K Integration"
-weight = 6
+title = "Kafka Broker"
+weight = 5
 chapter = true
 pre = "<b>C. </b>"
 +++
 
-
-
-# Develop the Camel-K Integration
+# Install the kafka broker
 
 ## Duo C - Create your Kafka broker in your warehouse namespace
 

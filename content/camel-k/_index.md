@@ -1,11 +1,11 @@
 +++
-title = "Kafka Broker"
-weight = 5
+title = "Camel-K Integration"
+weight = 6
 chapter = true
 pre = "<b>C. </b>"
 +++
 
-# Install the Kafka Broker
+# Deploy Camel K integration
 
 ## Duo C - Create a Kafka user for Camel K integration
 
