@@ -7,9 +7,9 @@ pre = "<b>A & B. </b>"
 
 ### Duo A & B
 
-
-
 # Deploy the MQTT Broker in your namespace
+
+## Duo A - MQTT for entrance paquets
 
 ```sh
 apiVersion: broker.amq.io/v1beta1
