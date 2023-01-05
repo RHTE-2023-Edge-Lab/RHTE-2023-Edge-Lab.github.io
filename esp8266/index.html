@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Program the ESP8266 :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1672924809 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1672924809 rel=stylesheet>
-<link href=/css/hybrid.css?1672924809 rel=stylesheet>
-<link href=/css/featherlight.min.css?1672924809 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1672924809 rel=stylesheet>
-<link href=/css/auto-complete.css?1672924809 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1672924809 rel=stylesheet>
-<link href=/css/theme.css?1672924809 rel=stylesheet>
-<link href=/css/tabs.css?1672924809 rel=stylesheet>
-<link href=/css/hugo-theme.css?1672924809 rel=stylesheet>
-<link href=/css/theme-red.css?1672924809 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1672924809></script>
+<link href=/css/nucleus.css?1672926031 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1672926031 rel=stylesheet>
+<link href=/css/hybrid.css?1672926031 rel=stylesheet>
+<link href=/css/featherlight.min.css?1672926031 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1672926031 rel=stylesheet>
+<link href=/css/auto-complete.css?1672926031 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1672926031 rel=stylesheet>
+<link href=/css/theme.css?1672926031 rel=stylesheet>
+<link href=/css/tabs.css?1672926031 rel=stylesheet>
+<link href=/css/hugo-theme.css?1672926031 rel=stylesheet>
+<link href=/css/theme-red.css?1672926031 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1672926031></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=/esp8266/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1672924809></script>
-<script type=text/javascript src=/js/auto-complete.js?1672924809></script>
+<script type=text/javascript src=/js/lunr.min.js?1672926031></script>
+<script type=text/javascript src=/js/auto-complete.js?1672926031></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1672924809></script>
+<script type=text/javascript src=/js/search.js?1672926031></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -179,10 +179,25 @@ active">
 <p>Connect ESP8266 to your computer via USB connector.</p>
 <p><img src=/images/esp8266-usb.jpeg alt="ESP8266 USB"></p>
 <h2 id=2-duo-a--b---create-new-project-in-plaformio-vscode-plugin>2. Duo A & B - Create new project in PlaformIO VSCode plugin</h2>
-<p>TODO</p>
+<p><img src=/images/platformIO-home.png alt="PlatformIO Home"></p>
+<p><img src=/images/platformIO-new-project1.png alt="PlatformIO New project"></p>
+<p><img src=/images/platformIO-new-project2.png alt="PlatformIO New project"></p>
+<p><img src=/images/platformIO-new-project3.png alt="PlatformIO New project"></p>
 <h2 id=3-duo-a--b---add-specific-libraries-in-your-new-create-project>3. Duo A & B - Add specific libraries in your new create project</h2>
-<p>TODO</p>
-<h2 id=4-duo-a---deploy-build-and-upload-code-on-your-esp8266-dedicated-for-intrence-packets>4. Duo A - Deploy, build and upload code on your ESP8266 dedicated for intrence packets</h2>
+<ul>
+<li>
+<p>Library <strong>MFRC522 by Miguel André Balboa</strong> : Arduino RFID Library for MFRC522 (SPI). Read/Write a RFID Card or Tag using the ISO/IEC 14443A/MIFARE interface.</p>
+</li>
+<li>
+<p>Library <strong>PubSubClient by Nick O&rsquo;Leary</strong> : A client library for MQTT messaging. MQTT is a lightweight messaging protocol ideal for small devices. This library allows you to send and receive MQTT messages. It supports the latest MQTT 3.1.1 protocol and can be configured to use the older MQTT 3.1 if needed. It supports all Arduino Ethernet Client compatible hardware, including the Intel Galileo/Edison, ESP8266 and TI CC3000.</p>
+</li>
+</ul>
+<p><img src=/images/platformIO-add-library1.png alt="PlatformIO add library"></p>
+<p><img src=/images/platformIO-add-library2.png alt="PlatformIO add library"></p>
+<p><img src=/images/platformIO-add-library3.png alt="PlatformIO add library"></p>
+<p><img src=/images/platformIO-add-library4.png alt="PlatformIO add library"></p>
+<p><img src=/images/platformIO-add-library5.png alt="PlatformIO add library"></p>
+<h2 id=4-duo-a---deploy-build-and-upload-code-on-your-esp8266-dedicated-for-entrence-packets>4. Duo A - Deploy, build and upload code on your ESP8266 dedicated for entrence packets</h2>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=color:#75715e>#include &lt;Arduino.h&gt;</span>
 <span style=color:#75715e>#include &lt;SPI.h&gt;</span>
 <span style=color:#75715e>#include &lt;MFRC522.h&gt;</span>
@@ -408,17 +423,17 @@ void loop<span style=color:#f92672>()</span>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1672924809></script>
-<script src=/js/perfect-scrollbar.min.js?1672924809></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1672924809></script>
-<script src=/js/jquery.sticky.js?1672924809></script>
-<script src=/js/featherlight.min.js?1672924809></script>
-<script src=/js/highlight.pack.js?1672924809></script>
+<script src=/js/clipboard.min.js?1672926031></script>
+<script src=/js/perfect-scrollbar.min.js?1672926031></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1672926031></script>
+<script src=/js/jquery.sticky.js?1672926031></script>
+<script src=/js/featherlight.min.js?1672926031></script>
+<script src=/js/highlight.pack.js?1672926031></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1672924809></script>
-<script src=/js/learn.js?1672924809></script>
-<script src=/js/hugo-learn.js?1672924809></script>
-<script src=/mermaid/mermaid.js?1672924809></script>
+<script src=/js/modernizr.custom-3.6.0.js?1672926031></script>
+<script src=/js/learn.js?1672926031></script>
+<script src=/js/hugo-learn.js?1672926031></script>
+<script src=/mermaid/mermaid.js?1672926031></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
