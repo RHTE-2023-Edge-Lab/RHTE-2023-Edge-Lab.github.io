@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>MQTT Broker :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1672924149 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1672924149 rel=stylesheet>
-<link href=/css/hybrid.css?1672924149 rel=stylesheet>
-<link href=/css/featherlight.min.css?1672924149 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1672924149 rel=stylesheet>
-<link href=/css/auto-complete.css?1672924149 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1672924149 rel=stylesheet>
-<link href=/css/theme.css?1672924149 rel=stylesheet>
-<link href=/css/tabs.css?1672924149 rel=stylesheet>
-<link href=/css/hugo-theme.css?1672924149 rel=stylesheet>
-<link href=/css/theme-red.css?1672924149 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1672924149></script>
+<link href=/css/nucleus.css?1672924809 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1672924809 rel=stylesheet>
+<link href=/css/hybrid.css?1672924809 rel=stylesheet>
+<link href=/css/featherlight.min.css?1672924809 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1672924809 rel=stylesheet>
+<link href=/css/auto-complete.css?1672924809 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1672924809 rel=stylesheet>
+<link href=/css/theme.css?1672924809 rel=stylesheet>
+<link href=/css/tabs.css?1672924809 rel=stylesheet>
+<link href=/css/hugo-theme.css?1672924809 rel=stylesheet>
+<link href=/css/theme-red.css?1672924809 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1672924809></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=/mqtt-broker/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1672924149></script>
-<script type=text/javascript src=/js/auto-complete.js?1672924149></script>
+<script type=text/javascript src=/js/lunr.min.js?1672924809></script>
+<script type=text/javascript src=/js/auto-complete.js?1672924809></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1672924149></script>
+<script type=text/javascript src=/js/search.js?1672924809></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -252,15 +252,16 @@ spec:
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>mosquitto_sub -t &lt;MQTT addressName&gt; -h <span style=color:#e6db74>&#39;&lt;AWS LB address for MQTT service&gt;&#39;</span> -p &lt;port&gt; -u &lt;MQTT user&gt; -P &lt;MQTT password&gt;
 
 <span style=color:#75715e>#Example</span>
-<span style=color:#75715e>#mosquitto_sub -t esp32 -h &#39;a32ba3beef5cf47ba907ca93f911bd94-62424187.eu-west-1.elb.amazonaws.com&#39; -p 1883 -u admin -P public</span>
+<span style=color:#75715e>#mosquitto_sub -t esp8266-in -h &#39;a32ba3beef5cf47ba907ca93f911bd94-62424187.eu-west-1.elb.amazonaws.com&#39; -p 1883 -u admin -P public</span>
 </code></pre></div><ol start=2>
 <li>Push new messages to your MQTT Broker</li>
 </ol>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=color:#66d9ef>for</span> i in <span style=color:#f92672>{</span>1..200<span style=color:#f92672>}</span>; <span style=color:#66d9ef>do</span> mosquitto_pub -t &lt;MQTT addressName&gt; -h <span style=color:#e6db74>&#39;&lt;AWS LB address for MQTT service&gt;&#39;</span> -p &lt;port&gt; -u &lt;MQTT user&gt; -P &lt;MQTT password&gt; -m message$i; <span style=color:#66d9ef>done</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=color:#66d9ef>for</span> i in <span style=color:#f92672>{</span>1..200<span style=color:#f92672>}</span>; <span style=color:#66d9ef>do</span> mosquitto_pub -t &lt;MQTT addressName&gt; -h <span style=color:#e6db74>&#39;&lt;AWS LB address for MQTT service&gt;&#39;</span> -p &lt;port&gt; -u &lt;MQTT user&gt; -P &lt;MQTT password&gt; -m in$i; <span style=color:#66d9ef>done</span>
 
 <span style=color:#75715e>#Example</span>
-<span style=color:#75715e>#for i in {1..200}; do mosquitto_pub -t esp32 -h &#39;aa47f83e624da4e639f5be6109757355-1944403232.eu-west-1.elb.amazonaws.com&#39; -p 1883 -u admin -P public -m message$i; done</span>
-</code></pre></div><p><img src=/images/mqtt-sub.png alt="MQTT test"></p>
+<span style=color:#75715e>#for i in {1..200}; do mosquitto_pub -t esp8266-in -h &#39;aa47f83e624da4e639f5be6109757355-1944403232.eu-west-1.elb.amazonaws.com&#39; -p 1883 -u admin -P public -m in$i; done</span>
+</code></pre></div><p><img src=/images/mqtt-sub-in.png alt="MQTT topi IN"></p>
+<p><img src=/images/mqtt-sub-out.png alt="MQTT topi OUT"></p>
 <footer class=footline>
 </footer>
 </div>
@@ -274,17 +275,17 @@ spec:
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1672924149></script>
-<script src=/js/perfect-scrollbar.min.js?1672924149></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1672924149></script>
-<script src=/js/jquery.sticky.js?1672924149></script>
-<script src=/js/featherlight.min.js?1672924149></script>
-<script src=/js/highlight.pack.js?1672924149></script>
+<script src=/js/clipboard.min.js?1672924809></script>
+<script src=/js/perfect-scrollbar.min.js?1672924809></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1672924809></script>
+<script src=/js/jquery.sticky.js?1672924809></script>
+<script src=/js/featherlight.min.js?1672924809></script>
+<script src=/js/highlight.pack.js?1672924809></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1672924149></script>
-<script src=/js/learn.js?1672924149></script>
-<script src=/js/hugo-learn.js?1672924149></script>
-<script src=/mermaid/mermaid.js?1672924149></script>
+<script src=/js/modernizr.custom-3.6.0.js?1672924809></script>
+<script src=/js/learn.js?1672924809></script>
+<script src=/js/hugo-learn.js?1672924809></script>
+<script src=/mermaid/mermaid.js?1672924809></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
