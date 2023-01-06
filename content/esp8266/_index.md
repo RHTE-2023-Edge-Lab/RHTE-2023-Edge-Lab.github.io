@@ -7,6 +7,14 @@ pre = "<b>A & B. </b>"
 
 # Program the ESP8266
 
+## 0. Fix permissions on /dev/ttyUSB0
+
+The /dev/ttyUSB0 device belongs to the "dialout" group. Therefore, your user should belong to this group to configure the ESP8266. Run the following command and restart your session to fix the permissions.
+
+```sh
+sudo usermod -a -G dialout $(id -un)
+```
+
 ## 1. Duo A & B - Connect your ESP8266
 
 Connect ESP8266 to your computer via USB connector.
