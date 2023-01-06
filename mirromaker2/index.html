@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>MirrorMaker2 :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1672938069 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1672938069 rel=stylesheet>
-<link href=/css/hybrid.css?1672938069 rel=stylesheet>
-<link href=/css/featherlight.min.css?1672938069 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1672938069 rel=stylesheet>
-<link href=/css/auto-complete.css?1672938069 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1672938069 rel=stylesheet>
-<link href=/css/theme.css?1672938069 rel=stylesheet>
-<link href=/css/tabs.css?1672938069 rel=stylesheet>
-<link href=/css/hugo-theme.css?1672938069 rel=stylesheet>
-<link href=/css/theme-red.css?1672938069 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1672938069></script>
+<link href=/css/nucleus.css?1673016768 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1673016768 rel=stylesheet>
+<link href=/css/hybrid.css?1673016768 rel=stylesheet>
+<link href=/css/featherlight.min.css?1673016768 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1673016768 rel=stylesheet>
+<link href=/css/auto-complete.css?1673016768 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1673016768 rel=stylesheet>
+<link href=/css/theme.css?1673016768 rel=stylesheet>
+<link href=/css/tabs.css?1673016768 rel=stylesheet>
+<link href=/css/hugo-theme.css?1673016768 rel=stylesheet>
+<link href=/css/theme-red.css?1673016768 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1673016768></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=/mirromaker2/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1672938069></script>
-<script type=text/javascript src=/js/auto-complete.js?1672938069></script>
+<script type=text/javascript src=/js/lunr.min.js?1673016768></script>
+<script type=text/javascript src=/js/auto-complete.js?1673016768></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1672938069></script>
+<script type=text/javascript src=/js/search.js?1673016768></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -174,9 +174,76 @@ active">
 </div>
 <div id=chapter>
 <div id=body-inner>
-<h3 id=duo-c>Duo C</h3>
 <h1 id=configure-mirrormaker2>Configure MirrorMaker2</h1>
-<p>TODO</p>
+<h2 id=duo-c---prepare-tls-communication>Duo C - Prepare TLS communication</h2>
+<p>Mirrormaker2 will use TLS using his own certificate to communicate from the warehouse to the headquarter.
+Create the secret with the ca.crt from the headquarter kafka cluster.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>oc get secret headquarter-clients-ca-cert -n headquarter -o jsonpath<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{.data.ca\.crt}&#34;</span> | base64 -d &gt; /tmp/ca.crt
+oc create secret generic headquarter-ca --from-file /tmp/ca.crt -n your_namespace
+</code></pre></div><h2 id=duo-c---create-secret>Duo C - Create secret</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>apiVersion: v1
+stringData:
+  password: &lt;your_city&gt;
+kind: Secret
+metadata:
+  name: headquarter-&lt;your_city&gt;
+  namespace: &lt;your_namespace&gt;
+type: Opaque
+</code></pre></div><h2 id=duo-c---deploy-mirrormaker2>Duo C - Deploy MirrorMaker2</h2>
+<p>You need to get the bootstrap route of the kafka&rsquo;s headquarter cluster</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>oc get route headquarter-kafka-tls-bootstrap -n headquarter
+</code></pre></div><p>Following manifest must be updated with your values :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaMirrorMaker2
+metadata:
+  name: mirrormaker2
+  namespace: your_namespace
+spec:
+  clusters:
+    - alias: headquarter
+      authentication:
+        passwordSecret:
+          password: password
+          secretName: headquarter-&lt;your city&gt;
+        type: scram-sha-512
+        username: warehouse-&lt;your city&gt;
+      bootstrapServers: <span style=color:#e6db74>&#39;&lt;BOOTSTRAP HEADQUARTER ROUTE&gt;:443&#39;</span>
+      tls:
+        trustedCertificates:
+          - certificate: ca.crt
+            secretName: headquarter-ca
+    - alias: warehouse
+      authentication:
+        passwordSecret:
+          password: password
+          secretName: camel-user
+        type: scram-sha-512
+        username: camel
+      bootstrapServers: <span style=color:#e6db74>&#39;warehouse-kafka-bootstrap:9092&#39;</span>
+      config:
+        config.storage.replication.factor: -1
+        offset.storage.replication.factor: -1
+        status.storage.replication.factor: -1
+  connectCluster: headquarter
+  mirrors:
+    - checkpointConnector:
+        config:
+          checkpoints.topic.replication.factor: <span style=color:#ae81ff>1</span>
+      groupsPattern: .*
+      heartbeatConnector:
+        config:
+          heartbeats.topic.replication.factor: <span style=color:#ae81ff>1</span>
+      sourceCluster: warehouse
+      sourceConnector:
+        config:
+          offset-syncs.topic.replication.factor: <span style=color:#ae81ff>1</span>
+          replication.factor: <span style=color:#ae81ff>1</span>
+          sync.topic.acls.enabled: <span style=color:#e6db74>&#39;false&#39;</span>
+      targetCluster: headquarter
+      topicsPattern: <span style=color:#e6db74>&#34;warehouse-in,warehouse-out&#34;</span>
+  replicas: <span style=color:#ae81ff>1</span>
+  version: 3.2.3
+</code></pre></div>
 <footer class=footline>
 </footer>
 </div>
@@ -190,17 +257,17 @@ active">
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1672938069></script>
-<script src=/js/perfect-scrollbar.min.js?1672938069></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1672938069></script>
-<script src=/js/jquery.sticky.js?1672938069></script>
-<script src=/js/featherlight.min.js?1672938069></script>
-<script src=/js/highlight.pack.js?1672938069></script>
+<script src=/js/clipboard.min.js?1673016768></script>
+<script src=/js/perfect-scrollbar.min.js?1673016768></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1673016768></script>
+<script src=/js/jquery.sticky.js?1673016768></script>
+<script src=/js/featherlight.min.js?1673016768></script>
+<script src=/js/highlight.pack.js?1673016768></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1672938069></script>
-<script src=/js/learn.js?1672938069></script>
-<script src=/js/hugo-learn.js?1672938069></script>
-<script src=/mermaid/mermaid.js?1672938069></script>
+<script src=/js/modernizr.custom-3.6.0.js?1673016768></script>
+<script src=/js/learn.js?1673016768></script>
+<script src=/js/hugo-learn.js?1673016768></script>
+<script src=/mermaid/mermaid.js?1673016768></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
