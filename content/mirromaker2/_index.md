@@ -41,51 +41,53 @@ Following manifest must be updated with your values :
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaMirrorMaker2
 metadata:
-  name: mirrormaker2
-  namespace: your_namespace
+  name: athens-mm2
+  namespace: warehouse-athens
 spec:
   clusters:
-    - alias: headquarter2
-      authentication:
-        passwordSecret:
-          password: password
-          secretName: headquarter-<your city>
-        type: scram-sha-512
-        username: warehouse-<your city>
-      bootstrapServers: '<BOOTSTRAP HEADQUARTER ROUTE>:443'
-      tls:
-        trustedCertificates:
-          - certificate: ca.crt
-            secretName: headquarter-ca
-    - alias: warehouse
+    - alias: athens
       authentication:
         passwordSecret:
           password: password
           secretName: camel-user
         type: scram-sha-512
         username: camel
-      bootstrapServers: 'warehouse-kafka-bootstrap:9092'
+      bootstrapServers: 'athens-kafka-bootstrap:9092'
+    - alias: headquarter
+      authentication:
+        passwordSecret:
+          password: password
+          secretName: headquarter-athens
+        type: scram-sha-512
+        username: warehouse-athens
+      bootstrapServers: >-
+        headquarter-kafka-tls-bootstrap-headquarter.apps.cluster-nhnwp.nhnwp.sandbox2668.opentlc.com:443
       config:
-        config.storage.replication.factor: -1
-        offset.storage.replication.factor: -1
-        status.storage.replication.factor: -1
+        config.storage.replication.factor: 1
+        offset.storage.replication.factor: 1
+        status.storage.replication.factor: 1
+      tls:
+        trustedCertificates:
+          - certificate: ca.crt
+            secretName: headquarter-ca
   connectCluster: headquarter
   mirrors:
     - checkpointConnector:
         config:
-          checkpoints.topic.replication.factor: 1
+          checkpoints.topic.replication.factor: 2
       groupsPattern: .*
       heartbeatConnector:
         config:
-          heartbeats.topic.replication.factor: 1
-      sourceCluster: warehouse
+          heartbeats.topic.replication.factor: 2
+      sourceCluster: athens
       sourceConnector:
         config:
-          offset-syncs.topic.replication.factor: 1
+          offset-syncs.topic.replication.factor: 2
           replication.factor: 1
           sync.topic.acls.enabled: 'false'
       targetCluster: headquarter
-      topicsPattern: "warehouse-in,warehouse-out"
+      topicsPattern: .*
   replicas: 1
   version: 3.2.3
+
 ```
