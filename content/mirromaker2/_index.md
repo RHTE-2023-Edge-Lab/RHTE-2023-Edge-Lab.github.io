@@ -12,7 +12,7 @@ Mirrormaker2 will use TLS using his own certificate to communicate from the ware
 Create the secret with the ca.crt from the headquarter kafka cluster.
 
 ```sh
-oc get secret headquarter-clients-ca-cert -n headquarter -o jsonpath="{.data.ca\.crt}" | base64 -d > /tmp/ca.crt
+oc get secret headquarter-cluster-ca-cert -n headquarter -o jsonpath="{.data.ca\.crt}" | base64 -d > /tmp/ca.crt
 oc create secret generic headquarter-ca --from-file /tmp/ca.crt -n your_namespace
 ```
 
@@ -45,7 +45,7 @@ metadata:
   namespace: your_namespace
 spec:
   clusters:
-    - alias: headquarter
+    - alias: headquarter2
       authentication:
         passwordSecret:
           password: password
