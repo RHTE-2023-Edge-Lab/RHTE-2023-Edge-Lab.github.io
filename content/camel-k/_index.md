@@ -54,6 +54,7 @@ apiVersion: camel.apache.org/v1alpha1
 kind: Kamelet
 metadata:
   name: kafka-sink-scram
+  namespace: <your_namespace>
   annotations:
     camel.apache.org/kamelet.support.level: "Stable"
     camel.apache.org/catalog.version: "main-SNAPSHOT"
@@ -166,7 +167,7 @@ metadata:
 spec:
   sources:
   - content: |
-      from("kamelet:mqtt-source?brokerUrl=tcp://mqtt-mqtt-0-svc:1883&topic=esp8266-in&clientId=camel-k&username=admin&password=public")
+      from("paho:esp8266-in?brokerUrl=tcp://mqtt-mqtt-0-svc:1883&userName=admin&password=public")
       .convertBodyTo(String.class)
       .setBody({ e -> [ id: e.in.body, timestamp: new Date().getTime() ] })
       .marshal().json()
@@ -187,7 +188,7 @@ metadata:
 spec:
   sources:
   - content: |
-      from("kamelet:mqtt-source?brokerUrl=tcp://mqtt-mqtt-0-svc:1883&topic=esp8266-out&clientId=camel-k&username=admin&password=public")
+      from("paho:esp8266-out?brokerUrl=tcp://mqtt-mqtt-0-svc:1883&userName=admin&password=public")
       .convertBodyTo(String.class)
       .setBody({ e -> [ id: e.in.body, timestamp: new Date().getTime() ] })
       .marshal().json()
