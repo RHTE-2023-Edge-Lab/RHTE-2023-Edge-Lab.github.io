@@ -41,27 +41,27 @@ Following manifest must be updated with your values :
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaMirrorMaker2
 metadata:
-  name: athens-mm2
-  namespace: warehouse-athens
+  name: <city>-mm2
+  namespace: <your_namespace>
 spec:
   clusters:
-    - alias: athens
+    - alias: <city>
       authentication:
         passwordSecret:
           password: password
           secretName: camel-user
         type: scram-sha-512
         username: camel
-      bootstrapServers: 'athens-kafka-bootstrap:9092'
+      bootstrapServers: 'warehouse-kafka-bootstrap:9092'
     - alias: headquarter
       authentication:
         passwordSecret:
           password: password
-          secretName: headquarter-athens
+          secretName: headquarter-<city>
         type: scram-sha-512
-        username: warehouse-athens
+        username: warehouse-<city>
       bootstrapServers: >-
-        headquarter-kafka-tls-bootstrap-headquarter.apps.cluster-nhnwp.nhnwp.sandbox2668.opentlc.com:443
+        <HEADQUARTER_KAFKA_BOOTSTRAP_URL>:443
       config:
         config.storage.replication.factor: 1
         offset.storage.replication.factor: 1
@@ -79,7 +79,7 @@ spec:
       heartbeatConnector:
         config:
           heartbeats.topic.replication.factor: 2
-      sourceCluster: athens
+      sourceCluster: <city>
       sourceConnector:
         config:
           offset-syncs.topic.replication.factor: 2
