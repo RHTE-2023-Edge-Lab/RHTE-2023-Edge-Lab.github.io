@@ -45,57 +45,21 @@ Red Hat Integration - Camel K is a lightweight integration platform, born on Kub
 
 ## OpenShift cluster details
 
-* **OCP Cluster console URL :** To be debine before RHTE  
+* **OCP Cluster console URL :** <To be debine before RHTE> 
 
-* **OCP Cluster API URL :** To be debine before RHTE
+* **OCP Cluster API URL :** <To be debine before RHTE>
 
-* **OCP Cluster users :** To be debine before RHTE
-        * **Athens :** 
-            * **User :** athens-team
-            * **Password :** athensrhte2023
-            * **Rights :** warehouse-athens namespace admin
+* **OCP Cluster users :**
 
-        * **Brno :** 
-            * **User :** brno-team
-            * **Password :** brnorhte2023
-            * **Rights :** warehouse-brno namespace admin
-
-        * **Brussels :** 
-            * **User :** brussels-team
-            * **Password :** brusselsrhte2023
-            * **Rights :** warehouse-brussels namespace admin
-
-        * **Bucharest :** 
-            * **User :** bucharest-team
-            * **Password :** bucharestrhte2023
-            * **Rights :** warehouse-bucharest namespace admin
-
-        * **Dublin :** 
-            * **User :** dublin-team
-            * **Password :** dublinrhte2023
-            * **Rights :** warehouse-dublin namespace admin
-
-        * **Lisboa :** 
-            * **User :** lisboa-team
-            * **Password :** lisboarhte2023
-            * **Rights :** warehouse-lisboa namespace admin
-
-        * **London :** 
-            * **User :** london-team
-            * **Password :** londonrhte2023
-            * **Rights :** warehouse-london namespace admin
-
-        * **Paris :** 
-            * **User :** paris-team
-            * **Password :** parisrhte2023
-            * **Rights :** warehouse-paris namespace admin
-
-        * **Stockolm :** 
-            * **User :** stockolm-team
-            * **Password :** stockolmrhte2023
-            * **Rights :** warehouse-stockolm namespace admin
-
-        * **Varsovia :** 
-            * **User :** varsovia-team
-            * **Password :** varsoviarhte2023
-            * **Rights :** warehouse-varsovia namespace admin
+    | Warehouse     | User            | Password          | Rights                              |
+    | ------------- |:----------------|:------------------|:------------------------------------|
+    | Athens        | athens-team     | athensrhte2023    | warehouse-athens namespace admin    |
+    | Brno          | brno-team       | brnorhte2023      | warehouse-brno namespace admin      |
+    | Brussels      | brussels-team   | brusselsrhte2023  | warehouse-brussels namespace admin  |
+    | Bucharest     | bucharest-team  | bucharestrhte2023 | warehouse-bucharest namespace admin |
+    | Dublin        | dublin-team     | dublinrhte2023    | warehouse-dublin namespace admin    |
+    | Lisboa        | lisboa-team     | lisboarhte2023    | warehouse-lisboa namespace admin    |
+    | London        | london-team     | londonrhte2023    | warehouse-london namespace admin    |
+    | Paris         | paris-team      | parisrhte2023     | warehouse-paris namespace admin     |
+    | Stockolm      | stockolm-team   | stockolmrhte2023  | warehouse-stockolm namespace admin  |
+    | Varsovia      | varsovia-team   | varsoviarhte2023  | warehouse-varsovia namespace admin  |
