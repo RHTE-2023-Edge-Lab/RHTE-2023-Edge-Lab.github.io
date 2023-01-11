@@ -4,7 +4,7 @@ draft: false
 weight: 1
 ---
 
-## OpenShift Cluster
+## OpenShift environment description
 
 ![RHPDS Service](/images/rhpds_service.png)
 
@@ -43,3 +43,59 @@ Red Hat Integration - Camel K is a lightweight integration platform, born on Kub
 ![Openshift Operators](/images/operatos.png)
 
 
+## OpenShift cluster details
+
+* **OCP Cluster console URL :** To be debine before RHTE  
+
+* **OCP Cluster API URL :** To be debine before RHTE
+
+* **OCP Cluster users :** To be debine before RHTE
+        * **Athens :** 
+            * **User :** athens-team
+            * **Password :** athensrhte2023
+            * **Rights :** warehouse-athens namespace admin
+
+        * **Brno :** 
+            * **User :** brno-team
+            * **Password :** brnorhte2023
+            * **Rights :** warehouse-brno namespace admin
+
+        * **Brussels :** 
+            * **User :** brussels-team
+            * **Password :** brusselsrhte2023
+            * **Rights :** warehouse-brussels namespace admin
+
+        * **Bucharest :** 
+            * **User :** bucharest-team
+            * **Password :** bucharestrhte2023
+            * **Rights :** warehouse-bucharest namespace admin
+
+        * **Dublin :** 
+            * **User :** dublin-team
+            * **Password :** dublinrhte2023
+            * **Rights :** warehouse-dublin namespace admin
+
+        * **Lisboa :** 
+            * **User :** lisboa-team
+            * **Password :** lisboarhte2023
+            * **Rights :** warehouse-lisboa namespace admin
+
+        * **London :** 
+            * **User :** london-team
+            * **Password :** londonrhte2023
+            * **Rights :** warehouse-london namespace admin
+
+        * **Paris :** 
+            * **User :** paris-team
+            * **Password :** parisrhte2023
+            * **Rights :** warehouse-paris namespace admin
+
+        * **Stockolm :** 
+            * **User :** stockolm-team
+            * **Password :** stockolmrhte2023
+            * **Rights :** warehouse-stockolm namespace admin
+
+        * **Varsovia :** 
+            * **User :** varsovia-team
+            * **Password :** varsoviarhte2023
+            * **Rights :** warehouse-varsovia namespace admin
