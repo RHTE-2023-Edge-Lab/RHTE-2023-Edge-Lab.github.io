@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>General :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1673368499 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1673368499 rel=stylesheet>
-<link href=/css/hybrid.css?1673368499 rel=stylesheet>
-<link href=/css/featherlight.min.css?1673368499 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1673368499 rel=stylesheet>
-<link href=/css/auto-complete.css?1673368499 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1673368499 rel=stylesheet>
-<link href=/css/theme.css?1673368499 rel=stylesheet>
-<link href=/css/tabs.css?1673368499 rel=stylesheet>
-<link href=/css/hugo-theme.css?1673368499 rel=stylesheet>
-<link href=/css/theme-red.css?1673368499 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1673368499></script>
+<link href=/css/nucleus.css?1673446412 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1673446412 rel=stylesheet>
+<link href=/css/hybrid.css?1673446412 rel=stylesheet>
+<link href=/css/featherlight.min.css?1673446412 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1673446412 rel=stylesheet>
+<link href=/css/auto-complete.css?1673446412 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1673446412 rel=stylesheet>
+<link href=/css/theme.css?1673446412 rel=stylesheet>
+<link href=/css/tabs.css?1673446412 rel=stylesheet>
+<link href=/css/hugo-theme.css?1673446412 rel=stylesheet>
+<link href=/css/theme-red.css?1673446412 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1673446412></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=/pre-requisites/general/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1673368499></script>
-<script type=text/javascript src=/js/auto-complete.js?1673368499></script>
+<script type=text/javascript src=/js/lunr.min.js?1673446412></script>
+<script type=text/javascript src=/js/auto-complete.js?1673446412></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1673368499></script>
+<script type=text/javascript src=/js/search.js?1673446412></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -172,8 +172,9 @@ Windows
 <div class=wrapper>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#openshift-cluster>OpenShift Cluster</a></li>
+<li><a href=#openshift-environment-description>OpenShift environment description</a></li>
 <li><a href=#openshift-operators>OpenShift Operators</a></li>
+<li><a href=#openshift-cluster-details>OpenShift cluster details</a></li>
 </ul>
 </nav>
 </div>
@@ -186,7 +187,7 @@ Windows
 <h1>
 General
 </h1>
-<h2 id=openshift-cluster>OpenShift Cluster</h2>
+<h2 id=openshift-environment-description>OpenShift environment description</h2>
 <p><img src=/images/rhpds_service.png alt="RHPDS Service"></p>
 <p>OpenShift cluster is already deployed via <strong>RHPDS</strong> environment and <strong>&ldquo;OpenSHift 4.11 Workshop&rdquo;</strong> service. The headquarter and warehouses corresponding to different namespace on this Openshift cluster on this way :</p>
 <ul>
@@ -224,6 +225,66 @@ Red Hat AMQ Streams is a massively scalable, distributed, and high performance d
 Red Hat Integration - Camel K is a lightweight integration platform, born on Kubernetes, with serverless superpowers.</li>
 </ul>
 <p><img src=/images/operatos.png alt="Openshift Operators"></p>
+<h2 id=openshift-cluster-details>OpenShift cluster details</h2>
+<ul>
+<li>
+<p><strong>OCP Cluster console URL :</strong> To be debine before RHTE</p>
+</li>
+<li>
+<p><strong>OCP Cluster API URL :</strong> To be debine before RHTE</p>
+</li>
+<li>
+<p><strong>OCP Cluster users :</strong> To be debine before RHTE
+* <strong>Athens :</strong>
+* <strong>User :</strong> athens-team
+* <strong>Password :</strong> athensrhte2023
+* <strong>Rights :</strong> warehouse-athens namespace admin</p>
+<pre><code>  * **Brno :** 
+      * **User :** brno-team
+      * **Password :** brnorhte2023
+      * **Rights :** warehouse-brno namespace admin
+
+  * **Brussels :** 
+      * **User :** brussels-team
+      * **Password :** brusselsrhte2023
+      * **Rights :** warehouse-brussels namespace admin
+
+  * **Bucharest :** 
+      * **User :** bucharest-team
+      * **Password :** bucharestrhte2023
+      * **Rights :** warehouse-bucharest namespace admin
+
+  * **Dublin :** 
+      * **User :** dublin-team
+      * **Password :** dublinrhte2023
+      * **Rights :** warehouse-dublin namespace admin
+
+  * **Lisboa :** 
+      * **User :** lisboa-team
+      * **Password :** lisboarhte2023
+      * **Rights :** warehouse-lisboa namespace admin
+
+  * **London :** 
+      * **User :** london-team
+      * **Password :** londonrhte2023
+      * **Rights :** warehouse-london namespace admin
+
+  * **Paris :** 
+      * **User :** paris-team
+      * **Password :** parisrhte2023
+      * **Rights :** warehouse-paris namespace admin
+
+  * **Stockolm :** 
+      * **User :** stockolm-team
+      * **Password :** stockolmrhte2023
+      * **Rights :** warehouse-stockolm namespace admin
+
+  * **Varsovia :** 
+      * **User :** varsovia-team
+      * **Password :** varsoviarhte2023
+      * **Rights :** warehouse-varsovia namespace admin</code></pre>
+</li>
+</ul>
 <footer class=footline>
 </footer>
 </div>
@@ -236,17 +297,17 @@ Red Hat Integration - Camel K is a lightweight integration platform, born on Kub
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1673368499></script>
-<script src=/js/perfect-scrollbar.min.js?1673368499></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1673368499></script>
-<script src=/js/jquery.sticky.js?1673368499></script>
-<script src=/js/featherlight.min.js?1673368499></script>
-<script src=/js/highlight.pack.js?1673368499></script>
+<script src=/js/clipboard.min.js?1673446412></script>
+<script src=/js/perfect-scrollbar.min.js?1673446412></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1673446412></script>
+<script src=/js/jquery.sticky.js?1673446412></script>
+<script src=/js/featherlight.min.js?1673446412></script>
+<script src=/js/highlight.pack.js?1673446412></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1673368499></script>
-<script src=/js/learn.js?1673368499></script>
-<script src=/js/hugo-learn.js?1673368499></script>
-<script src=/mermaid/mermaid.js?1673368499></script>
+<script src=/js/modernizr.custom-3.6.0.js?1673446412></script>
+<script src=/js/learn.js?1673446412></script>
+<script src=/js/hugo-learn.js?1673446412></script>
+<script src=/mermaid/mermaid.js?1673446412></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
