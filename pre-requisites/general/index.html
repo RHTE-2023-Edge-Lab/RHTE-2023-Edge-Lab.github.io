@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>General :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1673446412 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1673446412 rel=stylesheet>
-<link href=/css/hybrid.css?1673446412 rel=stylesheet>
-<link href=/css/featherlight.min.css?1673446412 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1673446412 rel=stylesheet>
-<link href=/css/auto-complete.css?1673446412 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1673446412 rel=stylesheet>
-<link href=/css/theme.css?1673446412 rel=stylesheet>
-<link href=/css/tabs.css?1673446412 rel=stylesheet>
-<link href=/css/hugo-theme.css?1673446412 rel=stylesheet>
-<link href=/css/theme-red.css?1673446412 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1673446412></script>
+<link href=/css/nucleus.css?1673447322 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1673447322 rel=stylesheet>
+<link href=/css/hybrid.css?1673447322 rel=stylesheet>
+<link href=/css/featherlight.min.css?1673447322 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1673447322 rel=stylesheet>
+<link href=/css/auto-complete.css?1673447322 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1673447322 rel=stylesheet>
+<link href=/css/theme.css?1673447322 rel=stylesheet>
+<link href=/css/tabs.css?1673447322 rel=stylesheet>
+<link href=/css/hugo-theme.css?1673447322 rel=stylesheet>
+<link href=/css/theme-red.css?1673447322 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1673447322></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=/pre-requisites/general/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1673446412></script>
-<script type=text/javascript src=/js/auto-complete.js?1673446412></script>
+<script type=text/javascript src=/js/lunr.min.js?1673447322></script>
+<script type=text/javascript src=/js/auto-complete.js?1673447322></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1673446412></script>
+<script type=text/javascript src=/js/search.js?1673447322></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -228,61 +228,85 @@ Red Hat Integration - Camel K is a lightweight integration platform, born on Kub
 <h2 id=openshift-cluster-details>OpenShift cluster details</h2>
 <ul>
 <li>
-<p><strong>OCP Cluster console URL :</strong> To be debine before RHTE</p>
+<p><strong>OCP Cluster console URL :</strong> </p>
 </li>
 <li>
-<p><strong>OCP Cluster API URL :</strong> To be debine before RHTE</p>
+<p><strong>OCP Cluster API URL :</strong> </p>
 </li>
 <li>
-<p><strong>OCP Cluster users :</strong> To be debine before RHTE
-* <strong>Athens :</strong>
-* <strong>User :</strong> athens-team
-* <strong>Password :</strong> athensrhte2023
-* <strong>Rights :</strong> warehouse-athens namespace admin</p>
-<pre><code>  * **Brno :** 
-      * **User :** brno-team
-      * **Password :** brnorhte2023
-      * **Rights :** warehouse-brno namespace admin
-
-  * **Brussels :** 
-      * **User :** brussels-team
-      * **Password :** brusselsrhte2023
-      * **Rights :** warehouse-brussels namespace admin
-
-  * **Bucharest :** 
-      * **User :** bucharest-team
-      * **Password :** bucharestrhte2023
-      * **Rights :** warehouse-bucharest namespace admin
-
-  * **Dublin :** 
-      * **User :** dublin-team
-      * **Password :** dublinrhte2023
-      * **Rights :** warehouse-dublin namespace admin
-
-  * **Lisboa :** 
-      * **User :** lisboa-team
-      * **Password :** lisboarhte2023
-      * **Rights :** warehouse-lisboa namespace admin
-
-  * **London :** 
-      * **User :** london-team
-      * **Password :** londonrhte2023
-      * **Rights :** warehouse-london namespace admin
-
-  * **Paris :** 
-      * **User :** paris-team
-      * **Password :** parisrhte2023
-      * **Rights :** warehouse-paris namespace admin
-
-  * **Stockolm :** 
-      * **User :** stockolm-team
-      * **Password :** stockolmrhte2023
-      * **Rights :** warehouse-stockolm namespace admin
-
-  * **Varsovia :** 
-      * **User :** varsovia-team
-      * **Password :** varsoviarhte2023
-      * **Rights :** warehouse-varsovia namespace admin</code></pre>
+<p><strong>OCP Cluster users :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Warehouse</th>
+<th style=text-align:left>User</th>
+<th style=text-align:left>Password</th>
+<th style=text-align:left>Rights</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Athens</td>
+<td style=text-align:left>athens-team</td>
+<td style=text-align:left>athensrhte2023</td>
+<td style=text-align:left>warehouse-athens namespace admin</td>
+</tr>
+<tr>
+<td>Brno</td>
+<td style=text-align:left>brno-team</td>
+<td style=text-align:left>brnorhte2023</td>
+<td style=text-align:left>warehouse-brno namespace admin</td>
+</tr>
+<tr>
+<td>Brussels</td>
+<td style=text-align:left>brussels-team</td>
+<td style=text-align:left>brusselsrhte2023</td>
+<td style=text-align:left>warehouse-brussels namespace admin</td>
+</tr>
+<tr>
+<td>Bucharest</td>
+<td style=text-align:left>bucharest-team</td>
+<td style=text-align:left>bucharestrhte2023</td>
+<td style=text-align:left>warehouse-bucharest namespace admin</td>
+</tr>
+<tr>
+<td>Dublin</td>
+<td style=text-align:left>dublin-team</td>
+<td style=text-align:left>dublinrhte2023</td>
+<td style=text-align:left>warehouse-dublin namespace admin</td>
+</tr>
+<tr>
+<td>Lisboa</td>
+<td style=text-align:left>lisboa-team</td>
+<td style=text-align:left>lisboarhte2023</td>
+<td style=text-align:left>warehouse-lisboa namespace admin</td>
+</tr>
+<tr>
+<td>London</td>
+<td style=text-align:left>london-team</td>
+<td style=text-align:left>londonrhte2023</td>
+<td style=text-align:left>warehouse-london namespace admin</td>
+</tr>
+<tr>
+<td>Paris</td>
+<td style=text-align:left>paris-team</td>
+<td style=text-align:left>parisrhte2023</td>
+<td style=text-align:left>warehouse-paris namespace admin</td>
+</tr>
+<tr>
+<td>Stockolm</td>
+<td style=text-align:left>stockolm-team</td>
+<td style=text-align:left>stockolmrhte2023</td>
+<td style=text-align:left>warehouse-stockolm namespace admin</td>
+</tr>
+<tr>
+<td>Varsovia</td>
+<td style=text-align:left>varsovia-team</td>
+<td style=text-align:left>varsoviarhte2023</td>
+<td style=text-align:left>warehouse-varsovia namespace admin</td>
+</tr>
+</tbody>
+</table>
 </li>
 </ul>
 <footer class=footline>
@@ -297,17 +321,17 @@ Red Hat Integration - Camel K is a lightweight integration platform, born on Kub
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1673446412></script>
-<script src=/js/perfect-scrollbar.min.js?1673446412></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1673446412></script>
-<script src=/js/jquery.sticky.js?1673446412></script>
-<script src=/js/featherlight.min.js?1673446412></script>
-<script src=/js/highlight.pack.js?1673446412></script>
+<script src=/js/clipboard.min.js?1673447322></script>
+<script src=/js/perfect-scrollbar.min.js?1673447322></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1673447322></script>
+<script src=/js/jquery.sticky.js?1673447322></script>
+<script src=/js/featherlight.min.js?1673447322></script>
+<script src=/js/highlight.pack.js?1673447322></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1673446412></script>
-<script src=/js/learn.js?1673446412></script>
-<script src=/js/hugo-learn.js?1673446412></script>
-<script src=/mermaid/mermaid.js?1673446412></script>
+<script src=/js/modernizr.custom-3.6.0.js?1673447322></script>
+<script src=/js/learn.js?1673447322></script>
+<script src=/js/hugo-learn.js?1673447322></script>
+<script src=/mermaid/mermaid.js?1673447322></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
