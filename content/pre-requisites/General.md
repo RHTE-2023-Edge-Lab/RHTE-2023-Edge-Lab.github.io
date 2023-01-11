@@ -45,9 +45,9 @@ Red Hat Integration - Camel K is a lightweight integration platform, born on Kub
 
 ## OpenShift cluster details
 
-* **OCP Cluster console URL :** <To be debine before RHTE> 
+* **OCP Cluster console URL :** To be debine before RHTE
 
-* **OCP Cluster API URL :** <To be debine before RHTE>
+* **OCP Cluster API URL :** To be debine before RHTE
 
 * **OCP Cluster users :**
 
