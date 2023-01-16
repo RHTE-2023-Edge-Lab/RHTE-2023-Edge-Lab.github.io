@@ -168,6 +168,7 @@ spec:
   sources:
   - content: |
       from("paho:esp8266-in?brokerUrl=tcp://mqtt-mqtt-0-svc:1883&userName=admin&password=public")
+      .setHeader("kafka.KEY").simple("${body}")
       .convertBodyTo(String.class)
       .setBody({ e -> [ parcelnumber: e.in.body, timestamp: new Date().getTime() ] })
       .marshal().json()
@@ -189,6 +190,7 @@ spec:
   sources:
   - content: |
       from("paho:esp8266-out?brokerUrl=tcp://mqtt-mqtt-0-svc:1883&userName=admin&password=public")
+      .setHeader("kafka.KEY").simple("${body}")
       .convertBodyTo(String.class)
       .setBody({ e -> [ parcelNumber: e.in.body, timestamp: new Date().getTime() ] })
       .marshal().json()
