@@ -169,7 +169,7 @@ spec:
   - content: |
       from("paho:esp8266-in?brokerUrl=tcp://mqtt-mqtt-0-svc:1883&userName=admin&password=public")
       .convertBodyTo(String.class)
-      .setBody({ e -> [ id: e.in.body, timestamp: new Date().getTime() ] })
+      .setBody({ e -> [ parcelnumber: e.in.body, timestamp: new Date().getTime() ] })
       .marshal().json()
       //.to("log:info")
       .to("kamelet:kafka-sink-scram?bootstrapServers=warehouse-kafka-bootstrap:9092&user=camel&password=s3cr3t&topic=warehouse-in")
