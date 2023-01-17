@@ -13,7 +13,7 @@ You will play with the following technologies:
 * ESP8266
 * MQTT
 * AMQ Broker
-* AMQ Streams (Apache Kafka Broker & MirrorMaker2)
+* AMQ Streams (Apache Kafka Broker)
 * OpenShift
 * Camel-K
 
@@ -23,6 +23,7 @@ And if you plan to have a look under the hood, you will learn about:
 * ArgoCD
 * Camel
 * Kafka Streams
+* Kafka MirrorMaker2
 
 In this lab, you will be at the head of a shipping and delivery company, with multiple warehouses and you will deploy everything needed to: read the parcel RFID (using arduino and ESP32), send data to a MQTT broker over wifi, transform those data using Camel-K and send relevant events to the headquarter for reporting.
 
