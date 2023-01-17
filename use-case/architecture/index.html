@@ -5,7 +5,7 @@
 <meta name=generator content="Hugo 0.91.2">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
-<title>Organization :: RHTE 2023 Edge Lab</title>
+<title>Architecture :: RHTE 2023 Edge Lab</title>
 <link href=/css/nucleus.css?1673948470 rel=stylesheet>
 <link href=/css/fontawesome-all.min.css?1673948470 rel=stylesheet>
 <link href=/css/hybrid.css?1673948470 rel=stylesheet>
@@ -20,7 +20,7 @@
 <script src=/js/jquery-3.3.1.min.js?1673948470></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
-<body data-url=/use-case/organization/>
+<body data-url=/use-case/architecture/>
 <nav id=sidebar class=showVisitedLinks>
 <div id=header-wrapper>
 <div id=header>
@@ -58,13 +58,13 @@ Goal
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/use-case/organization/ title=Organization class="dd-item active">
+<li data-nav-id=/use-case/organization/ title=Organization class=dd-item>
 <a href=/use-case/organization/>
 Organization
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/use-case/architecture/ title=Architecture class=dd-item>
+<li data-nav-id=/use-case/architecture/ title=Architecture class="dd-item active">
 <a href=/use-case/architecture/>
 Architecture
 <i class="fas fa-check read-icon"></i>
@@ -165,12 +165,17 @@ Windows
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=/>Welcome</a> > <a href=/use-case/>Use Case</a> > Organization
+<a href=/>Welcome</a> > <a href=/use-case/>Use Case</a> > Architecture
 </span>
 </div>
 <div class=progress>
 <div class=wrapper>
-<nav id=TableOfContents></nav>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#steps>Steps</a></li>
+<li><a href=#schema>Schema</a></li>
+</ul>
+</nav>
 </div>
 </div>
 </div>
@@ -179,24 +184,25 @@ Windows
 </div>
 <div id=body-inner>
 <h1>
-Organization
+Architecture
 </h1>
-<p>At your table, there should be six persons and there should be ten tables.
-During this lab, you will work in pair programming (that is to say: three duo).</p>
-<ul>
-<li>Duo <strong>A</strong> is in charge of implementing the code on ESP8266 to scan the <strong>incoming</strong> parcels using RFID and send the data over MQTT.</li>
-<li>Duo <strong>B</strong> is in charge of implementing the code on ESP8266 to scan the <strong>outgoing</strong> parcels using RFID and send the data over MQTT.</li>
-<li>Duo <strong>C</strong> is in charge of setting up Kafka Broker, MirrorMaker2 and implementing the Camel-K integration.</li>
-<li>Duo <strong>A</strong> or <strong>B</strong> (whoever finishes first) is in charge of deploying the MQTT broker.</li>
-</ul>
-<p><img src=/images/lab-organization.png alt="lab organization"></p>
+<h2 id=steps>Steps</h2>
+<p><strong>1.</strong> Scan entrance and output packets via the ESP8266 RFID scanner. One ESP8266 dedicated for entrance packets and one ESP8266 dedicated for output packets.<br>
+<strong>2.</strong> The ESP8266 dedicated for entrance packets write the <strong>RFID id</strong> in mqtt the <strong>mqtt-in</strong>. The ESP8266 dedicated for output packets write the <strong>RFID id</strong> in the mqtt <strong>mqtt-out</strong>.<br>
+<strong>3.</strong> Camel K operator transform and enrich mqtt data stored in mqtt topics and inject these enriched data in <strong>kafka-in</strong> and <strong>kafka-out</strong> topics.<br>
+<strong>4.</strong> <strong>Kafka Mirror Maker</strong> mirror in synchrone mode each topic of each warehouse (10) to headquarter to centralize data.<br>
+<strong>5.</strong> <strong>Camel Quarkus</strong> help us to have more complex data transformation to aggregate data stored in all regional kafka topics in one and uniq kafka topic (aggregration).<br>
+<strong>6.</strong> <strong>Kafka Stream</strong> relies on a rocksdb database to correlate packet inputs/outputs and finally stores this information in the kafka topic shipment.<br>
+<strong>7.</strong> A web front based on <strong>Quarkus</strong> and connected to the kafka topic <strong>shipment</strong> display data and packages transit on a world map where are represented all warehouses.</p>
+<h2 id=schema>Schema</h2>
+<p><img src=/images/detailled-schema.svg alt=use_case></p>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=/use-case/goal/ title=Goal> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/use-case/architecture/ title=Architecture style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=/use-case/organization/ title=Organization> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/use-case/ice-breaker/ title="Ice Breaker" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
