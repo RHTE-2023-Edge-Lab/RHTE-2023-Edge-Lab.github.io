@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Architecture :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1673952796 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1673952796 rel=stylesheet>
-<link href=/css/hybrid.css?1673952796 rel=stylesheet>
-<link href=/css/featherlight.min.css?1673952796 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1673952796 rel=stylesheet>
-<link href=/css/auto-complete.css?1673952796 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1673952796 rel=stylesheet>
-<link href=/css/theme.css?1673952796 rel=stylesheet>
-<link href=/css/tabs.css?1673952796 rel=stylesheet>
-<link href=/css/hugo-theme.css?1673952796 rel=stylesheet>
-<link href=/css/theme-red.css?1673952796 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1673952796></script>
+<link href=/css/nucleus.css?1673954400 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1673954400 rel=stylesheet>
+<link href=/css/hybrid.css?1673954400 rel=stylesheet>
+<link href=/css/featherlight.min.css?1673954400 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1673954400 rel=stylesheet>
+<link href=/css/auto-complete.css?1673954400 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1673954400 rel=stylesheet>
+<link href=/css/theme.css?1673954400 rel=stylesheet>
+<link href=/css/tabs.css?1673954400 rel=stylesheet>
+<link href=/css/hugo-theme.css?1673954400 rel=stylesheet>
+<link href=/css/theme-red.css?1673954400 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1673954400></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=/use-case/architecture/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1673952796></script>
-<script type=text/javascript src=/js/auto-complete.js?1673952796></script>
+<script type=text/javascript src=/js/lunr.min.js?1673954400></script>
+<script type=text/javascript src=/js/auto-complete.js?1673954400></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1673952796></script>
+<script type=text/javascript src=/js/search.js?1673954400></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -58,15 +58,15 @@ Goal
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/use-case/organization/ title=Organization class=dd-item>
-<a href=/use-case/organization/>
-Organization
-<i class="fas fa-check read-icon"></i>
-</a>
-</li>
 <li data-nav-id=/use-case/architecture/ title=Architecture class="dd-item active">
 <a href=/use-case/architecture/>
 Architecture
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/use-case/organization/ title=Organization class=dd-item>
+<a href=/use-case/organization/>
+Organization
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
@@ -173,6 +173,7 @@ Windows
 <nav id=TableOfContents>
 <ul>
 <li><a href=#data-flow>Data flow</a></li>
+<li><a href=#red-hat-products>Red Hat Products</a></li>
 <li><a href=#schema>Schema</a></li>
 </ul>
 </nav>
@@ -194,6 +195,20 @@ Architecture
 <strong>5.</strong> <strong>Camel Quarkus</strong> aggregates the mirrored topics of each warehouse in a single kafka topic, while enriching each event with metadata.<br>
 <strong>6.</strong> <strong>Kafka Stream</strong> relies on a rocksdb database to retain the last known position of each parcel and send displacement event each time a move is detected. This information is sent in the <strong>shipment</strong> Kafka topic.<br>
 <strong>7.</strong> A web front-end, based on <strong>Quarkus</strong> and connected to the <strong>shipment</strong> kafka topic, displays the moving parcels on a world map along with all warehouses.</p>
+<h2 id=red-hat-products>Red Hat Products</h2>
+<ul>
+<li>The MQTT Broker is provided by <strong>Red Hat AMQ Broker</strong></li>
+<li>The Kafka Broker is provided by <strong>Red Hat AMQ Streams</strong></li>
+<li>The Camel-K integration is provided by <strong>Red Hat Integration</strong></li>
+<li>The Kafka Mirror Maker is provided by <strong>Red Hat AMQ Streams</strong></li>
+<li>Kafka Streams is provided by Quarkus (<strong>Tech Preview</strong>)</li>
+<li>Quarkus is provided by <strong>Red Hat OpenShift Container Platform</strong></li>
+</ul>
+<p>Currently, this lab is hosted on RHPDS because of logistics and expenses considerations but:</p>
+<ul>
+<li>The headquarter could be deployed on a Managed Services offering of OpenShift (<strong>ROSA</strong> or <strong>ARO</strong>)</li>
+<li>The warehouses could be deployed on a <strong>Single Node OpenShift</strong> or <strong>Compact Cluster</strong></li>
+</ul>
 <h2 id=schema>Schema</h2>
 <p><img src=/images/detailled-schema.svg alt=use_case></p>
 <footer class=footline>
@@ -201,24 +216,24 @@ Architecture
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=/use-case/organization/ title=Organization> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/use-case/ice-breaker/ title="Ice Breaker" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=/use-case/goal/ title=Goal> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/use-case/organization/ title=Organization style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1673952796></script>
-<script src=/js/perfect-scrollbar.min.js?1673952796></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1673952796></script>
-<script src=/js/jquery.sticky.js?1673952796></script>
-<script src=/js/featherlight.min.js?1673952796></script>
-<script src=/js/highlight.pack.js?1673952796></script>
+<script src=/js/clipboard.min.js?1673954400></script>
+<script src=/js/perfect-scrollbar.min.js?1673954400></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1673954400></script>
+<script src=/js/jquery.sticky.js?1673954400></script>
+<script src=/js/featherlight.min.js?1673954400></script>
+<script src=/js/highlight.pack.js?1673954400></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1673952796></script>
-<script src=/js/learn.js?1673952796></script>
-<script src=/js/hugo-learn.js?1673952796></script>
-<script src=/mermaid/mermaid.js?1673952796></script>
+<script src=/js/modernizr.custom-3.6.0.js?1673954400></script>
+<script src=/js/learn.js?1673954400></script>
+<script src=/js/hugo-learn.js?1673954400></script>
+<script src=/mermaid/mermaid.js?1673954400></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
