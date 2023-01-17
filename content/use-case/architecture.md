@@ -4,18 +4,16 @@ draft: false
 weight: 3
 ---
 
-## Steps
+## Data flow
 
-**1.** Scan entrance and output packets via the ESP8266 RFID scanner. One ESP8266 dedicated for entrance packets and one ESP8266 dedicated for output packets.  
-**2.** The ESP8266 dedicated for entrance packets write the **RFID id** in mqtt the **mqtt-in**. The ESP8266 dedicated for output packets write the **RFID id** in the mqtt **mqtt-out**.  
-**3.** Camel K operator transform and enrich mqtt data stored in mqtt topics and inject these enriched data in **kafka-in** and **kafka-out** topics.  
-**4.** **Kafka Mirror Maker** mirror in synchrone mode each topic of each warehouse (10) to headquarter to centralize data.  
-**5.** **Camel Quarkus** help us to have more complex data transformation to aggregate data stored in all regional kafka topics in one and uniq kafka topic (aggregration).  
-**6.** **Kafka Stream** relies on a rocksdb database to correlate packet inputs/outputs and finally stores this information in the kafka topic shipment.  
-**7.** A web front based on **Quarkus** and connected to the kafka topic **shipment** display data and packages transit on a world map where are represented all warehouses.  
-
+**1.** The ESP8266 scans incoming and outgoing parcels using an RFID scanner. One ESP8266 is dedicated for incoming parcels and one ESP8266 is dedicated for outgoing parcels.  
+**2.** The ESP8266 dedicated to incoming parcels writes the RFID tag **identifier** in the **mqtt-in** MQTT topic. The ESP8266 dedicated to outgoing parcels writes the RFID tag **identifier** in the **mqtt-out** MQTT topic.  
+**3.** The Camel K operator transforms and enriches MQTT messages stored in MQTT topics and injects those enriched data in the **kafka-in** and **kafka-out** Kafka topics.  
+**4.** **Kafka Mirror Maker** mirrors in synchronous mode each topic of each warehouse (10) to the Kafka Broker running in the headquarter in order to centralize data.  
+**5.** **Camel Quarkus** aggregates the mirrored topics of each warehouse in a single kafka topic, while enriching each event with metadata.  
+**6.** **Kafka Stream** relies on a rocksdb database to retain the last known position of each parcel and send displacement event each time a move is detected. This information is sent in the **shipment** Kafka topic.  
+**7.** A web front-end, based on **Quarkus** and connected to the **shipment** kafka topic, displays the moving parcels on a world map along with all warehouses.  
 
 ## Schema
 
 ![use_case](/images/detailled-schema.svg)
-
