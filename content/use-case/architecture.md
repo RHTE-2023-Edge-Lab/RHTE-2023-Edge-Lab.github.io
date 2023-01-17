@@ -1,7 +1,7 @@
 ---
 title: "Architecture"
 draft: false
-weight: 3
+weight: 2
 ---
 
 ## Data flow
