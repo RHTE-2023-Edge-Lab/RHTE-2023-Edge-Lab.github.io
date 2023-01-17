@@ -1,6 +1,6 @@
 +++
 title = "Camel-K Integration"
-weight = 6
+weight = 7
 chapter = true
 pre = "<b>C. </b>"
 +++
