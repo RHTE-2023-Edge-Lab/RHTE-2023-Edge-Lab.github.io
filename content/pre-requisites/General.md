@@ -61,5 +61,5 @@ Red Hat Integration - Camel K is a lightweight integration platform, born on Kub
     | Lisboa        | lisboa-team     | lisboarhte2023    | warehouse-lisboa namespace admin    |
     | London        | london-team     | londonrhte2023    | warehouse-london namespace admin    |
     | Paris         | paris-team      | parisrhte2023     | warehouse-paris namespace admin     |
-    | Stockolm      | stockolm-team   | stockolmrhte2023  | warehouse-stockolm namespace admin  |
+    | Stockolm      | stockholm-team  | stockholmrhte2023 | warehouse-stockholm namespace admin |
     | Varsovia      | varsovia-team   | varsoviarhte2023  | warehouse-varsovia namespace admin  |
