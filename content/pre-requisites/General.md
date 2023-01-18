@@ -40,8 +40,11 @@ Red Hat AMQ Streams is a massively scalable, distributed, and high performance d
 * **Red Hat Integration - Camel K**  
 Red Hat Integration - Camel K is a lightweight integration platform, born on Kubernetes, with serverless superpowers.
 
-![Openshift Operators](/images/operatos.png)
+* **Web Terminal**  
+Start a Web Terminal in your browser with common CLI tools for interacting with the cluster. You have access to useful commands for this lab like *oc*, *mosquitto* and *kcat*.  
+To launch the web terminal, click the command line terminal icon on the upper right of the console. This instance is automatically logged in with your credentials.
 
+![Openshift Operators](/images/operatos.png)
 
 ## OpenShift cluster details
 
