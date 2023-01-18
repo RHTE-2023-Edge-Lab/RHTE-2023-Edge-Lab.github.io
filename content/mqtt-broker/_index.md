@@ -105,7 +105,6 @@ spec:
 ## Test your MQTT deployment
 
 Note: You can use the WebTerminal where the *mosquitto_sub* CLI is installed. To launch the web terminal, click the command line terminal icon on the upper right of the console.
-(![Web Terminal](/images/wto-icon.png))
 
 
 1. Connect to your MQTT Broker to read messages
