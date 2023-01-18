@@ -106,7 +106,12 @@ spec:
 
 Note: You can use the WebTerminal where the *mosquitto_sub* CLI is installed. To launch the web terminal, click the command line terminal icon (![Web Terminal](/images/wto-icon.png)) on the upper right of the console.
 
-Note: You can use the WebTerminal where the *mosquitto_sub* CLI is installed. To launch the web terminal, click the command line terminal icon <img src="/images/wto-icon.png" /> on the upper right of the console.
+Note: You can use the WebTerminal where the *mosquitto_sub* CLI is installed. To launch the web terminal, click the command line terminal icon
+<p align="center">
+  <img src="/images/wto-icon.png/>
+</p>
+on the upper right of the console.
+
 
 1. Connect to your MQTT Broker to read messages
 
