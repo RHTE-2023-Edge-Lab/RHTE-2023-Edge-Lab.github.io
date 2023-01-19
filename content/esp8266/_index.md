@@ -7,12 +7,20 @@ pre = "<b>A & B. </b>"
 
 # Program the ESP8266
 
-## 0. Fix permissions on /dev/ttyUSB0
+## 0. Fix permissions on /dev/ttyUSB0 (Linux only)
 
-The /dev/ttyUSB0 device belongs to the "dialout" group. Therefore, your user should belong to this group to configure the ESP8266. Run the following command and restart your session to fix the permissions.
+The /dev/ttyUSB0 device belongs to the "dialout" group. Therefore, your user should belong to this group to configure the ESP8266.
+
+Run this command:
 
 ```sh
 sudo usermod -a -G dialout $(id -un)
+```
+
+Then, close Visual Studio Code and re-run it with the new group membership:
+
+```sh
+su -c code $(id -un)
 ```
 
 ## 1. Duo A & B - Connect your ESP8266
