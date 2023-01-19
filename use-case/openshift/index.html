@@ -5,22 +5,22 @@
 <meta name=generator content="Hugo 0.91.2">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
-<title>General :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1674095167 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1674095167 rel=stylesheet>
-<link href=/css/hybrid.css?1674095167 rel=stylesheet>
-<link href=/css/featherlight.min.css?1674095167 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1674095167 rel=stylesheet>
-<link href=/css/auto-complete.css?1674095167 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1674095167 rel=stylesheet>
-<link href=/css/theme.css?1674095167 rel=stylesheet>
-<link href=/css/tabs.css?1674095167 rel=stylesheet>
-<link href=/css/hugo-theme.css?1674095167 rel=stylesheet>
-<link href=/css/theme-red.css?1674095167 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1674095167></script>
+<title>OpenShift :: RHTE 2023 Edge Lab</title>
+<link href=/css/nucleus.css?1674098117 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1674098117 rel=stylesheet>
+<link href=/css/hybrid.css?1674098117 rel=stylesheet>
+<link href=/css/featherlight.min.css?1674098117 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1674098117 rel=stylesheet>
+<link href=/css/auto-complete.css?1674098117 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1674098117 rel=stylesheet>
+<link href=/css/theme.css?1674098117 rel=stylesheet>
+<link href=/css/tabs.css?1674098117 rel=stylesheet>
+<link href=/css/hugo-theme.css?1674098117 rel=stylesheet>
+<link href=/css/theme-red.css?1674098117 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1674098117></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
-<body data-url=/pre-requisites/general/>
+<body data-url=/use-case/openshift/>
 <nav id=sidebar class=showVisitedLinks>
 <div id=header-wrapper>
 <div id=header>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1674095167></script>
-<script type=text/javascript src=/js/auto-complete.js?1674095167></script>
+<script type=text/javascript src=/js/lunr.min.js?1674098117></script>
+<script type=text/javascript src=/js/auto-complete.js?1674098117></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1674095167></script>
+<script type=text/javascript src=/js/search.js?1674098117></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -45,7 +45,8 @@
 </section>
 <div class=highlightable>
 <ul class=topics>
-<li data-nav-id=/use-case/ title="Use Case" class=dd-item>
+<li data-nav-id=/use-case/ title="Use Case" class="dd-item
+parent">
 <a href=/use-case/>
 <b>1. </b>Use Case
 <i class="fas fa-check read-icon"></i>
@@ -69,21 +70,40 @@ Organization
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
+<li data-nav-id=/use-case/openshift/ title=OpenShift class="dd-item active">
+<a href=/use-case/openshift/>
+OpenShift
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
 </ul>
 </li>
-<li data-nav-id=/pre-requisites/ title="Pre Requisites" class="dd-item
-parent">
-<a href=/pre-requisites/>
-<b>2. </b>Pre Requisites
+<li data-nav-id=/preparation/ title=Preparation class=dd-item>
+<a href=/preparation/>
+<b>2. </b>Preparation
 <i class="fas fa-check read-icon"></i>
 </a>
 <ul>
-<li data-nav-id=/pre-requisites/general/ title=General class="dd-item active">
-<a href=/pre-requisites/general/>
-General
+<li data-nav-id=/preparation/presentation/ title="Present yourself!" class=dd-item>
+<a href=/preparation/presentation/>
+Present yourself!
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
+<li data-nav-id=/preparation/duo/ title="Pair up!" class=dd-item>
+<a href=/preparation/duo/>
+Pair up!
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/pre-requisites/ title="Pre Requisites" class=dd-item>
+<a href=/pre-requisites/>
+<b>A & B. </b>Pre Requisites
+<i class="fas fa-check read-icon"></i>
+</a>
+<ul>
 <li data-nav-id=/pre-requisites/linux/ title=Linux class=dd-item>
 <a href=/pre-requisites/linux/>
 Linux
@@ -99,20 +119,6 @@ MacOS
 <li data-nav-id=/pre-requisites/windows/ title=Windows class=dd-item>
 <a href=/pre-requisites/windows/>
 Windows
-<i class="fas fa-check read-icon"></i>
-</a>
-</li>
-</ul>
-</li>
-<li data-nav-id=/preparation/ title=Preparation class=dd-item>
-<a href=/preparation/>
-<b>3. </b>Preparation
-<i class="fas fa-check read-icon"></i>
-</a>
-<ul>
-<li data-nav-id=/preparation/presentation/ title="Present yourself!" class=dd-item>
-<a href=/preparation/presentation/>
-Present yourself!
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
@@ -173,14 +179,14 @@ Present yourself!
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=/>Welcome</a> > <a href=/pre-requisites/>Pre Requisites</a> > General
+<a href=/>Welcome</a> > <a href=/use-case/>Use Case</a> > OpenShift
 </span>
 </div>
 <div class=progress>
 <div class=wrapper>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#openshift-environment-description>OpenShift environment description</a></li>
+<li><a href=#openshift-cluster>OpenShift cluster</a></li>
 <li><a href=#openshift-operators>OpenShift Operators</a></li>
 <li><a href=#openshift-cluster-details>OpenShift cluster details</a></li>
 </ul>
@@ -193,26 +199,29 @@ Present yourself!
 </div>
 <div id=body-inner>
 <h1>
-General
+OpenShift
 </h1>
-<h2 id=openshift-environment-description>OpenShift environment description</h2>
+<h2 id=openshift-cluster>OpenShift cluster</h2>
+<p>An OpenShift cluster is already deployed via <strong>RHPDS</strong> environment and <strong>&ldquo;OpenShift 4.11 Workshop&rdquo;</strong> service.</p>
+<p><strong>No action is required on your side.</strong></p>
 <p><img src=/images/rhpds_service.png alt="RHPDS Service"></p>
-<p>OpenShift cluster is already deployed via <strong>RHPDS</strong> environment and <strong>&ldquo;OpenSHift 4.11 Workshop&rdquo;</strong> service. The headquarter and warehouses corresponding to different namespace on this Openshift cluster on this way :</p>
+<p>The headquarter and warehouses have dedicated namespaces on this OpenShift cluster:</p>
 <ul>
-<li>Namespace n°1 : headquarter</li>
-<li>Namespace n°2 : warehouse-athens</li>
-<li>Namespace n°3 : warehouse-brno</li>
-<li>Namespace n°4 : warehouse-brussels</li>
-<li>Namespace n°5 : warehouse-bucharest</li>
-<li>Namespace n°6 : warehouse-dublin</li>
-<li>Namespace n°7 : warehouse-lisboa</li>
-<li>Namespace n°8 : warehouse-london</li>
-<li>Namespace n°9 : warehouse-paris</li>
-<li>Namespace n°10 : warehouse-stockolm</li>
-<li>Namespace n°11 : warehouse-varsovia</li>
+<li>headquarter</li>
+<li>warehouse-athens</li>
+<li>warehouse-brno</li>
+<li>warehouse-brussels</li>
+<li>warehouse-bucharest</li>
+<li>warehouse-dublin</li>
+<li>warehouse-lisboa</li>
+<li>warehouse-london</li>
+<li>warehouse-paris</li>
+<li>warehouse-stockolm</li>
+<li>warehouse-varsovia</li>
 </ul>
 <h2 id=openshift-operators>OpenShift Operators</h2>
-<p>All needed operators are already installed on the Openshift cluster and you will just need to consume CRD provided by these operators during this session :</p>
+<p>All the needed operators are already installed on the Openshift cluster.
+In the rest of this Lab you will just need to consume the CRD provided by these operators.</p>
 <ul>
 <li>
 <p><strong>Red Hat Integration - AMQ Broker for RHEL 8 (Multiarch)</strong><br>
@@ -243,110 +252,37 @@ To launch the web terminal, click the command line terminal icon on the upper ri
 <h2 id=openshift-cluster-details>OpenShift cluster details</h2>
 <ul>
 <li>
-<p><strong>OCP Cluster console URL :</strong> To be debine before RHTE</p>
+<p><strong>OCP Cluster console URL :</strong> <code>https://console-openshift-console.apps.cluster-GUID.GUID.sandboxID.opentlc.com/dashboards</code></p>
 </li>
 <li>
-<p><strong>OCP Cluster API URL :</strong> To be debine before RHTE</p>
-</li>
-<li>
-<p><strong>OCP Cluster users :</strong></p>
-<table>
-<thead>
-<tr>
-<th>Warehouse</th>
-<th style=text-align:left>User</th>
-<th style=text-align:left>Password</th>
-<th style=text-align:left>Rights</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Athens</td>
-<td style=text-align:left>athens-team</td>
-<td style=text-align:left>athensrhte2023</td>
-<td style=text-align:left>warehouse-athens namespace admin</td>
-</tr>
-<tr>
-<td>Brno</td>
-<td style=text-align:left>brno-team</td>
-<td style=text-align:left>brnorhte2023</td>
-<td style=text-align:left>warehouse-brno namespace admin</td>
-</tr>
-<tr>
-<td>Brussels</td>
-<td style=text-align:left>brussels-team</td>
-<td style=text-align:left>brusselsrhte2023</td>
-<td style=text-align:left>warehouse-brussels namespace admin</td>
-</tr>
-<tr>
-<td>Bucharest</td>
-<td style=text-align:left>bucharest-team</td>
-<td style=text-align:left>bucharestrhte2023</td>
-<td style=text-align:left>warehouse-bucharest namespace admin</td>
-</tr>
-<tr>
-<td>Dublin</td>
-<td style=text-align:left>dublin-team</td>
-<td style=text-align:left>dublinrhte2023</td>
-<td style=text-align:left>warehouse-dublin namespace admin</td>
-</tr>
-<tr>
-<td>Lisboa</td>
-<td style=text-align:left>lisboa-team</td>
-<td style=text-align:left>lisboarhte2023</td>
-<td style=text-align:left>warehouse-lisboa namespace admin</td>
-</tr>
-<tr>
-<td>London</td>
-<td style=text-align:left>london-team</td>
-<td style=text-align:left>londonrhte2023</td>
-<td style=text-align:left>warehouse-london namespace admin</td>
-</tr>
-<tr>
-<td>Paris</td>
-<td style=text-align:left>paris-team</td>
-<td style=text-align:left>parisrhte2023</td>
-<td style=text-align:left>warehouse-paris namespace admin</td>
-</tr>
-<tr>
-<td>Stockolm</td>
-<td style=text-align:left>stockholm-team</td>
-<td style=text-align:left>stockholmrhte2023</td>
-<td style=text-align:left>warehouse-stockholm namespace admin</td>
-</tr>
-<tr>
-<td>Varsovia</td>
-<td style=text-align:left>varsovia-team</td>
-<td style=text-align:left>varsoviarhte2023</td>
-<td style=text-align:left>warehouse-varsovia namespace admin</td>
-</tr>
-</tbody>
-</table>
+<p><strong>OCP Cluster API URL :</strong> <code>https://api.cluster-GUID.GUID.sandboxID.opentlc.com:6443</code></p>
 </li>
 </ul>
+<p>There is a dedicated OpenShift user for each warehouse.
+On your table you will find a poster with the relevant information.</p>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=/pre-requisites/ title="Pre Requisites"> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/pre-requisites/linux/ title=Linux style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=/use-case/organization/ title=Organization> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/preparation/ title=Preparation style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1674095167></script>
-<script src=/js/perfect-scrollbar.min.js?1674095167></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1674095167></script>
-<script src=/js/jquery.sticky.js?1674095167></script>
-<script src=/js/featherlight.min.js?1674095167></script>
-<script src=/js/highlight.pack.js?1674095167></script>
+<script src=/js/clipboard.min.js?1674098117></script>
+<script src=/js/perfect-scrollbar.min.js?1674098117></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1674098117></script>
+<script src=/js/jquery.sticky.js?1674098117></script>
+<script src=/js/featherlight.min.js?1674098117></script>
+<script src=/js/highlight.pack.js?1674098117></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1674095167></script>
-<script src=/js/learn.js?1674095167></script>
-<script src=/js/hugo-learn.js?1674095167></script>
-<script src=/mermaid/mermaid.js?1674095167></script>
+<script src=/js/modernizr.custom-3.6.0.js?1674098117></script>
+<script src=/js/learn.js?1674098117></script>
+<script src=/js/hugo-learn.js?1674098117></script>
+<script src=/mermaid/mermaid.js?1674098117></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

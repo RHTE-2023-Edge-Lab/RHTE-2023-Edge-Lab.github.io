@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>MacOS :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1674095167 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1674095167 rel=stylesheet>
-<link href=/css/hybrid.css?1674095167 rel=stylesheet>
-<link href=/css/featherlight.min.css?1674095167 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1674095167 rel=stylesheet>
-<link href=/css/auto-complete.css?1674095167 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1674095167 rel=stylesheet>
-<link href=/css/theme.css?1674095167 rel=stylesheet>
-<link href=/css/tabs.css?1674095167 rel=stylesheet>
-<link href=/css/hugo-theme.css?1674095167 rel=stylesheet>
-<link href=/css/theme-red.css?1674095167 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1674095167></script>
+<link href=/css/nucleus.css?1674098117 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1674098117 rel=stylesheet>
+<link href=/css/hybrid.css?1674098117 rel=stylesheet>
+<link href=/css/featherlight.min.css?1674098117 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1674098117 rel=stylesheet>
+<link href=/css/auto-complete.css?1674098117 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1674098117 rel=stylesheet>
+<link href=/css/theme.css?1674098117 rel=stylesheet>
+<link href=/css/tabs.css?1674098117 rel=stylesheet>
+<link href=/css/hugo-theme.css?1674098117 rel=stylesheet>
+<link href=/css/theme-red.css?1674098117 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1674098117></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=/pre-requisites/macos/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1674095167></script>
-<script type=text/javascript src=/js/auto-complete.js?1674095167></script>
+<script type=text/javascript src=/js/lunr.min.js?1674098117></script>
+<script type=text/javascript src=/js/auto-complete.js?1674098117></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1674095167></script>
+<script type=text/javascript src=/js/search.js?1674098117></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -69,21 +69,41 @@ Organization
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
+<li data-nav-id=/use-case/openshift/ title=OpenShift class=dd-item>
+<a href=/use-case/openshift/>
+OpenShift
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/preparation/ title=Preparation class=dd-item>
+<a href=/preparation/>
+<b>2. </b>Preparation
+<i class="fas fa-check read-icon"></i>
+</a>
+<ul>
+<li data-nav-id=/preparation/presentation/ title="Present yourself!" class=dd-item>
+<a href=/preparation/presentation/>
+Present yourself!
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/preparation/duo/ title="Pair up!" class=dd-item>
+<a href=/preparation/duo/>
+Pair up!
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
 </ul>
 </li>
 <li data-nav-id=/pre-requisites/ title="Pre Requisites" class="dd-item
 parent">
 <a href=/pre-requisites/>
-<b>2. </b>Pre Requisites
+<b>A & B. </b>Pre Requisites
 <i class="fas fa-check read-icon"></i>
 </a>
 <ul>
-<li data-nav-id=/pre-requisites/general/ title=General class=dd-item>
-<a href=/pre-requisites/general/>
-General
-<i class="fas fa-check read-icon"></i>
-</a>
-</li>
 <li data-nav-id=/pre-requisites/linux/ title=Linux class=dd-item>
 <a href=/pre-requisites/linux/>
 Linux
@@ -99,20 +119,6 @@ MacOS
 <li data-nav-id=/pre-requisites/windows/ title=Windows class=dd-item>
 <a href=/pre-requisites/windows/>
 Windows
-<i class="fas fa-check read-icon"></i>
-</a>
-</li>
-</ul>
-</li>
-<li data-nav-id=/preparation/ title=Preparation class=dd-item>
-<a href=/preparation/>
-<b>3. </b>Preparation
-<i class="fas fa-check read-icon"></i>
-</a>
-<ul>
-<li data-nav-id=/preparation/presentation/ title="Present yourself!" class=dd-item>
-<a href=/preparation/presentation/>
-Present yourself!
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
@@ -189,13 +195,7 @@ Present yourself!
 <h1>
 MacOS
 </h1>
-<p>Install the OpenShift CLI.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>curl -sSfL https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-mac.tar.gz | tar -zx -C /usr/local/bin oc kubectl
-</code></pre></div><p>Install git.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>brew install git
-</code></pre></div><p>Install mosquitto (for MQTT tests).</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>brew install mosquitto
-</code></pre></div><p>Go to the VScode <a href=https://code.visualstudio.com/download>download page</a>, download the MacOS package and install it.</p>
+<p>Go to the VScode <a href=https://code.visualstudio.com/download>download page</a>, download the MacOS package and install it.</p>
 <p>Open VScode and install the <a href=https://docs.platformio.org/en/latest/integration/ide/>PlatformIO IDE plugin</a>.</p>
 <p><img src=/images/install_platformio_1.png alt=Install1></p>
 <p><img src=/images/install_platformio_2.png alt=Install2></p>
@@ -211,17 +211,17 @@ MacOS
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1674095167></script>
-<script src=/js/perfect-scrollbar.min.js?1674095167></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1674095167></script>
-<script src=/js/jquery.sticky.js?1674095167></script>
-<script src=/js/featherlight.min.js?1674095167></script>
-<script src=/js/highlight.pack.js?1674095167></script>
+<script src=/js/clipboard.min.js?1674098117></script>
+<script src=/js/perfect-scrollbar.min.js?1674098117></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1674098117></script>
+<script src=/js/jquery.sticky.js?1674098117></script>
+<script src=/js/featherlight.min.js?1674098117></script>
+<script src=/js/highlight.pack.js?1674098117></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1674095167></script>
-<script src=/js/learn.js?1674095167></script>
-<script src=/js/hugo-learn.js?1674095167></script>
-<script src=/mermaid/mermaid.js?1674095167></script>
+<script src=/js/modernizr.custom-3.6.0.js?1674098117></script>
+<script src=/js/learn.js?1674098117></script>
+<script src=/js/hugo-learn.js?1674098117></script>
+<script src=/mermaid/mermaid.js?1674098117></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
