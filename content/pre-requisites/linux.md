@@ -12,12 +12,6 @@ Install the OpenShift CLI.
 curl -sSfL https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.11.21/openshift-client-linux.tar.gz | sudo tar -zx -C /usr/local/bin oc kubectl
 ```
 
-Install git.
-
-```sh
-sudo dnf install git
-```
-
 Install VScode.
 
 ```sh

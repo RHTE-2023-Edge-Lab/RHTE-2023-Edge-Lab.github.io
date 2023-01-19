@@ -10,12 +10,6 @@ Install the OpenShift CLI.
 curl -sSfL https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-mac.tar.gz | tar -zx -C /usr/local/bin oc kubectl
 ```
 
-Install git.
-
-```sh
-brew install git
-```
-
 Install mosquitto (for MQTT tests).
 
 ```sh
