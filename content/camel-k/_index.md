@@ -16,7 +16,6 @@ kind: Secret
 apiVersion: v1
 metadata:
   name: camel-user
-  namespace: <your_namespace>
 stringData:
   password: s3cr3t
 type: Opaque
@@ -30,7 +29,6 @@ apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaUser
 metadata:
   name: camel
-  namespace: <your_namespace>
   labels:
     strimzi.io/cluster: warehouse
 spec:
@@ -54,7 +52,6 @@ apiVersion: camel.apache.org/v1alpha1
 kind: Kamelet
 metadata:
   name: kafka-sink-scram
-  namespace: <your_namespace>
   annotations:
     camel.apache.org/kamelet.support.level: "Stable"
     camel.apache.org/catalog.version: "main-SNAPSHOT"
@@ -163,7 +160,6 @@ apiVersion: camel.apache.org/v1
 kind: Integration
 metadata:
   name: kafkaintegration-in
-  namespace: <your_namespace>
 spec:
   sources:
   - content: |
@@ -185,7 +181,6 @@ apiVersion: camel.apache.org/v1
 kind: Integration
 metadata:
   name: kafkaintegration-out
-  namespace: <your_namespace>
 spec:
   sources:
   - content: |

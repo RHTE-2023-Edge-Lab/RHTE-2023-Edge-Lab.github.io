@@ -13,7 +13,6 @@ kind: Secret
 apiVersion: v1
 metadata:
   name: warehouse-cluster-ca
-  namespace: <your_namespace>
   labels:
     strimzi.io/cluster: warehouse
     strimzi.io/kind: Kafka
@@ -26,7 +25,6 @@ kind: Secret
 apiVersion: v1
 metadata:
   name: warehouse-cluster-ca-cert
-  namespace: <your_namespace>
   labels:
     strimzi.io/cluster: warehouse
     strimzi.io/kind: Kafka
@@ -46,7 +44,6 @@ apiVersion: kafka.strimzi.io/v1beta2
 kind: Kafka
 metadata:
   name: warehouse
-  namespace: <your_namespace>
 spec:
   clusterCa:
     generateCertificateAuthority: false
@@ -91,7 +88,6 @@ kind: Secret
 apiVersion: v1
 metadata:
   name: mm2-user
-  namespace: <your_namespace>
 stringData:
   password: s3cr3t
 type: Opaque
@@ -102,7 +98,6 @@ metadata:
   labels:
     strimzi.io/cluster: warehouse
   name: mm2
-  namespace: <your_namespace>
 spec:
   authentication:
     password:
@@ -120,7 +115,6 @@ kind: KafkaTopic
 apiVersion: kafka.strimzi.io/v1beta2
 metadata:
   name: warehouse-in
-  namespace: <your_namespace>
   labels:
     strimzi.io/cluster: warehouse
 spec:
@@ -132,7 +126,6 @@ kind: KafkaTopic
 apiVersion: kafka.strimzi.io/v1beta2
 metadata:
   name: warehouse-out
-  namespace: <your_namespace>
   labels:
     strimzi.io/cluster: warehouse
 spec:

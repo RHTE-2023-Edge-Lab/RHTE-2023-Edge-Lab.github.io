@@ -14,7 +14,6 @@ apiVersion: broker.amq.io/v1beta1
 kind: ActiveMQArtemis
 metadata:
   name: mqtt
-  namespace: <your_namespace>
 spec:
   acceptors:
   - connectionsAllowed: 5
