@@ -1,0 +1,414 @@
+<!doctype html><html lang=en class="js csstransforms3d">
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=generator content="Hugo 0.91.2">
+<meta name=description content>
+<link rel=icon href=/images/favicon.png type=image/png>
+<title>Develop the ESP8266 firmware :: RHTE 2023 Edge Lab</title>
+<link href=/css/nucleus.css?1674121153 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1674121153 rel=stylesheet>
+<link href=/css/hybrid.css?1674121153 rel=stylesheet>
+<link href=/css/featherlight.min.css?1674121153 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1674121153 rel=stylesheet>
+<link href=/css/auto-complete.css?1674121153 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1674121153 rel=stylesheet>
+<link href=/css/theme.css?1674121153 rel=stylesheet>
+<link href=/css/tabs.css?1674121153 rel=stylesheet>
+<link href=/css/hugo-theme.css?1674121153 rel=stylesheet>
+<link href=/css/theme-red.css?1674121153 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1674121153></script>
+<style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
+</head>
+<body data-url=/esp8266/development/>
+<nav id=sidebar class=showVisitedLinks>
+<div id=header-wrapper>
+<div id=header>
+<img src=/images/logo.svg>
+</div>
+<div class=searchbox>
+<label for=search-by><i class="fas fa-search"></i></label>
+<input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span>
+</div>
+<script type=text/javascript src=/js/lunr.min.js?1674121153></script>
+<script type=text/javascript src=/js/auto-complete.js?1674121153></script>
+<script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
+<script type=text/javascript src=/js/search.js?1674121153></script>
+</div>
+<section id=homelinks>
+<ul>
+<li>
+<a class=padding href=/><i class="fas fa-home"></i> Home</a>
+</li>
+</ul>
+</section>
+<div class=highlightable>
+<ul class=topics>
+<li data-nav-id=/use-case/ title="Use Case" class=dd-item>
+<a href=/use-case/>
+<b>1. </b>Use Case
+<i class="fas fa-check read-icon"></i>
+</a>
+<ul>
+<li data-nav-id=/use-case/goal/ title=Goal class=dd-item>
+<a href=/use-case/goal/>
+Goal
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/use-case/architecture/ title=Architecture class=dd-item>
+<a href=/use-case/architecture/>
+Architecture
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/use-case/organization/ title=Organization class=dd-item>
+<a href=/use-case/organization/>
+Organization
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/use-case/openshift/ title=OpenShift class=dd-item>
+<a href=/use-case/openshift/>
+OpenShift
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/preparation/ title=Preparation class=dd-item>
+<a href=/preparation/>
+<b>2. </b>Preparation
+<i class="fas fa-check read-icon"></i>
+</a>
+<ul>
+<li data-nav-id=/preparation/presentation/ title="Present yourself!" class=dd-item>
+<a href=/preparation/presentation/>
+Present yourself!
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/preparation/duo/ title="Pair up!" class=dd-item>
+<a href=/preparation/duo/>
+Pair up!
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/pre-requisites/ title="Pre Requisites" class=dd-item>
+<a href=/pre-requisites/>
+<b>A & B. </b>Pre Requisites
+<i class="fas fa-check read-icon"></i>
+</a>
+<ul>
+<li data-nav-id=/pre-requisites/linux/ title=Linux class=dd-item>
+<a href=/pre-requisites/linux/>
+Linux
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/pre-requisites/macos/ title=MacOS class=dd-item>
+<a href=/pre-requisites/macos/>
+MacOS
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/pre-requisites/windows/ title=Windows class=dd-item>
+<a href=/pre-requisites/windows/>
+Windows
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/mqtt-broker/ title="MQTT Broker" class=dd-item>
+<a href=/mqtt-broker/>
+<b>A & B. </b>MQTT Broker
+<i class="fas fa-check read-icon"></i>
+</a>
+<ul>
+<li data-nav-id=/mqtt-broker/mqtt-broker/ title="Install the MQTT Broker (duo A or B)" class=dd-item>
+<a href=/mqtt-broker/mqtt-broker/>
+Install the MQTT Broker (duo A or B)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/mqtt-broker/mqtt-topic-in/ title="Create the incoming MQTT Topic (duo A)" class=dd-item>
+<a href=/mqtt-broker/mqtt-topic-in/>
+Create the incoming MQTT Topic (duo A)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/mqtt-broker/mqtt-topic-out/ title="Create the outgoing MQTT Topic (duo B)" class=dd-item>
+<a href=/mqtt-broker/mqtt-topic-out/>
+Create the outgoing MQTT Topic (duo B)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/mqtt-broker/verification/ title="Final verification (duo A and B)" class=dd-item>
+<a href=/mqtt-broker/verification/>
+Final verification (duo A and B)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/mqtt-broker/test/ title="Test the MQTT broker (duo A and B)" class=dd-item>
+<a href=/mqtt-broker/test/>
+Test the MQTT broker (duo A and B)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/esp8266/ title="Program the ESP8266" class="dd-item
+parent">
+<a href=/esp8266/>
+<b>A & B. </b>Program the ESP8266
+<i class="fas fa-check read-icon"></i>
+</a>
+<ul>
+<li data-nav-id=/esp8266/fix-permissions/ title="Fix permissions on /dev/ttyUSB0 (Linux only)" class=dd-item>
+<a href=/esp8266/fix-permissions/>
+Fix permissions on /dev/ttyUSB0 (Linux only)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/esp8266/connect-esp8266/ title="Connect your ESP8266" class=dd-item>
+<a href=/esp8266/connect-esp8266/>
+Connect your ESP8266
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/esp8266/create-project/ title="Create a PlatformIO project" class=dd-item>
+<a href=/esp8266/create-project/>
+Create a PlatformIO project
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/esp8266/libraries/ title="Add required libraries" class=dd-item>
+<a href=/esp8266/libraries/>
+Add required libraries
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/esp8266/development/ title="Develop the ESP8266 firmware" class="dd-item active">
+<a href=/esp8266/development/>
+Develop the ESP8266 firmware
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/esp8266/test/ title="Test the ESP8266 firmware" class=dd-item>
+<a href=/esp8266/test/>
+Test the ESP8266 firmware
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/kafka-broker/ title="Kafka Broker" class=dd-item>
+<a href=/kafka-broker/>
+<b>C. </b>Kafka Broker
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/camel-k/ title="Camel-K Integration" class=dd-item>
+<a href=/camel-k/>
+<b>C. </b>Camel-K Integration
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/testing/ title=Testing class=dd-item>
+<a href=/testing/>
+<b>A,B & C. </b>Testing
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
+<section id=prefooter>
+<hr>
+<ul>
+<li><a class=padding href=# data-clear-history-toggle><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+</ul>
+</section>
+<section id=footer>
+<p>Built with <a href=https://github.com/matcornic/hugo-theme-learn><i class="fas fa-heart"></i></a> from <a href=https://getgrav.org>Grav</a> and <a href=https://gohugo.io/>Hugo</a></p>
+</section>
+</div>
+</nav>
+<section id=body>
+<div id=overlay></div>
+<div class="padding highlightable">
+<div>
+<div id=top-bar>
+<div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb>
+<span id=sidebar-toggle-span>
+<a href=# id=sidebar-toggle data-sidebar-toggle>
+<i class="fas fa-bars"></i>
+</a>
+</span>
+<span id=toc-menu><i class="fas fa-list-alt"></i></span>
+<span class=links>
+<a href=/>Welcome</a> > <a href=/esp8266/>Program the ESP8266</a> > Develop the ESP8266 firmware
+</span>
+</div>
+<div class=progress>
+<div class=wrapper>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#compile-your-code>Compile your code</a></li>
+<li><a href=#flash-your-esp8266-with-your-code>Flash your ESP8266 with your code</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id=head-tags>
+</div>
+<div id=body-inner>
+<h1>
+Develop the ESP8266 firmware
+</h1>
+<p>In the left pane of VScode, click the top-left icon to diplay the project&rsquo;s files.</p>
+<p>Replace the content of <strong>src/main.cpp</strong> with the following code.</p>
+<p><strong>Warning</strong>: you will have to adapt the code a little bit. See below for explanations.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;Arduino.h&gt;</span><span style=color:#75715e>
+</span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;SPI.h&gt;</span><span style=color:#75715e>
+</span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;MFRC522.h&gt;</span><span style=color:#75715e>
+</span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;ESP8266WiFi.h&gt;</span><span style=color:#75715e>
+</span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;PubSubClient.h&gt;</span><span style=color:#75715e>
+</span><span style=color:#75715e></span>
+MFRC522 mfrc522;
+WiFiClient espClient;
+PubSubClient <span style=color:#a6e22e>client</span>(espClient);
+
+<span style=color:#75715e>//WIFI
+</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span><span style=color:#f92672>*</span> ssid <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&lt;wifi_ssid&gt;&#34;</span>;  <span style=color:#75715e>//  SSID Wifi
+</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span><span style=color:#f92672>*</span> password <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&lt;wifi_password&gt;&#34;</span>;  <span style=color:#75715e>//mot de passe Wifi
+</span><span style=color:#75715e></span>
+
+<span style=color:#75715e>// MQTT Broker
+</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>mqtt_broker <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&lt;AWS LB address for MQTT service&gt;&#34;</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>mqtt_topic <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;esp8266-in&#34;</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>mqtt_username <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&lt;MQTT user&gt;&#34;</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>mqtt_password <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&lt;MQTT password&gt;&#34;</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> mqtt_port <span style=color:#f92672>=</span> <span style=color:#f92672>&lt;</span>MQTT port<span style=color:#f92672>&gt;</span>;
+
+<span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setup</span>()
+{
+  Serial.begin(<span style=color:#ae81ff>9600</span>);     <span style=color:#75715e>// Initialize serial communications with the PC
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>while</span> (<span style=color:#f92672>!</span>Serial);        <span style=color:#75715e>// Do nothing if no serial port is opened (added for Arduinos based on ATMEGA32U4)
+</span><span style=color:#75715e></span>  Serial.println(<span style=color:#e6db74>&#34;Initializing...&#34;</span>);
+  SPI.begin();            <span style=color:#75715e>// Init SPI bus
+</span><span style=color:#75715e></span>  mfrc522.PCD_Init();     <span style=color:#75715e>// Init MFRC522
+</span><span style=color:#75715e></span>  delay(<span style=color:#ae81ff>4</span>);               <span style=color:#75715e>// Optional delay.
+</span><span style=color:#75715e></span>
+  <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span>mfrc522.PCD_PerformSelfTest()) {
+    Serial.println(<span style=color:#e6db74>&#34;MFRC522 not ready !&#34;</span>);
+  }
+  Serial.println(<span style=color:#e6db74>&#34;Ready !&#34;</span>);
+
+  <span style=color:#75715e>// Wifi initialization
+</span><span style=color:#75715e></span>  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+  Serial.print(<span style=color:#e6db74>&#34;Connecting to Wifi...&#34;</span>);
+  <span style=color:#66d9ef>while</span> (WiFi.status() <span style=color:#f92672>!=</span> WL_CONNECTED)
+  {
+    delay(<span style=color:#ae81ff>500</span>);
+    Serial.print(<span style=color:#e6db74>&#34;.&#34;</span>);
+  }
+  Serial.println();
+  Serial.print(<span style=color:#e6db74>&#34;Connected, IP address: &#34;</span>);
+  Serial.println(WiFi.localIP());
+  randomSeed(micros());
+
+  <span style=color:#75715e>// MQTT initialization
+</span><span style=color:#75715e></span>  client.setServer(mqtt_broker, mqtt_port);
+}
+
+<span style=color:#66d9ef>void</span> <span style=color:#a6e22e>reconnect</span>() {
+  <span style=color:#75715e>// Loop until we&#39;re reconnected
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>while</span> (<span style=color:#f92672>!</span>client.connected()) {
+    Serial.print(<span style=color:#e6db74>&#34;Attempting MQTT connection...&#34;</span>);
+    <span style=color:#75715e>// Create a random client ID
+</span><span style=color:#75715e></span>    String clientId <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;ESP8266Client-&#34;</span>;
+    clientId <span style=color:#f92672>+=</span> String(random(<span style=color:#ae81ff>0xffff</span>), HEX);
+    <span style=color:#75715e>// Attempt to connect
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>if</span> (client.connect(clientId.c_str(), mqtt_username, mqtt_password)) {
+      Serial.println(<span style=color:#e6db74>&#34;connected to MQTT Broker&#34;</span>);
+    } <span style=color:#66d9ef>else</span> {
+      Serial.print(<span style=color:#e6db74>&#34;failed, rc=&#34;</span>);
+      Serial.print(client.state());
+      Serial.println(<span style=color:#e6db74>&#34; try again in 5 seconds&#34;</span>);
+      <span style=color:#75715e>// Wait 5 seconds before retrying
+</span><span style=color:#75715e></span>      delay(<span style=color:#ae81ff>5000</span>);
+    }
+  }
+}
+
+<span style=color:#66d9ef>void</span> <span style=color:#a6e22e>loop</span>()
+{
+  <span style=color:#75715e>// MQTT connection to the broker + protocol handling
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span>client.connected()) {
+    reconnect();
+  }
+  client.loop();
+
+  <span style=color:#75715e>// Reset the loop if no new card present on the sensor/reader. This saves the entire process when idle.
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>if</span> ( <span style=color:#f92672>!</span> mfrc522.PICC_IsNewCardPresent()) {
+    <span style=color:#66d9ef>return</span>;
+  }
+
+  <span style=color:#75715e>// Select one of the cards
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>if</span> ( <span style=color:#f92672>!</span> mfrc522.PICC_ReadCardSerial()) {
+    <span style=color:#66d9ef>return</span>;
+  }
+
+  <span style=color:#75715e>// Compute and print UID
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>char</span> uid[<span style=color:#ae81ff>30</span>];
+  <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span> buffer <span style=color:#f92672>=</span> uid;
+  <span style=color:#66d9ef>for</span> (byte i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> mfrc522.uid.size; i<span style=color:#f92672>++</span>) {
+    <span style=color:#66d9ef>int</span> n <span style=color:#f92672>=</span> sprintf(buffer, <span style=color:#e6db74>&#34;%s%02x&#34;</span>, i <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>?</span> <span style=color:#e6db74>&#34;:&#34;</span> <span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;&#34;</span>, mfrc522.uid.uidByte[i]);
+    <span style=color:#66d9ef>if</span> (n <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span>) {
+      buffer <span style=color:#f92672>+=</span> n;
+    }
+  }
+  Serial.println(uid);
+  client.publish(mqtt_topic, uid);
+  delay(<span style=color:#ae81ff>500</span>);
+}
+</code></pre></div><h3 id=compile-your-code>Compile your code</h3>
+<p><img src=/images/platformIO-esp-build.png alt="PlatformIO build"></p>
+<h3 id=flash-your-esp8266-with-your-code>Flash your ESP8266 with your code</h3>
+<p><img src=/images/platformIO-esp-write.png alt="PlatformIO write"></p>
+<footer class=footline>
+</footer>
+</div>
+</div>
+<div id=navigation>
+<a class="nav nav-prev" href=/esp8266/libraries/ title="Add required libraries"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/esp8266/test/ title="Test the ESP8266 firmware" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+</div>
+</section>
+<div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
+<div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
+</div>
+<script src=/js/clipboard.min.js?1674121153></script>
+<script src=/js/perfect-scrollbar.min.js?1674121153></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1674121153></script>
+<script src=/js/jquery.sticky.js?1674121153></script>
+<script src=/js/featherlight.min.js?1674121153></script>
+<script src=/js/highlight.pack.js?1674121153></script>
+<script>hljs.initHighlightingOnLoad()</script>
+<script src=/js/modernizr.custom-3.6.0.js?1674121153></script>
+<script src=/js/learn.js?1674121153></script>
+<script src=/js/hugo-learn.js?1674121153></script>
+<script src=/mermaid/mermaid.js?1674121153></script>
+<script>mermaid.initialize({startOnLoad:!0})</script>
+</body>
+</html>

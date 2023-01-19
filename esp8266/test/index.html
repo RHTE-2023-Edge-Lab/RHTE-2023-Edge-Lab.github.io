@@ -5,7 +5,7 @@
 <meta name=generator content="Hugo 0.91.2">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
-<title>Final verification (duo A and B) :: RHTE 2023 Edge Lab</title>
+<title>Test the ESP8266 firmware :: RHTE 2023 Edge Lab</title>
 <link href=/css/nucleus.css?1674121153 rel=stylesheet>
 <link href=/css/fontawesome-all.min.css?1674121153 rel=stylesheet>
 <link href=/css/hybrid.css?1674121153 rel=stylesheet>
@@ -20,7 +20,7 @@
 <script src=/js/jquery-3.3.1.min.js?1674121153></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
-<body data-url=/mqtt-broker/verification/>
+<body data-url=/esp8266/test/>
 <nav id=sidebar class=showVisitedLinks>
 <div id=header-wrapper>
 <div id=header>
@@ -123,8 +123,7 @@ Windows
 </li>
 </ul>
 </li>
-<li data-nav-id=/mqtt-broker/ title="MQTT Broker" class="dd-item
-parent">
+<li data-nav-id=/mqtt-broker/ title="MQTT Broker" class=dd-item>
 <a href=/mqtt-broker/>
 <b>A & B. </b>MQTT Broker
 <i class="fas fa-check read-icon"></i>
@@ -148,7 +147,7 @@ Create the outgoing MQTT Topic (duo B)
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/mqtt-broker/verification/ title="Final verification (duo A and B)" class="dd-item active">
+<li data-nav-id=/mqtt-broker/verification/ title="Final verification (duo A and B)" class=dd-item>
 <a href=/mqtt-broker/verification/>
 Final verification (duo A and B)
 <i class="fas fa-check read-icon"></i>
@@ -162,7 +161,8 @@ Test the MQTT broker (duo A and B)
 </li>
 </ul>
 </li>
-<li data-nav-id=/esp8266/ title="Program the ESP8266" class=dd-item>
+<li data-nav-id=/esp8266/ title="Program the ESP8266" class="dd-item
+parent">
 <a href=/esp8266/>
 <b>A & B. </b>Program the ESP8266
 <i class="fas fa-check read-icon"></i>
@@ -198,7 +198,7 @@ Develop the ESP8266 firmware
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/esp8266/test/ title="Test the ESP8266 firmware" class=dd-item>
+<li data-nav-id=/esp8266/test/ title="Test the ESP8266 firmware" class="dd-item active">
 <a href=/esp8266/test/>
 Test the ESP8266 firmware
 <i class="fas fa-check read-icon"></i>
@@ -249,18 +249,12 @@ Test the ESP8266 firmware
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=/>Welcome</a> > <a href=/mqtt-broker/>MQTT Broker</a> > Final verification (duo A and B)
+<a href=/>Welcome</a> > <a href=/esp8266/>Program the ESP8266</a> > Test the ESP8266 firmware
 </span>
 </div>
 <div class=progress>
 <div class=wrapper>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#operator-crd>Operator CRD</a></li>
-<li><a href=#pods>Pods</a></li>
-<li><a href=#services>Services</a></li>
-</ul>
-</nav>
+<nav id=TableOfContents></nav>
 </div>
 </div>
 </div>
@@ -269,29 +263,25 @@ Test the ESP8266 firmware
 </div>
 <div id=body-inner>
 <h1>
-Final verification (duo A and B)
+Test the ESP8266 firmware
 </h1>
-<h2 id=operator-crd>Operator CRD</h2>
 <ul>
-<li>Navigate in the OpenShift Administrator console, <strong>Operators</strong> > <strong>Installed Operators</strong>.</li>
-<li>Click on the <strong>AMQ Broker for RHEL 8.x</strong> operator.</li>
-<li>Open the <strong>All instances</strong> tab.</li>
-<li>Make sure you have the following objects:</li>
+<li>Connect to your ESP8266 console</li>
 </ul>
-<p><img src=/images/mqtt-instances.png alt="MQTT Instances"></p>
-<h2 id=pods>Pods</h2>
-<p>Go to <strong>Workload</strong> > <strong>Pods</strong> and make sure the pod <strong>mqtt-ss-0</strong> is present.</p>
-<p><img src=/images/mqtt-pods.png alt="MQTT pods"></p>
-<h2 id=services>Services</h2>
-<p>Go to <strong>Networking</strong> > <strong>Services</strong> and make sure a service named <strong>mqtt-lb</strong> is present.</p>
-<p><img src=/images/mqtt-services.png alt="MQTT Instances"></p>
+<p><img src=/images/platformIO-esp-console.png alt="PlatformIO console"></p>
+<ul>
+<li>Place an RFID tag on the reader</li>
+<li>Check that the tag id is printed on the console</li>
+<li>The tag is also sent over Wifi to the MQTT broker.</li>
+</ul>
+<p><img src=/images/platformIO-esp-test.png alt="PlatformIO result"></p>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=/mqtt-broker/mqtt-topic-out/ title="Create the outgoing MQTT Topic (duo B)"> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/mqtt-broker/test/ title="Test the MQTT broker (duo A and B)" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=/esp8266/development/ title="Develop the ESP8266 firmware"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/kafka-broker/ title="Kafka Broker" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
