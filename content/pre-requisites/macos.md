@@ -22,11 +22,7 @@ Install mosquitto (for MQTT tests).
 brew install mosquitto
 ```
 
-Install VScode.
-
-```sh
-https://code.visualstudio.com/download
-```
+Go to the VScode [download page](https://code.visualstudio.com/download), download the MacOS package and install it.
 
 Open VScode and install the [PlatformIO IDE plugin](https://docs.platformio.org/en/latest/integration/ide/).
 

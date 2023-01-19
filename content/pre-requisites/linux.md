@@ -9,7 +9,7 @@ weight: 2
 Install the OpenShift CLI.
 
 ```sh
-curl -sSfL https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.11.21/openshift-client-linux.tar.gz | tar -zx -C /usr/local/bin oc kubectl
+curl -sSfL https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.11.21/openshift-client-linux.tar.gz | sudo tar -zx -C /usr/local/bin oc kubectl
 ```
 
 Install git.
@@ -27,5 +27,8 @@ dnf check-update
 sudo dnf install code
 ```
 
-Open VScode and install the [PlatformIO IDE plugin](https://docs.platformio.org/en/latest/integration/ide/).
+Install the [PlatformIO IDE plugin](https://docs.platformio.org/en/latest/integration/ide/) for VScode with the following command:
 
+```sh
+code --install-extension platformio.platformio-ide
+```
