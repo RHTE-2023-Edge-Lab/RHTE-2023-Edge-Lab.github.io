@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Test the MQTT broker (duo A and B) :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1674121153 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1674121153 rel=stylesheet>
-<link href=/css/hybrid.css?1674121153 rel=stylesheet>
-<link href=/css/featherlight.min.css?1674121153 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1674121153 rel=stylesheet>
-<link href=/css/auto-complete.css?1674121153 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1674121153 rel=stylesheet>
-<link href=/css/theme.css?1674121153 rel=stylesheet>
-<link href=/css/tabs.css?1674121153 rel=stylesheet>
-<link href=/css/hugo-theme.css?1674121153 rel=stylesheet>
-<link href=/css/theme-red.css?1674121153 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1674121153></script>
+<link href=/css/nucleus.css?1674122698 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1674122698 rel=stylesheet>
+<link href=/css/hybrid.css?1674122698 rel=stylesheet>
+<link href=/css/featherlight.min.css?1674122698 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1674122698 rel=stylesheet>
+<link href=/css/auto-complete.css?1674122698 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1674122698 rel=stylesheet>
+<link href=/css/theme.css?1674122698 rel=stylesheet>
+<link href=/css/tabs.css?1674122698 rel=stylesheet>
+<link href=/css/hugo-theme.css?1674122698 rel=stylesheet>
+<link href=/css/theme-red.css?1674122698 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1674122698></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=/mqtt-broker/test/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1674121153></script>
-<script type=text/javascript src=/js/auto-complete.js?1674121153></script>
+<script type=text/javascript src=/js/lunr.min.js?1674122698></script>
+<script type=text/javascript src=/js/auto-complete.js?1674122698></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1674121153></script>
+<script type=text/javascript src=/js/search.js?1674122698></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -267,16 +267,40 @@ Test the MQTT broker (duo A and B)
 </h1>
 <p>Go to the OpenShift Administrator console and click the command line terminal icon in the top-right corner to open a <strong>Web Terminal</strong>.
 In the Web Terminal, open two tabs: one to send messages, one to receive messages.</p>
-<p>On the first terminal, connect to your MQTT Broker to read messages.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>mosquitto_sub -t &lt;MQTT addressName&gt; -h <span style=color:#e6db74>&#39;&lt;AWS LB address for MQTT service&gt;&#39;</span> -p &lt;port&gt; -u &lt;MQTT user&gt; -P &lt;MQTT password&gt;
+<p>On the first terminal, connect to your MQTT Broker to read messages. On the commands bellow change &lt;VAR> with the correct values. See details and an example in comments.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=color:#75715e># First retrieve the url of the load balancer created when you deployed the MQTT service :</span>
+export AWS_LB_URL <span style=color:#f92672>=</span> <span style=color:#66d9ef>$(</span>oc get svc -n warehouse-&lt;CITY&gt; -ojsonpath<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{.status.loadBalancer.ingress[0].hostname}&#34;</span><span style=color:#66d9ef>)</span>
 
-<span style=color:#75715e>#Example</span>
-<span style=color:#75715e>#mosquitto_sub -t esp8266-in -h &#39;a32ba3beef5cf47ba907ca93f911bd94-62424187.eu-west-1.elb.amazonaws.com&#39; -p 1883 -u admin -P public</span>
-</code></pre></div><p>On the second terminal, push new messages to your MQTT Broker.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=color:#66d9ef>for</span> i in <span style=color:#f92672>{</span>1..200<span style=color:#f92672>}</span>; <span style=color:#66d9ef>do</span> mosquitto_pub -t &lt;MQTT addressName&gt; -h <span style=color:#e6db74>&#39;&lt;AWS LB address for MQTT service&gt;&#39;</span> -p &lt;port&gt; -u &lt;MQTT user&gt; -P &lt;MQTT password&gt; -m in$i; <span style=color:#66d9ef>done</span>
+mosquitto_sub -t &lt;MQTT addressName&gt; -h <span style=color:#e6db74>${</span>AWS_LB_URL<span style=color:#e6db74>}</span> -p &lt;port&gt; -u &lt;MQTT user&gt; -P &lt;MQTT password&gt;
 
-<span style=color:#75715e>#Example</span>
-<span style=color:#75715e>#for i in {1..200}; do mosquitto_pub -t esp8266-in -h &#39;aa47f83e624da4e639f5be6109757355-1944403232.eu-west-1.elb.amazonaws.com&#39; -p 1883 -u admin -P public -m in$i; done</span>
+<span style=color:#75715e># Where :</span>
+
+<span style=color:#75715e># &lt;CITY&gt; is the name of the team city</span>
+<span style=color:#75715e># &lt;MQTT addressName&gt; is the addressName of the ActiveMQArtemisAddress custom resource (CR) you deployed</span>
+<span style=color:#75715e># &lt;port&gt; the port defined in the ActiveMQArtemis CR</span>
+<span style=color:#75715e># &lt;MQTT user&gt; the adminUser defined in the ActiveMQArtemis CR</span>
+<span style=color:#75715e># &lt;MQTT password&gt; the adminPassword defined in the ActiveMQArtemis CR</span>
+
+<span style=color:#75715e># Example :</span>
+
+<span style=color:#75715e># mosquitto_sub -t esp8266-in -h &#39;a32ba3beef5cf47ba907ca93f911bd94-62424187.eu-west-1.elb.amazonaws.com&#39; -p 1883 -u admin -P public</span>
+</code></pre></div><p>On the second terminal, push new messages to your MQTT Broker. On the commands bellow change &lt;VAR> with the correct values. See details and an example in comments.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=color:#75715e># First retrieve the url of the load balancer created when you deployed the MQTT service :</span>
+export AWS_LB_URL <span style=color:#f92672>=</span> <span style=color:#66d9ef>$(</span>oc get svc -n warehouse-&lt;CITY&gt; -ojsonpath<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{.status.loadBalancer.ingress[0].hostname}&#34;</span><span style=color:#66d9ef>)</span>
+
+<span style=color:#66d9ef>for</span> i in <span style=color:#f92672>{</span>1..200<span style=color:#f92672>}</span>; <span style=color:#66d9ef>do</span> mosquitto_pub -t &lt;MQTT addressName&gt; -h <span style=color:#e6db74>${</span>AWS_LB_URL<span style=color:#e6db74>}</span> -p &lt;port&gt; -u &lt;MQTT user&gt; -P &lt;MQTT password&gt; -m in$i; <span style=color:#66d9ef>done</span>
+
+<span style=color:#75715e># Where :</span>
+
+<span style=color:#75715e># &lt;CITY&gt; is the name of the team city</span>
+<span style=color:#75715e># &lt;MQTT addressName&gt; is the addressName of the ActiveMQArtemisAddress custom resource (CR) you deployed</span>
+<span style=color:#75715e># &lt;port&gt; the port defined in the ActiveMQArtemis CR</span>
+<span style=color:#75715e># &lt;MQTT user&gt; the adminUser defined in the ActiveMQArtemis CR</span>
+<span style=color:#75715e># &lt;MQTT password&gt; the adminPassword defined in the ActiveMQArtemis CR</span>
+
+<span style=color:#75715e># Example :</span>
+
+<span style=color:#75715e># for i in {1..200}; do mosquitto_pub -t esp8266-in -h &#39;aa47f83e624da4e639f5be6109757355-1944403232.eu-west-1.elb.amazonaws.com&#39; -p 1883 -u admin -P public -m in$i; done</span>
 </code></pre></div><p>Go back on the first terminal to check if you received messages.</p>
 <p><img src=/images/mqtt-sub-in.png alt="MQTT topi IN"></p>
 <p><img src=/images/mqtt-sub-out.png alt="MQTT topi OUT"></p>
@@ -292,17 +316,17 @@ In the Web Terminal, open two tabs: one to send messages, one to receive message
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1674121153></script>
-<script src=/js/perfect-scrollbar.min.js?1674121153></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1674121153></script>
-<script src=/js/jquery.sticky.js?1674121153></script>
-<script src=/js/featherlight.min.js?1674121153></script>
-<script src=/js/highlight.pack.js?1674121153></script>
+<script src=/js/clipboard.min.js?1674122698></script>
+<script src=/js/perfect-scrollbar.min.js?1674122698></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1674122698></script>
+<script src=/js/jquery.sticky.js?1674122698></script>
+<script src=/js/featherlight.min.js?1674122698></script>
+<script src=/js/highlight.pack.js?1674122698></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1674121153></script>
-<script src=/js/learn.js?1674121153></script>
-<script src=/js/hugo-learn.js?1674121153></script>
-<script src=/mermaid/mermaid.js?1674121153></script>
+<script src=/js/modernizr.custom-3.6.0.js?1674122698></script>
+<script src=/js/learn.js?1674122698></script>
+<script src=/js/hugo-learn.js?1674122698></script>
+<script src=/mermaid/mermaid.js?1674122698></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
