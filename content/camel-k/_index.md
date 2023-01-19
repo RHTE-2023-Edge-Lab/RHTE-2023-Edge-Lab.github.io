@@ -204,7 +204,7 @@ spec:
 1. Connect to one of your kafka pod  
 
 ```sh
-oc rsh -n <project> <cluster-name>-kafka-0
+oc rsh warehouse-kafka-0
 ```
 
 2. Create a client.properties file  
@@ -214,15 +214,21 @@ cat <<EOF>> /tmp/client.properties
 sasl.mechanism=SCRAM-SHA-512
 security.protocol=SASL_PLAINTEXT
 sasl.jaas.config=org.apache.kafka.common.security.scram.ScramLoginModule required \
-   username="<user>" \
-   password="<password>";
+   username="mm2" \
+   password="secret";
 EOF
 ```
 
-3. Connect to your Kafka topic to see your messages 
+3. Connect to your warehouse-in Kafka topic to see your incoming parcels 
 
 ```sh
-./bin/kafka-console-consumer.sh --bootstrap-server <kafka-bootstrap-service>:9092 --topic <your-topic> --consumer.config /tmp/client.properties --from-beginning
+./bin/kafka-console-consumer.sh --bootstrap-server warehouse-kafka-bootstrap:9092 --topic warehouse-in --consumer.config /tmp/client.properties --from-beginning
+```
+
+4. Press CTRL + C and connect now to your warehouse-out Kafka topic to see your outcoming parcels 
+
+```sh
+./bin/kafka-console-consumer.sh --bootstrap-server warehouse-kafka-bootstrap:9092 --topic warehouse-out --consumer.config /tmp/client.properties --from-beginning
 ```
 
 ![Result](/images/result.png)
