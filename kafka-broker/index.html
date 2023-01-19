@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Kafka Broker :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1674100996 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1674100996 rel=stylesheet>
-<link href=/css/hybrid.css?1674100996 rel=stylesheet>
-<link href=/css/featherlight.min.css?1674100996 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1674100996 rel=stylesheet>
-<link href=/css/auto-complete.css?1674100996 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1674100996 rel=stylesheet>
-<link href=/css/theme.css?1674100996 rel=stylesheet>
-<link href=/css/tabs.css?1674100996 rel=stylesheet>
-<link href=/css/hugo-theme.css?1674100996 rel=stylesheet>
-<link href=/css/theme-red.css?1674100996 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1674100996></script>
+<link href=/css/nucleus.css?1674120477 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1674120477 rel=stylesheet>
+<link href=/css/hybrid.css?1674120477 rel=stylesheet>
+<link href=/css/featherlight.min.css?1674120477 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1674120477 rel=stylesheet>
+<link href=/css/auto-complete.css?1674120477 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1674120477 rel=stylesheet>
+<link href=/css/theme.css?1674120477 rel=stylesheet>
+<link href=/css/tabs.css?1674120477 rel=stylesheet>
+<link href=/css/hugo-theme.css?1674120477 rel=stylesheet>
+<link href=/css/theme-red.css?1674120477 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1674120477></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=/kafka-broker/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1674100996></script>
-<script type=text/javascript src=/js/auto-complete.js?1674100996></script>
+<script type=text/javascript src=/js/lunr.min.js?1674120477></script>
+<script type=text/javascript src=/js/auto-complete.js?1674120477></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1674100996></script>
+<script type=text/javascript src=/js/search.js?1674120477></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -226,7 +226,6 @@ active">
 <span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>v1</span>
 <span style=color:#f92672>metadata</span>:
   <span style=color:#f92672>name</span>: <span style=color:#ae81ff>warehouse-cluster-ca</span>
-  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>&lt;your_namespace&gt;</span>
   <span style=color:#f92672>labels</span>:
     <span style=color:#f92672>strimzi.io/cluster</span>: <span style=color:#ae81ff>warehouse</span>
     <span style=color:#f92672>strimzi.io/kind</span>: <span style=color:#ae81ff>Kafka</span>
@@ -239,7 +238,6 @@ active">
 <span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>v1</span>
 <span style=color:#f92672>metadata</span>:
   <span style=color:#f92672>name</span>: <span style=color:#ae81ff>warehouse-cluster-ca-cert</span>
-  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>&lt;your_namespace&gt;</span>
   <span style=color:#f92672>labels</span>:
     <span style=color:#f92672>strimzi.io/cluster</span>: <span style=color:#ae81ff>warehouse</span>
     <span style=color:#f92672>strimzi.io/kind</span>: <span style=color:#ae81ff>Kafka</span>
@@ -255,7 +253,6 @@ active">
 <span style=color:#f92672>kind</span>: <span style=color:#ae81ff>Kafka</span>
 <span style=color:#f92672>metadata</span>:
   <span style=color:#f92672>name</span>: <span style=color:#ae81ff>warehouse</span>
-  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>&lt;your_namespace&gt;</span>
 <span style=color:#f92672>spec</span>:
   <span style=color:#f92672>clusterCa</span>:
     <span style=color:#f92672>generateCertificateAuthority</span>: <span style=color:#66d9ef>false</span>
@@ -296,7 +293,6 @@ active">
 <span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>v1</span>
 <span style=color:#f92672>metadata</span>:
   <span style=color:#f92672>name</span>: <span style=color:#ae81ff>mm2-user</span>
-  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>&lt;your_namespace&gt;</span>
 <span style=color:#f92672>stringData</span>:
   <span style=color:#f92672>password</span>: <span style=color:#ae81ff>s3cr3t</span>
 <span style=color:#f92672>type</span>: <span style=color:#ae81ff>Opaque</span>
@@ -307,7 +303,6 @@ active">
   <span style=color:#f92672>labels</span>:
     <span style=color:#f92672>strimzi.io/cluster</span>: <span style=color:#ae81ff>warehouse</span>
   <span style=color:#f92672>name</span>: <span style=color:#ae81ff>mm2</span>
-  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>&lt;your_namespace&gt;</span>
 <span style=color:#f92672>spec</span>:
   <span style=color:#f92672>authentication</span>:
     <span style=color:#f92672>password</span>:
@@ -321,7 +316,6 @@ active">
 apiVersion: kafka.strimzi.io/v1beta2
 metadata:
   name: warehouse-in
-  namespace: &lt;your_namespace&gt;
   labels:
     strimzi.io/cluster: warehouse
 spec:
@@ -333,7 +327,6 @@ kind: KafkaTopic
 apiVersion: kafka.strimzi.io/v1beta2
 metadata:
   name: warehouse-out
-  namespace: &lt;your_namespace&gt;
   labels:
     strimzi.io/cluster: warehouse
 spec:
@@ -358,17 +351,17 @@ spec:
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1674100996></script>
-<script src=/js/perfect-scrollbar.min.js?1674100996></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1674100996></script>
-<script src=/js/jquery.sticky.js?1674100996></script>
-<script src=/js/featherlight.min.js?1674100996></script>
-<script src=/js/highlight.pack.js?1674100996></script>
+<script src=/js/clipboard.min.js?1674120477></script>
+<script src=/js/perfect-scrollbar.min.js?1674120477></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1674120477></script>
+<script src=/js/jquery.sticky.js?1674120477></script>
+<script src=/js/featherlight.min.js?1674120477></script>
+<script src=/js/highlight.pack.js?1674120477></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1674100996></script>
-<script src=/js/learn.js?1674100996></script>
-<script src=/js/hugo-learn.js?1674100996></script>
-<script src=/mermaid/mermaid.js?1674100996></script>
+<script src=/js/modernizr.custom-3.6.0.js?1674120477></script>
+<script src=/js/learn.js?1674120477></script>
+<script src=/js/hugo-learn.js?1674120477></script>
+<script src=/mermaid/mermaid.js?1674120477></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
