@@ -4,12 +4,6 @@ draft: false
 weight: 3
 ---
 
-Install the OpenShift CLI.
-
-```sh
-curl -sSfL https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-mac.tar.gz | tar -zx -C /usr/local/bin oc kubectl
-```
-
 Install mosquitto (for MQTT tests).
 
 ```sh

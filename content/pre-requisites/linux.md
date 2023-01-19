@@ -6,12 +6,6 @@ weight: 2
 
 ## OpenShift CLI
 
-Install the OpenShift CLI.
-
-```sh
-curl -sSfL https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.11.21/openshift-client-linux.tar.gz | sudo tar -zx -C /usr/local/bin oc kubectl
-```
-
 Install VScode.
 
 ```sh
