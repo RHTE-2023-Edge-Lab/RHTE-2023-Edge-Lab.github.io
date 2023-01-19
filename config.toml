@@ -13,3 +13,4 @@ showVisitedLinks = true
 disableBreadcrumb = false
 disableNextPrev = false
 themeVariant = "red"
+openshift_domain = "cluster-GUID.GUID.sandboxID.opentlc.com"
