@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>MQTT Broker :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1674098117 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1674098117 rel=stylesheet>
-<link href=/css/hybrid.css?1674098117 rel=stylesheet>
-<link href=/css/featherlight.min.css?1674098117 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1674098117 rel=stylesheet>
-<link href=/css/auto-complete.css?1674098117 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1674098117 rel=stylesheet>
-<link href=/css/theme.css?1674098117 rel=stylesheet>
-<link href=/css/tabs.css?1674098117 rel=stylesheet>
-<link href=/css/hugo-theme.css?1674098117 rel=stylesheet>
-<link href=/css/theme-red.css?1674098117 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1674098117></script>
+<link href=/css/nucleus.css?1674100996 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1674100996 rel=stylesheet>
+<link href=/css/hybrid.css?1674100996 rel=stylesheet>
+<link href=/css/featherlight.min.css?1674100996 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1674100996 rel=stylesheet>
+<link href=/css/auto-complete.css?1674100996 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1674100996 rel=stylesheet>
+<link href=/css/theme.css?1674100996 rel=stylesheet>
+<link href=/css/tabs.css?1674100996 rel=stylesheet>
+<link href=/css/hugo-theme.css?1674100996 rel=stylesheet>
+<link href=/css/theme-red.css?1674100996 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1674100996></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=/mqtt-broker/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1674098117></script>
-<script type=text/javascript src=/js/auto-complete.js?1674098117></script>
+<script type=text/javascript src=/js/lunr.min.js?1674100996></script>
+<script type=text/javascript src=/js/auto-complete.js?1674100996></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1674098117></script>
+<script type=text/javascript src=/js/search.js?1674100996></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -130,6 +130,38 @@ active">
 <b>A & B. </b>MQTT Broker
 <i class="fas fa-check read-icon"></i>
 </a>
+<ul>
+<li data-nav-id=/mqtt-broker/mqtt-broker/ title="Install the MQTT Broker (duo A or B)" class=dd-item>
+<a href=/mqtt-broker/mqtt-broker/>
+Install the MQTT Broker (duo A or B)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/mqtt-broker/mqtt-topic-in/ title="Create the incoming MQTT Topic (duo A)" class=dd-item>
+<a href=/mqtt-broker/mqtt-topic-in/>
+Create the incoming MQTT Topic (duo A)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/mqtt-broker/mqtt-topic-out/ title="Create the outgoing MQTT Topic (duo B)" class=dd-item>
+<a href=/mqtt-broker/mqtt-topic-out/>
+Create the outgoing MQTT Topic (duo B)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/mqtt-broker/verification/ title="Final verification (duo A and B)" class=dd-item>
+<a href=/mqtt-broker/verification/>
+Final verification (duo A and B)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/mqtt-broker/test/ title="Test the MQTT broker (duo A and B)" class=dd-item>
+<a href=/mqtt-broker/test/>
+Test the MQTT broker (duo A and B)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
 </li>
 <li data-nav-id=/esp8266/ title="Program the ESP8266" class=dd-item>
 <a href=/esp8266/>
@@ -188,95 +220,8 @@ active">
 </div>
 <div id=chapter>
 <div id=body-inner>
-<h1 id=mqtt-broker-in-each-warehouse>MQTT Broker in each warehouse</h1>
-<h2 id=duo-a--b---deploy-your-mqtt-broker-in-your-dedicated-namespace-corresponding-to-your-warehouse>Duo A & B - Deploy your MQTT Broker in your dedicated namespace corresponding to your warehouse</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>apiVersion: broker.amq.io/v1beta1
-kind: ActiveMQArtemis
-metadata:
-  name: mqtt
-  namespace: &lt;your_namespace&gt;
-spec:
-  acceptors:
-  - connectionsAllowed: <span style=color:#ae81ff>5</span>
-    expose: true
-    name: mqtt
-    port: <span style=color:#ae81ff>1883</span>
-    protocols: mqtt
-    sslEnabled: false
-  adminPassword: public
-  adminUser: admin
-  console:
-    expose: true
-  deploymentPlan:
-    image: placeholder
-    jolokiaAgentEnabled: false
-    journalType: nio
-    managementRBACEnabled: true
-    messageMigration: false
-    persistenceEnabled: false
-    requireLogin: true
-    size: <span style=color:#ae81ff>1</span>
-</code></pre></div><h2 id=duo-a--b---deploy-your-service-in-loadbalancer-type>Duo A & B - Deploy your Service in LoadBalancer type</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>apiVersion: v1
-kind: Service
-metadata:
-  name: mqtt-lb
-  namespace: &lt;your_namespace&gt;
-spec:
-  ports:
-  - name: mqtt-lb
-    port: <span style=color:#ae81ff>1883</span>
-    protocol: TCP
-    targetPort: <span style=color:#ae81ff>1883</span>
-  selector:
-    ActiveMQArtemis: mqtt
-    application: mqtt-app
-  type: LoadBalancer
-</code></pre></div><h2 id=duo-a---deploy-your-amq-broker-address-for-your-mqtt-topic-in-for-entrance-packets>Duo A - Deploy your AMQ Broker Address for your MQTT topic IN for entrance packets</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>kind: ActiveMQArtemisAddress
-apiVersion: broker.amq.io/v1beta1
-metadata:
-  name: esp8266-in
-  namespace: &lt;your_namespace&gt;
-spec:
-  addressName: esp8266-in
-  queueName: myQueue0
-  routingType: anycast
-</code></pre></div><h2 id=duo-b---deploy-your-amq-broker-address-for-your-mqtt-topic-out-for-output-packets>Duo B - Deploy your AMQ Broker Address for your MQTT topic OUT for output packets</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>kind: ActiveMQArtemisAddress
-apiVersion: broker.amq.io/v1beta1
-metadata:
-  name: esp8266-out
-  namespace: &lt;your_namespace&gt;
-spec:
-  addressName: esp8266-out
-  queueName: myQueue0
-  routingType: anycast
-</code></pre></div><h2 id=result>Result</h2>
-<h3 id=mqtt-instances>MQTT Instances</h3>
-<p><img src=/images/mqtt-instances.png alt="MQTT Instances"></p>
-<h3 id=mqtt-pods>MQTT Pods</h3>
-<p><img src=/images/mqtt-pods.png alt="MQTT pods"></p>
-<h3 id=mqtt-services>MQTT Services</h3>
-<p><img src=/images/mqtt-services.png alt="MQTT Instances"></p>
-<h2 id=test-your-mqtt-deployment>Test your MQTT deployment</h2>
-<p>Note: You can use the WebTerminal where the <em>mosquitto_sub</em> CLI is installed. To launch the web terminal, click the command line terminal icon on the upper right of the console.</p>
-<ol>
-<li>Connect to your MQTT Broker to read messages</li>
-</ol>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>mosquitto_sub -t &lt;MQTT addressName&gt; -h <span style=color:#e6db74>&#39;&lt;AWS LB address for MQTT service&gt;&#39;</span> -p &lt;port&gt; -u &lt;MQTT user&gt; -P &lt;MQTT password&gt;
-
-<span style=color:#75715e>#Example</span>
-<span style=color:#75715e>#mosquitto_sub -t esp8266-in -h &#39;a32ba3beef5cf47ba907ca93f911bd94-62424187.eu-west-1.elb.amazonaws.com&#39; -p 1883 -u admin -P public</span>
-</code></pre></div><ol start=2>
-<li>Push new messages to your MQTT Broker</li>
-</ol>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=color:#66d9ef>for</span> i in <span style=color:#f92672>{</span>1..200<span style=color:#f92672>}</span>; <span style=color:#66d9ef>do</span> mosquitto_pub -t &lt;MQTT addressName&gt; -h <span style=color:#e6db74>&#39;&lt;AWS LB address for MQTT service&gt;&#39;</span> -p &lt;port&gt; -u &lt;MQTT user&gt; -P &lt;MQTT password&gt; -m in$i; <span style=color:#66d9ef>done</span>
-
-<span style=color:#75715e>#Example</span>
-<span style=color:#75715e>#for i in {1..200}; do mosquitto_pub -t esp8266-in -h &#39;aa47f83e624da4e639f5be6109757355-1944403232.eu-west-1.elb.amazonaws.com&#39; -p 1883 -u admin -P public -m in$i; done</span>
-</code></pre></div><p><img src=/images/mqtt-sub-in.png alt="MQTT topi IN"></p>
-<p><img src=/images/mqtt-sub-out.png alt="MQTT topi OUT"></p>
+<h1 id=mqtt-broker>MQTT Broker</h1>
+<p>In this section, Duo <strong>A</strong> and <strong>B</strong> will install and configure a MQTT broker.</p>
 <footer class=footline>
 </footer>
 </div>
@@ -284,23 +229,23 @@ spec:
 </div>
 <div id=navigation>
 <a class="nav nav-prev" href=/pre-requisites/windows/ title=Windows> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/esp8266/ title="Program the ESP8266" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-next" href=/mqtt-broker/mqtt-broker/ title="Install the MQTT Broker (duo A or B)" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1674098117></script>
-<script src=/js/perfect-scrollbar.min.js?1674098117></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1674098117></script>
-<script src=/js/jquery.sticky.js?1674098117></script>
-<script src=/js/featherlight.min.js?1674098117></script>
-<script src=/js/highlight.pack.js?1674098117></script>
+<script src=/js/clipboard.min.js?1674100996></script>
+<script src=/js/perfect-scrollbar.min.js?1674100996></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1674100996></script>
+<script src=/js/jquery.sticky.js?1674100996></script>
+<script src=/js/featherlight.min.js?1674100996></script>
+<script src=/js/highlight.pack.js?1674100996></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1674098117></script>
-<script src=/js/learn.js?1674098117></script>
-<script src=/js/hugo-learn.js?1674098117></script>
-<script src=/mermaid/mermaid.js?1674098117></script>
+<script src=/js/modernizr.custom-3.6.0.js?1674100996></script>
+<script src=/js/learn.js?1674100996></script>
+<script src=/js/hugo-learn.js?1674100996></script>
+<script src=/mermaid/mermaid.js?1674100996></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

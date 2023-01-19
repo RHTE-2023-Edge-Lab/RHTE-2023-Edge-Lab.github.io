@@ -5,7 +5,7 @@
 <meta name=generator content="Hugo 0.91.2">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
-<title>MacOS :: RHTE 2023 Edge Lab</title>
+<title>Final verification (duo A and B) :: RHTE 2023 Edge Lab</title>
 <link href=/css/nucleus.css?1674100996 rel=stylesheet>
 <link href=/css/fontawesome-all.min.css?1674100996 rel=stylesheet>
 <link href=/css/hybrid.css?1674100996 rel=stylesheet>
@@ -20,7 +20,7 @@
 <script src=/js/jquery-3.3.1.min.js?1674100996></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
-<body data-url=/pre-requisites/macos/>
+<body data-url=/mqtt-broker/verification/>
 <nav id=sidebar class=showVisitedLinks>
 <div id=header-wrapper>
 <div id=header>
@@ -97,8 +97,7 @@ Pair up!
 </li>
 </ul>
 </li>
-<li data-nav-id=/pre-requisites/ title="Pre Requisites" class="dd-item
-parent">
+<li data-nav-id=/pre-requisites/ title="Pre Requisites" class=dd-item>
 <a href=/pre-requisites/>
 <b>A & B. </b>Pre Requisites
 <i class="fas fa-check read-icon"></i>
@@ -110,7 +109,7 @@ Linux
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/pre-requisites/macos/ title=MacOS class="dd-item active">
+<li data-nav-id=/pre-requisites/macos/ title=MacOS class=dd-item>
 <a href=/pre-requisites/macos/>
 MacOS
 <i class="fas fa-check read-icon"></i>
@@ -124,7 +123,8 @@ Windows
 </li>
 </ul>
 </li>
-<li data-nav-id=/mqtt-broker/ title="MQTT Broker" class=dd-item>
+<li data-nav-id=/mqtt-broker/ title="MQTT Broker" class="dd-item
+parent">
 <a href=/mqtt-broker/>
 <b>A & B. </b>MQTT Broker
 <i class="fas fa-check read-icon"></i>
@@ -148,7 +148,7 @@ Create the outgoing MQTT Topic (duo B)
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/mqtt-broker/verification/ title="Final verification (duo A and B)" class=dd-item>
+<li data-nav-id=/mqtt-broker/verification/ title="Final verification (duo A and B)" class="dd-item active">
 <a href=/mqtt-broker/verification/>
 Final verification (duo A and B)
 <i class="fas fa-check read-icon"></i>
@@ -211,12 +211,18 @@ Test the MQTT broker (duo A and B)
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=/>Welcome</a> > <a href=/pre-requisites/>Pre Requisites</a> > MacOS
+<a href=/>Welcome</a> > <a href=/mqtt-broker/>MQTT Broker</a> > Final verification (duo A and B)
 </span>
 </div>
 <div class=progress>
 <div class=wrapper>
-<nav id=TableOfContents></nav>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#operator-crd>Operator CRD</a></li>
+<li><a href=#pods>Pods</a></li>
+<li><a href=#services>Services</a></li>
+</ul>
+</nav>
 </div>
 </div>
 </div>
@@ -225,19 +231,29 @@ Test the MQTT broker (duo A and B)
 </div>
 <div id=body-inner>
 <h1>
-MacOS
+Final verification (duo A and B)
 </h1>
-<p>Go to the VScode <a href=https://code.visualstudio.com/download>download page</a>, download the MacOS package and install it.</p>
-<p>Open VScode and install the <a href=https://docs.platformio.org/en/latest/integration/ide/>PlatformIO IDE plugin</a>.</p>
-<p><img src=/images/install_platformio_1.png alt=Install1></p>
-<p><img src=/images/install_platformio_2.png alt=Install2></p>
+<h2 id=operator-crd>Operator CRD</h2>
+<ul>
+<li>Navigate in the OpenShift Administrator console, <strong>Operators</strong> > <strong>Installed Operators</strong>.</li>
+<li>Click on the <strong>AMQ Broker for RHEL 8.x</strong> operator.</li>
+<li>Open the <strong>All instances</strong> tab.</li>
+<li>Make sure you have the following objects:</li>
+</ul>
+<p><img src=/images/mqtt-instances.png alt="MQTT Instances"></p>
+<h2 id=pods>Pods</h2>
+<p>Go to <strong>Workload</strong> > <strong>Pods</strong> and make sure the pod <strong>mqtt-ss-0</strong> is present.</p>
+<p><img src=/images/mqtt-pods.png alt="MQTT pods"></p>
+<h2 id=services>Services</h2>
+<p>Go to <strong>Networking</strong> > <strong>Services</strong> and make sure a service named <strong>mqtt-lb</strong> is present.</p>
+<p><img src=/images/mqtt-services.png alt="MQTT Instances"></p>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=/pre-requisites/linux/ title=Linux> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/pre-requisites/windows/ title=Windows style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=/mqtt-broker/mqtt-topic-out/ title="Create the outgoing MQTT Topic (duo B)"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/mqtt-broker/test/ title="Test the MQTT broker (duo A and B)" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>

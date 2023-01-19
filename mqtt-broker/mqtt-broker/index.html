@@ -5,7 +5,7 @@
 <meta name=generator content="Hugo 0.91.2">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
-<title>MacOS :: RHTE 2023 Edge Lab</title>
+<title>Install the MQTT Broker (duo A or B) :: RHTE 2023 Edge Lab</title>
 <link href=/css/nucleus.css?1674100996 rel=stylesheet>
 <link href=/css/fontawesome-all.min.css?1674100996 rel=stylesheet>
 <link href=/css/hybrid.css?1674100996 rel=stylesheet>
@@ -20,7 +20,7 @@
 <script src=/js/jquery-3.3.1.min.js?1674100996></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
-<body data-url=/pre-requisites/macos/>
+<body data-url=/mqtt-broker/mqtt-broker/>
 <nav id=sidebar class=showVisitedLinks>
 <div id=header-wrapper>
 <div id=header>
@@ -97,8 +97,7 @@ Pair up!
 </li>
 </ul>
 </li>
-<li data-nav-id=/pre-requisites/ title="Pre Requisites" class="dd-item
-parent">
+<li data-nav-id=/pre-requisites/ title="Pre Requisites" class=dd-item>
 <a href=/pre-requisites/>
 <b>A & B. </b>Pre Requisites
 <i class="fas fa-check read-icon"></i>
@@ -110,7 +109,7 @@ Linux
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/pre-requisites/macos/ title=MacOS class="dd-item active">
+<li data-nav-id=/pre-requisites/macos/ title=MacOS class=dd-item>
 <a href=/pre-requisites/macos/>
 MacOS
 <i class="fas fa-check read-icon"></i>
@@ -124,13 +123,14 @@ Windows
 </li>
 </ul>
 </li>
-<li data-nav-id=/mqtt-broker/ title="MQTT Broker" class=dd-item>
+<li data-nav-id=/mqtt-broker/ title="MQTT Broker" class="dd-item
+parent">
 <a href=/mqtt-broker/>
 <b>A & B. </b>MQTT Broker
 <i class="fas fa-check read-icon"></i>
 </a>
 <ul>
-<li data-nav-id=/mqtt-broker/mqtt-broker/ title="Install the MQTT Broker (duo A or B)" class=dd-item>
+<li data-nav-id=/mqtt-broker/mqtt-broker/ title="Install the MQTT Broker (duo A or B)" class="dd-item active">
 <a href=/mqtt-broker/mqtt-broker/>
 Install the MQTT Broker (duo A or B)
 <i class="fas fa-check read-icon"></i>
@@ -211,7 +211,7 @@ Test the MQTT broker (duo A and B)
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=/>Welcome</a> > <a href=/pre-requisites/>Pre Requisites</a> > MacOS
+<a href=/>Welcome</a> > <a href=/mqtt-broker/>MQTT Broker</a> > Install the MQTT Broker (duo A or B)
 </span>
 </div>
 <div class=progress>
@@ -225,19 +225,61 @@ Test the MQTT broker (duo A and B)
 </div>
 <div id=body-inner>
 <h1>
-MacOS
+Install the MQTT Broker (duo A or B)
 </h1>
-<p>Go to the VScode <a href=https://code.visualstudio.com/download>download page</a>, download the MacOS package and install it.</p>
-<p>Open VScode and install the <a href=https://docs.platformio.org/en/latest/integration/ide/>PlatformIO IDE plugin</a>.</p>
-<p><img src=/images/install_platformio_1.png alt=Install1></p>
-<p><img src=/images/install_platformio_2.png alt=Install2></p>
+<p>Deploy an MQTT broker in your namespace, by deploying this Custom Resource Definition.</p>
+<p>To do so, connect to the OpenShift console, select the namespace of your team and click the <strong>+</strong> button in the top-right corner.
+Then, copy and paste the following content.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>broker.amq.io/v1beta1</span>
+<span style=color:#f92672>kind</span>: <span style=color:#ae81ff>ActiveMQArtemis</span>
+<span style=color:#f92672>metadata</span>:
+  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>mqtt</span>
+  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>&lt;your_namespace&gt;</span>
+<span style=color:#f92672>spec</span>:
+  <span style=color:#f92672>acceptors</span>:
+  - <span style=color:#f92672>connectionsAllowed</span>: <span style=color:#ae81ff>5</span>
+    <span style=color:#f92672>expose</span>: <span style=color:#66d9ef>true</span>
+    <span style=color:#f92672>name</span>: <span style=color:#ae81ff>mqtt</span>
+    <span style=color:#f92672>port</span>: <span style=color:#ae81ff>1883</span>
+    <span style=color:#f92672>protocols</span>: <span style=color:#ae81ff>mqtt</span>
+    <span style=color:#f92672>sslEnabled</span>: <span style=color:#66d9ef>false</span>
+  <span style=color:#f92672>adminPassword</span>: <span style=color:#ae81ff>public</span>
+  <span style=color:#f92672>adminUser</span>: <span style=color:#ae81ff>admin</span>
+  <span style=color:#f92672>console</span>:
+    <span style=color:#f92672>expose</span>: <span style=color:#66d9ef>true</span>
+  <span style=color:#f92672>deploymentPlan</span>:
+    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>placeholder</span>
+    <span style=color:#f92672>jolokiaAgentEnabled</span>: <span style=color:#66d9ef>false</span>
+    <span style=color:#f92672>journalType</span>: <span style=color:#ae81ff>nio</span>
+    <span style=color:#f92672>managementRBACEnabled</span>: <span style=color:#66d9ef>true</span>
+    <span style=color:#f92672>messageMigration</span>: <span style=color:#66d9ef>false</span>
+    <span style=color:#f92672>persistenceEnabled</span>: <span style=color:#66d9ef>false</span>
+    <span style=color:#f92672>requireLogin</span>: <span style=color:#66d9ef>true</span>
+    <span style=color:#f92672>size</span>: <span style=color:#ae81ff>1</span>
+</code></pre></div><p>Now, create a new Kubernetes service to expose your MQTT broker to the internet.
+You can use the OpenShift console as used in the previous step.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>v1</span>
+<span style=color:#f92672>kind</span>: <span style=color:#ae81ff>Service</span>
+<span style=color:#f92672>metadata</span>:
+  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>mqtt-lb</span>
+<span style=color:#f92672>spec</span>:
+  <span style=color:#f92672>ports</span>:
+  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>mqtt-lb</span>
+    <span style=color:#f92672>port</span>: <span style=color:#ae81ff>1883</span>
+    <span style=color:#f92672>protocol</span>: <span style=color:#ae81ff>TCP</span>
+    <span style=color:#f92672>targetPort</span>: <span style=color:#ae81ff>1883</span>
+  <span style=color:#f92672>selector</span>:
+    <span style=color:#f92672>ActiveMQArtemis</span>: <span style=color:#ae81ff>mqtt</span>
+    <span style=color:#f92672>application</span>: <span style=color:#ae81ff>mqtt-app</span>
+  <span style=color:#f92672>type</span>: <span style=color:#ae81ff>LoadBalancer</span>
+</code></pre></div>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=/pre-requisites/linux/ title=Linux> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/pre-requisites/windows/ title=Windows style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=/mqtt-broker/ title="MQTT Broker"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/mqtt-broker/mqtt-topic-in/ title="Create the incoming MQTT Topic (duo A)" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>

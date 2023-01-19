@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Linux :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1674098117 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1674098117 rel=stylesheet>
-<link href=/css/hybrid.css?1674098117 rel=stylesheet>
-<link href=/css/featherlight.min.css?1674098117 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1674098117 rel=stylesheet>
-<link href=/css/auto-complete.css?1674098117 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1674098117 rel=stylesheet>
-<link href=/css/theme.css?1674098117 rel=stylesheet>
-<link href=/css/tabs.css?1674098117 rel=stylesheet>
-<link href=/css/hugo-theme.css?1674098117 rel=stylesheet>
-<link href=/css/theme-red.css?1674098117 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1674098117></script>
+<link href=/css/nucleus.css?1674100996 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1674100996 rel=stylesheet>
+<link href=/css/hybrid.css?1674100996 rel=stylesheet>
+<link href=/css/featherlight.min.css?1674100996 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1674100996 rel=stylesheet>
+<link href=/css/auto-complete.css?1674100996 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1674100996 rel=stylesheet>
+<link href=/css/theme.css?1674100996 rel=stylesheet>
+<link href=/css/tabs.css?1674100996 rel=stylesheet>
+<link href=/css/hugo-theme.css?1674100996 rel=stylesheet>
+<link href=/css/theme-red.css?1674100996 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1674100996></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=/pre-requisites/linux/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1674098117></script>
-<script type=text/javascript src=/js/auto-complete.js?1674098117></script>
+<script type=text/javascript src=/js/lunr.min.js?1674100996></script>
+<script type=text/javascript src=/js/auto-complete.js?1674100996></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1674098117></script>
+<script type=text/javascript src=/js/search.js?1674100996></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -129,6 +129,38 @@ Windows
 <b>A & B. </b>MQTT Broker
 <i class="fas fa-check read-icon"></i>
 </a>
+<ul>
+<li data-nav-id=/mqtt-broker/mqtt-broker/ title="Install the MQTT Broker (duo A or B)" class=dd-item>
+<a href=/mqtt-broker/mqtt-broker/>
+Install the MQTT Broker (duo A or B)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/mqtt-broker/mqtt-topic-in/ title="Create the incoming MQTT Topic (duo A)" class=dd-item>
+<a href=/mqtt-broker/mqtt-topic-in/>
+Create the incoming MQTT Topic (duo A)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/mqtt-broker/mqtt-topic-out/ title="Create the outgoing MQTT Topic (duo B)" class=dd-item>
+<a href=/mqtt-broker/mqtt-topic-out/>
+Create the outgoing MQTT Topic (duo B)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/mqtt-broker/verification/ title="Final verification (duo A and B)" class=dd-item>
+<a href=/mqtt-broker/verification/>
+Final verification (duo A and B)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/mqtt-broker/test/ title="Test the MQTT broker (duo A and B)" class=dd-item>
+<a href=/mqtt-broker/test/>
+Test the MQTT broker (duo A and B)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
 </li>
 <li data-nav-id=/esp8266/ title="Program the ESP8266" class=dd-item>
 <a href=/esp8266/>
@@ -220,17 +252,17 @@ sudo dnf install code
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1674098117></script>
-<script src=/js/perfect-scrollbar.min.js?1674098117></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1674098117></script>
-<script src=/js/jquery.sticky.js?1674098117></script>
-<script src=/js/featherlight.min.js?1674098117></script>
-<script src=/js/highlight.pack.js?1674098117></script>
+<script src=/js/clipboard.min.js?1674100996></script>
+<script src=/js/perfect-scrollbar.min.js?1674100996></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1674100996></script>
+<script src=/js/jquery.sticky.js?1674100996></script>
+<script src=/js/featherlight.min.js?1674100996></script>
+<script src=/js/highlight.pack.js?1674100996></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1674098117></script>
-<script src=/js/learn.js?1674098117></script>
-<script src=/js/hugo-learn.js?1674098117></script>
-<script src=/mermaid/mermaid.js?1674098117></script>
+<script src=/js/modernizr.custom-3.6.0.js?1674100996></script>
+<script src=/js/learn.js?1674100996></script>
+<script src=/js/hugo-learn.js?1674100996></script>
+<script src=/mermaid/mermaid.js?1674100996></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
