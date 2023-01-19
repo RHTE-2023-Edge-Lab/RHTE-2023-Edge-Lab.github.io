@@ -14,3 +14,5 @@ With your team members, pair up and assign roles!
 At the end, you should have three pairs (or duos).
 
 **Tip**: On your name tent, write your duo's name (**A**, **B** or **C**)!
+
+Now, pick up the tasks assigned to your duo in the left menu!
