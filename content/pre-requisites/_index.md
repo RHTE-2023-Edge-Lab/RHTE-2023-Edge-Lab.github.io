@@ -1,9 +1,8 @@
 +++
 title = "Pre Requisites"
-date = 2022-12-13T15:22:04+01:00
-weight = 2
+weight = 3
 chapter = true
-pre = "<b>2. </b>"
+pre = "<b>A & B. </b>"
 +++
 
 ### Chapter 2
