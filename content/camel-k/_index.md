@@ -210,12 +210,12 @@ oc rsh warehouse-kafka-0
 2. Create a client.properties file  
 
 ```sh
-cat <<EOF>> /tmp/client.properties
+cat <<EOF> /tmp/client.properties
 sasl.mechanism=SCRAM-SHA-512
 security.protocol=SASL_PLAINTEXT
 sasl.jaas.config=org.apache.kafka.common.security.scram.ScramLoginModule required \
    username="mm2" \
-   password="secret";
+   password="s3cr3t";
 EOF
 ```
 

@@ -11,7 +11,7 @@ On the first terminal, connect to your MQTT Broker to read messages.
 
 ```sh
 # Get the load balancer URL generated from the service created
-export LOAD_BALANCER_URL = $(oc get svc mqtt-lb -ojsonpath="{.status.loadBalancer.ingress[0].hostname}")
+LOAD_BALANCER_URL=$(oc get svc mqtt-lb -ojsonpath="{.status.loadBalancer.ingress[0].hostname}")
 # Subscribe to MQTT topic
 mosquitto_sub -t esp8266-in -h ${LOAD_BALANCER_URL} -p 1883 -u admin -P public
 ```
@@ -20,7 +20,7 @@ On the second terminal, push new messages to your MQTT Broker.
 
 ```sh
 # Get the load balancer URL generated from the service created
-export LOAD_BALANCER_URL = $(oc get svc mqtt-lb -ojsonpath="{.status.loadBalancer.ingress[0].hostname}")
+LOAD_BALANCER_URL=$(oc get svc mqtt-lb -ojsonpath="{.status.loadBalancer.ingress[0].hostname}")
 # Subscribe to MQTT topic
 for i in {1..200}; do mosquitto_pub -t esp8266-in -h ${LOAD_BALANCER_URL} -p 1883 -u admin -P public -m in$i; done
 ```
