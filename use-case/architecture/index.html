@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Architecture :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1674469196 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1674469196 rel=stylesheet>
-<link href=/css/hybrid.css?1674469196 rel=stylesheet>
-<link href=/css/featherlight.min.css?1674469196 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1674469196 rel=stylesheet>
-<link href=/css/auto-complete.css?1674469196 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1674469196 rel=stylesheet>
-<link href=/css/theme.css?1674469196 rel=stylesheet>
-<link href=/css/tabs.css?1674469196 rel=stylesheet>
-<link href=/css/hugo-theme.css?1674469196 rel=stylesheet>
-<link href=/css/theme-red.css?1674469196 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1674469196></script>
+<link href=/css/nucleus.css?1674474538 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1674474538 rel=stylesheet>
+<link href=/css/hybrid.css?1674474538 rel=stylesheet>
+<link href=/css/featherlight.min.css?1674474538 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1674474538 rel=stylesheet>
+<link href=/css/auto-complete.css?1674474538 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1674474538 rel=stylesheet>
+<link href=/css/theme.css?1674474538 rel=stylesheet>
+<link href=/css/tabs.css?1674474538 rel=stylesheet>
+<link href=/css/hugo-theme.css?1674474538 rel=stylesheet>
+<link href=/css/theme-red.css?1674474538 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1674474538></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=/use-case/architecture/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1674469196></script>
-<script type=text/javascript src=/js/auto-complete.js?1674469196></script>
+<script type=text/javascript src=/js/lunr.min.js?1674474538></script>
+<script type=text/javascript src=/js/auto-complete.js?1674474538></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1674469196></script>
+<script type=text/javascript src=/js/search.js?1674474538></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -322,7 +322,6 @@ Test the Camel K Integrations (duo C)
 <ul>
 <li><a href=#data-flow>Data flow</a></li>
 <li><a href=#red-hat-products>Red Hat Products</a></li>
-<li><a href=#schema>Schema</a></li>
 </ul>
 </nav>
 </div>
@@ -336,6 +335,7 @@ Test the Camel K Integrations (duo C)
 Architecture
 </h1>
 <h2 id=data-flow>Data flow</h2>
+<p><img src=/images/detailled-schema.svg alt=use_case></p>
 <p><strong>1.</strong> The ESP8266 scans incoming and outgoing parcels using an RFID scanner. One ESP8266 is dedicated for incoming parcels and one ESP8266 is dedicated for outgoing parcels.<br>
 <strong>2.</strong> The ESP8266 dedicated to incoming parcels writes the RFID tag <strong>identifier</strong> in the <strong>mqtt-in</strong> MQTT topic. The ESP8266 dedicated to outgoing parcels writes the RFID tag <strong>identifier</strong> in the <strong>mqtt-out</strong> MQTT topic.<br>
 <strong>3.</strong> The Camel K operator transforms and enriches MQTT messages stored in MQTT topics and injects those enriched data in the <strong>kafka-in</strong> and <strong>kafka-out</strong> Kafka topics.<br>
@@ -357,8 +357,6 @@ Architecture
 <li>The headquarter could be deployed on a Managed Services offering of OpenShift (<strong>ROSA</strong> or <strong>ARO</strong>)</li>
 <li>The warehouses could be deployed on a <strong>Single Node OpenShift</strong> or <strong>Compact Cluster</strong></li>
 </ul>
-<h2 id=schema>Schema</h2>
-<p><img src=/images/detailled-schema.svg alt=use_case></p>
 <footer class=footline>
 </footer>
 </div>
@@ -371,17 +369,17 @@ Architecture
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1674469196></script>
-<script src=/js/perfect-scrollbar.min.js?1674469196></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1674469196></script>
-<script src=/js/jquery.sticky.js?1674469196></script>
-<script src=/js/featherlight.min.js?1674469196></script>
-<script src=/js/highlight.pack.js?1674469196></script>
+<script src=/js/clipboard.min.js?1674474538></script>
+<script src=/js/perfect-scrollbar.min.js?1674474538></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1674474538></script>
+<script src=/js/jquery.sticky.js?1674474538></script>
+<script src=/js/featherlight.min.js?1674474538></script>
+<script src=/js/highlight.pack.js?1674474538></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1674469196></script>
-<script src=/js/learn.js?1674469196></script>
-<script src=/js/hugo-learn.js?1674469196></script>
-<script src=/mermaid/mermaid.js?1674469196></script>
+<script src=/js/modernizr.custom-3.6.0.js?1674474538></script>
+<script src=/js/learn.js?1674474538></script>
+<script src=/js/hugo-learn.js?1674474538></script>
+<script src=/mermaid/mermaid.js?1674474538></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
