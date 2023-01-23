@@ -1,0 +1,463 @@
+<!doctype html><html lang=en class="js csstransforms3d">
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=generator content="Hugo 0.91.2">
+<meta name=description content>
+<link rel=icon href=/images/favicon.png type=image/png>
+<title>Create needed Kamelet to able Camel K to connect your Kafka (duo C) :: RHTE 2023 Edge Lab</title>
+<link href=/css/nucleus.css?1674468874 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1674468874 rel=stylesheet>
+<link href=/css/hybrid.css?1674468874 rel=stylesheet>
+<link href=/css/featherlight.min.css?1674468874 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1674468874 rel=stylesheet>
+<link href=/css/auto-complete.css?1674468874 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1674468874 rel=stylesheet>
+<link href=/css/theme.css?1674468874 rel=stylesheet>
+<link href=/css/tabs.css?1674468874 rel=stylesheet>
+<link href=/css/hugo-theme.css?1674468874 rel=stylesheet>
+<link href=/css/theme-red.css?1674468874 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1674468874></script>
+<style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
+</head>
+<body data-url=/camel-k/kamelet/>
+<nav id=sidebar class=showVisitedLinks>
+<div id=header-wrapper>
+<div id=header>
+<img src=/images/logo.svg>
+</div>
+<div class=searchbox>
+<label for=search-by><i class="fas fa-search"></i></label>
+<input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span>
+</div>
+<script type=text/javascript src=/js/lunr.min.js?1674468874></script>
+<script type=text/javascript src=/js/auto-complete.js?1674468874></script>
+<script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
+<script type=text/javascript src=/js/search.js?1674468874></script>
+</div>
+<section id=homelinks>
+<ul>
+<li>
+<a class=padding href=/><i class="fas fa-home"></i> Home</a>
+</li>
+</ul>
+</section>
+<div class=highlightable>
+<ul class=topics>
+<li data-nav-id=/use-case/ title="Use Case" class=dd-item>
+<a href=/use-case/>
+<b>1. </b>Use Case
+<i class="fas fa-check read-icon"></i>
+</a>
+<ul>
+<li data-nav-id=/use-case/goal/ title=Goal class=dd-item>
+<a href=/use-case/goal/>
+Goal
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/use-case/architecture/ title=Architecture class=dd-item>
+<a href=/use-case/architecture/>
+Architecture
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/use-case/organization/ title=Organization class=dd-item>
+<a href=/use-case/organization/>
+Organization
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/use-case/openshift/ title=OpenShift class=dd-item>
+<a href=/use-case/openshift/>
+OpenShift
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/preparation/ title=Preparation class=dd-item>
+<a href=/preparation/>
+<b>2. </b>Preparation
+<i class="fas fa-check read-icon"></i>
+</a>
+<ul>
+<li data-nav-id=/preparation/presentation/ title="Present yourself!" class=dd-item>
+<a href=/preparation/presentation/>
+Present yourself!
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/preparation/duo/ title="Pair up!" class=dd-item>
+<a href=/preparation/duo/>
+Pair up!
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/pre-requisites/ title="Pre Requisites" class=dd-item>
+<a href=/pre-requisites/>
+<b>A & B. </b>Pre Requisites
+<i class="fas fa-check read-icon"></i>
+</a>
+<ul>
+<li data-nav-id=/pre-requisites/linux/ title=Linux class=dd-item>
+<a href=/pre-requisites/linux/>
+Linux
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/pre-requisites/macos/ title=MacOS class=dd-item>
+<a href=/pre-requisites/macos/>
+MacOS
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/pre-requisites/windows/ title=Windows class=dd-item>
+<a href=/pre-requisites/windows/>
+Windows
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/mqtt-broker/ title="MQTT Broker" class=dd-item>
+<a href=/mqtt-broker/>
+<b>A & B. </b>MQTT Broker
+<i class="fas fa-check read-icon"></i>
+</a>
+<ul>
+<li data-nav-id=/mqtt-broker/mqtt-broker/ title="Install the MQTT Broker (duo A or B)" class=dd-item>
+<a href=/mqtt-broker/mqtt-broker/>
+Install the MQTT Broker (duo A or B)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/mqtt-broker/mqtt-topic-in/ title="Create the incoming MQTT Topic (duo A)" class=dd-item>
+<a href=/mqtt-broker/mqtt-topic-in/>
+Create the incoming MQTT Topic (duo A)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/mqtt-broker/mqtt-topic-out/ title="Create the outgoing MQTT Topic (duo B)" class=dd-item>
+<a href=/mqtt-broker/mqtt-topic-out/>
+Create the outgoing MQTT Topic (duo B)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/mqtt-broker/verification/ title="Final verification (duo A and B)" class=dd-item>
+<a href=/mqtt-broker/verification/>
+Final verification (duo A and B)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/mqtt-broker/test/ title="Test the MQTT broker (duo A and B)" class=dd-item>
+<a href=/mqtt-broker/test/>
+Test the MQTT broker (duo A and B)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/esp8266/ title="Program the ESP8266" class=dd-item>
+<a href=/esp8266/>
+<b>A & B. </b>Program the ESP8266
+<i class="fas fa-check read-icon"></i>
+</a>
+<ul>
+<li data-nav-id=/esp8266/fix-permissions/ title="Fix permissions on /dev/ttyUSB0 (Linux only)" class=dd-item>
+<a href=/esp8266/fix-permissions/>
+Fix permissions on /dev/ttyUSB0 (Linux only)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/esp8266/connect-esp8266/ title="Connect your ESP8266" class=dd-item>
+<a href=/esp8266/connect-esp8266/>
+Connect your ESP8266
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/esp8266/create-project/ title="Create a PlatformIO project" class=dd-item>
+<a href=/esp8266/create-project/>
+Create a PlatformIO project
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/esp8266/libraries/ title="Add required libraries" class=dd-item>
+<a href=/esp8266/libraries/>
+Add required libraries
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/esp8266/development/ title="Develop the ESP8266 firmware" class=dd-item>
+<a href=/esp8266/development/>
+Develop the ESP8266 firmware
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/esp8266/test/ title="Test the ESP8266 firmware" class=dd-item>
+<a href=/esp8266/test/>
+Test the ESP8266 firmware
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/kafka-broker/ title="Kafka Broker" class=dd-item>
+<a href=/kafka-broker/>
+<b>C. </b>Kafka Broker
+<i class="fas fa-check read-icon"></i>
+</a>
+<ul>
+<li data-nav-id=/kafka-broker/kafka-cluster/ title="Install the Kafka Broker (duo C)" class=dd-item>
+<a href=/kafka-broker/kafka-cluster/>
+Install the Kafka Broker (duo C)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/kafka-broker/kafka-user/ title="Create a Kafka User (duo C)" class=dd-item>
+<a href=/kafka-broker/kafka-user/>
+Create a Kafka User (duo C)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/kafka-broker/kafka-topics/ title="Create the incoming and outcoming Kafka Topics (duo C)" class=dd-item>
+<a href=/kafka-broker/kafka-topics/>
+Create the incoming and outcoming Kafka Topics (duo C)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/kafka-broker/kafka-test/ title="Check the Kafka broker deployment (duo C)" class=dd-item>
+<a href=/kafka-broker/kafka-test/>
+Check the Kafka broker deployment (duo C)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/camel-k/ title="Camel-K Integration" class="dd-item
+parent">
+<a href=/camel-k/>
+<b>C. </b>Camel-K Integration
+<i class="fas fa-check read-icon"></i>
+</a>
+<ul>
+<li data-nav-id=/camel-k/camel-user/ title="Install a Kafka User for Camel K Integration (duo C)" class=dd-item>
+<a href=/camel-k/camel-user/>
+Install a Kafka User for Camel K Integration (duo C)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/camel-k/kamelet/ title="Create needed Kamelet to able Camel K to connect your Kafka (duo C)" class="dd-item active">
+<a href=/camel-k/kamelet/>
+Create needed Kamelet to able Camel K to connect your Kafka (duo C)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/camel-k/integration-in/ title="Create Camel K integration to permit MQTT/Kafka transformation and enrich data for incoming parcels (duo C)" class=dd-item>
+<a href=/camel-k/integration-in/>
+Create Camel K integration to permit MQTT/Kafka transformation and enrich data for incoming parcels (duo C)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/camel-k/integration-out/ title="Create Camel K integration to permit MQTT/Kafka transformation and enrich data for outcoming parcels (duo C)" class=dd-item>
+<a href=/camel-k/integration-out/>
+Create Camel K integration to permit MQTT/Kafka transformation and enrich data for outcoming parcels (duo C)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/camel-k/verification/ title="Final verification (duo C)" class=dd-item>
+<a href=/camel-k/verification/>
+Final verification (duo C)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/camel-k/test/ title="Test the Camel K Integrations (duo C)" class=dd-item>
+<a href=/camel-k/test/>
+Test the Camel K Integrations (duo C)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/testing/ title=Testing class=dd-item>
+<a href=/testing/>
+<b>A,B & C. </b>Testing
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
+<section id=prefooter>
+<hr>
+<ul>
+<li><a class=padding href=# data-clear-history-toggle><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+</ul>
+</section>
+<section id=footer>
+<p>Built with <a href=https://github.com/matcornic/hugo-theme-learn><i class="fas fa-heart"></i></a> from <a href=https://getgrav.org>Grav</a> and <a href=https://gohugo.io/>Hugo</a></p>
+</section>
+</div>
+</nav>
+<section id=body>
+<div id=overlay></div>
+<div class="padding highlightable">
+<div>
+<div id=top-bar>
+<div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb>
+<span id=sidebar-toggle-span>
+<a href=# id=sidebar-toggle data-sidebar-toggle>
+<i class="fas fa-bars"></i>
+</a>
+</span>
+<span id=toc-menu><i class="fas fa-list-alt"></i></span>
+<span class=links>
+<a href=/>Welcome</a> > <a href=/camel-k/>Camel-K Integration</a> > Create needed Kamelet to able Camel K to connect your Kafka (duo C)
+</span>
+</div>
+<div class=progress>
+<div class=wrapper>
+<nav id=TableOfContents></nav>
+</div>
+</div>
+</div>
+</div>
+<div id=head-tags>
+</div>
+<div id=body-inner>
+<h1>
+Create needed Kamelet to able Camel K to connect your Kafka (duo C)
+</h1>
+<p>Create a Kamelet to able Camel K to connect your Kafka cluster.<br>
+To do so, connect to the OpenShift console, select the namespace of your team and click the <strong>+</strong> button in the top-right corner. Then, copy and paste the following content.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>camel.apache.org/v1alpha1</span>
+<span style=color:#f92672>kind</span>: <span style=color:#ae81ff>Kamelet</span>
+<span style=color:#f92672>metadata</span>:
+  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>kafka-sink-scram</span>
+  <span style=color:#f92672>annotations</span>:
+    <span style=color:#f92672>camel.apache.org/kamelet.support.level</span>: <span style=color:#e6db74>&#34;Stable&#34;</span>
+    <span style=color:#f92672>camel.apache.org/catalog.version</span>: <span style=color:#e6db74>&#34;main-SNAPSHOT&#34;</span>
+    <span style=color:#f92672>camel.apache.org/kamelet.icon</span>: <span style=color:#e6db74>&#34;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MDAgNTAwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MDAgNTAwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8ZyBpZD0iWE1MSURfMV8iPg0KCTxwYXRoIGlkPSJYTUxJRF85XyIgZD0iTTMxNC44LDI2OS43Yy0xNC4yLDAtMjcsNi4zLTM1LjcsMTYuMkwyNTYuOCwyNzBjMi40LTYuNSwzLjctMTMuNiwzLjctMjAuOWMwLTcuMi0xLjMtMTQuMS0zLjYtMjAuNg0KCQlsMjIuMy0xNS43YzguNyw5LjksMjEuNCwxNi4xLDM1LjYsMTYuMWMyNi4yLDAsNDcuNi0yMS4zLDQ3LjYtNDcuNnMtMjEuMy00Ny42LTQ3LjYtNDcuNnMtNDcuNiwyMS4zLTQ3LjYsNDcuNg0KCQljMCw0LjcsMC43LDkuMiwyLDEzLjVsLTIyLjMsMTUuN2MtOS4zLTExLjYtMjIuOC0xOS42LTM4LjEtMjIuMXYtMjYuOWMyMS42LTQuNSwzNy44LTIzLjcsMzcuOC00Ni42YzAtMjYuMi0yMS4zLTQ3LjYtNDcuNi00Ny42DQoJCWMtMjYuMiwwLTQ3LjYsMjEuMy00Ny42LDQ3LjZjMCwyMi42LDE1LjgsNDEuNSwzNi45LDQ2LjN2MjcuM2MtMjguOCw1LjEtNTAuOCwzMC4yLTUwLjgsNjAuNWMwLDMwLjQsMjIuMiw1NS43LDUxLjIsNjAuNXYyOC44DQoJCWMtMjEuMyw0LjctMzcuNCwyMy43LTM3LjQsNDYuNGMwLDI2LjIsMjEuMyw0Ny42LDQ3LjYsNDcuNmMyNi4yLDAsNDcuNi0yMS4zLDQ3LjYtNDcuNmMwLTIyLjctMTYtNDEuOC0zNy40LTQ2LjR2LTI4LjgNCgkJYzE1LTIuNSwyOC4yLTEwLjQsMzcuNC0yMS44bDIyLjUsMTUuOWMtMS4yLDQuMy0xLjksOC43LTEuOSwxMy40YzAsMjYuMiwyMS4zLDQ3LjYsNDcuNiw0Ny42czQ3LjYtMjEuMyw0Ny42LTQ3LjYNCgkJQzM2Mi40LDI5MSwzNDEuMSwyNjkuNywzMTQuOCwyNjkuN3ogTTMxNC44LDE1OC40YzEyLjcsMCwyMy4xLDEwLjQsMjMuMSwyMy4xYzAsMTIuNy0xMC4zLDIzLjEtMjMuMSwyMy4xcy0yMy4xLTEwLjQtMjMuMS0yMy4xDQoJCUMyOTEuOCwxNjguOCwzMDIuMSwxNTguNCwzMTQuOCwxNTguNHogTTE3NiwxMTUuMWMwLTEyLjcsMTAuMy0yMy4xLDIzLjEtMjMuMWMxMi43LDAsMjMuMSwxMC40LDIzLjEsMjMuMQ0KCQljMCwxMi43LTEwLjMsMjMuMS0yMy4xLDIzLjFDMTg2LjMsMTM4LjIsMTc2LDEyNy44LDE3NiwxMTUuMXogTTIyMi4xLDM4NC45YzAsMTIuNy0xMC4zLDIzLjEtMjMuMSwyMy4xDQoJCWMtMTIuNywwLTIzLjEtMTAuNC0yMy4xLTIzLjFjMC0xMi43LDEwLjMtMjMuMSwyMy4xLTIzLjFDMjExLjgsMzYxLjgsMjIyLjEsMzcyLjIsMjIyLjEsMzg0Ljl6IE0xOTkuMSwyODEuMw0KCQljLTE3LjcsMC0zMi4yLTE0LjQtMzIuMi0zMi4yYzAtMTcuNywxNC40LTMyLjIsMzIuMi0zMi4yYzE3LjcsMCwzMi4yLDE0LjQsMzIuMiwzMi4yQzIzMS4yLDI2Ni45LDIxNi44LDI4MS4zLDE5OS4xLDI4MS4zeg0KCQkgTTMxNC44LDM0MC4zYy0xMi43LDAtMjMuMS0xMC40LTIzLjEtMjMuMWMwLTEyLjcsMTAuMy0yMy4xLDIzLjEtMjMuMXMyMy4xLDEwLjQsMjMuMSwyMy4xQzMzNy45LDMzMCwzMjcuNSwzNDAuMywzMTQuOCwzNDAuM3oiLz4NCjwvZz4NCjwvc3ZnPg0K&#34;</span>
+    <span style=color:#f92672>camel.apache.org/provider</span>: <span style=color:#e6db74>&#34;Apache Software Foundation&#34;</span>
+    <span style=color:#f92672>camel.apache.org/kamelet.group</span>: <span style=color:#e6db74>&#34;Kafka&#34;</span>
+  <span style=color:#f92672>labels</span>:
+    <span style=color:#f92672>camel.apache.org/kamelet.type</span>: <span style=color:#e6db74>&#34;sink&#34;</span>
+<span style=color:#f92672>spec</span>:
+  <span style=color:#f92672>definition</span>:
+    <span style=color:#f92672>title</span>: <span style=color:#e6db74>&#34;Kafka Sink (SCRAM Authentication)&#34;</span>
+    <span style=color:#f92672>description</span>: |-<span style=color:#e6db74>
+</span><span style=color:#e6db74>      Send data to Kafka topics.
+</span><span style=color:#e6db74>
+</span><span style=color:#e6db74>      The Kamelet is able to understand the following headers to be set:
+</span><span style=color:#e6db74>
+</span><span style=color:#e6db74>      - `key` / `ce-key`: as message key</span>      
+    
+      - <span style=color:#f92672>`partition-key` / `ce-partitionkey`</span>: <span style=color:#ae81ff>as message partition key</span>
+
+      <span style=color:#ae81ff>Both the headers are optional.</span>
+    <span style=color:#f92672>required</span>:
+      - <span style=color:#ae81ff>topic</span>
+      - <span style=color:#ae81ff>bootstrapServers</span>
+      - <span style=color:#ae81ff>user</span>
+      - <span style=color:#ae81ff>password</span>
+    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>object</span>
+    <span style=color:#f92672>properties</span>:
+      <span style=color:#f92672>topic</span>:
+        <span style=color:#f92672>title</span>: <span style=color:#ae81ff>Topic Names</span>
+        <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Comma separated list of Kafka topic names</span>
+        <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
+      <span style=color:#f92672>bootstrapServers</span>:
+        <span style=color:#f92672>title</span>: <span style=color:#ae81ff>Bootstrap Servers</span>
+        <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Comma separated list of Kafka Broker URLs</span>
+        <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
+      <span style=color:#f92672>securityProtocol</span>:
+        <span style=color:#f92672>title</span>: <span style=color:#ae81ff>Security Protocol</span>
+        <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Protocol used to communicate with brokers. SASL_PLAINTEXT, PLAINTEXT, SASL_SSL and SSL are supported</span>
+        <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
+        <span style=color:#f92672>default</span>: <span style=color:#ae81ff>SASL_PLAINTEXT</span>
+      <span style=color:#f92672>saslMechanism</span>:
+        <span style=color:#f92672>title</span>: <span style=color:#ae81ff>SASL Mechanism</span>
+        <span style=color:#f92672>description</span>: <span style=color:#ae81ff>The Simple Authentication and Security Layer (SASL) Mechanism used. </span>
+        <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
+        <span style=color:#f92672>default</span>: <span style=color:#ae81ff>SCRAM-SHA-512</span>
+      <span style=color:#f92672>user</span>:
+        <span style=color:#f92672>title</span>: <span style=color:#ae81ff>Username</span>
+        <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Username to authenticate to Kafka </span>
+        <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
+        <span style=color:#f92672>x-descriptors</span>:
+        - <span style=color:#ae81ff>urn:camel:group:credentials</span>
+      <span style=color:#f92672>password</span>:
+        <span style=color:#f92672>title</span>: <span style=color:#ae81ff>Password</span>
+        <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Password to authenticate to kafka</span>
+        <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
+        <span style=color:#f92672>format</span>: <span style=color:#ae81ff>password</span>
+        <span style=color:#f92672>x-descriptors</span>:
+        - <span style=color:#ae81ff>urn:alm:descriptor:com.tectonic.ui:password</span>
+        - <span style=color:#ae81ff>urn:camel:group:credentials</span>
+  <span style=color:#f92672>dependencies</span>:
+    - <span style=color:#e6db74>&#34;camel:core&#34;</span>
+    - <span style=color:#e6db74>&#34;camel:kafka&#34;</span>
+    - <span style=color:#e6db74>&#34;camel:kamelet&#34;</span>
+  <span style=color:#f92672>template</span>:
+    <span style=color:#f92672>from</span>:
+      <span style=color:#f92672>uri</span>: <span style=color:#e6db74>&#34;kamelet:source&#34;</span>
+      <span style=color:#f92672>steps</span>:
+      - <span style=color:#f92672>choice</span>:
+          <span style=color:#f92672>when</span>:
+          - <span style=color:#f92672>simple</span>: <span style=color:#e6db74>&#34;${header[key]}&#34;</span>
+            <span style=color:#f92672>steps</span>:
+            - <span style=color:#f92672>set-header</span>:
+                <span style=color:#f92672>name</span>: <span style=color:#ae81ff>kafka.KEY</span>
+                <span style=color:#f92672>simple</span>: <span style=color:#e6db74>&#34;${header[key]}&#34;</span>
+          - <span style=color:#f92672>simple</span>: <span style=color:#e6db74>&#34;${header[ce-key]}&#34;</span>
+            <span style=color:#f92672>steps</span>:
+            - <span style=color:#f92672>set-header</span>:
+                <span style=color:#f92672>name</span>: <span style=color:#ae81ff>kafka.KEY</span>
+                <span style=color:#f92672>simple</span>: <span style=color:#e6db74>&#34;${header[ce-key]}&#34;</span>
+      - <span style=color:#f92672>choice</span>:
+          <span style=color:#f92672>when</span>:
+          - <span style=color:#f92672>simple</span>: <span style=color:#e6db74>&#34;${header[partition-key]}&#34;</span>
+            <span style=color:#f92672>steps</span>:
+            - <span style=color:#f92672>set-header</span>:
+                <span style=color:#f92672>name</span>: <span style=color:#ae81ff>kafka.PARTITION_KEY</span>
+                <span style=color:#f92672>simple</span>: <span style=color:#e6db74>&#34;${header[partition-key]}&#34;</span>
+          - <span style=color:#f92672>simple</span>: <span style=color:#e6db74>&#34;${header[ce-partitionkey]}&#34;</span>
+            <span style=color:#f92672>steps</span>:
+            - <span style=color:#f92672>set-header</span>:
+                <span style=color:#f92672>name</span>: <span style=color:#ae81ff>kafka.PARTITION_KEY</span>
+                <span style=color:#f92672>simple</span>: <span style=color:#e6db74>&#34;${header[ce-partitionkey]}&#34;</span>
+      - <span style=color:#f92672>to</span>:
+          <span style=color:#f92672>uri</span>: <span style=color:#e6db74>&#34;kafka:{{topic}}&#34;</span>
+          <span style=color:#f92672>parameters</span>:
+            <span style=color:#f92672>brokers</span>: <span style=color:#e6db74>&#34;{{bootstrapServers}}&#34;</span>
+            <span style=color:#f92672>securityProtocol</span>: <span style=color:#e6db74>&#34;{{securityProtocol}}&#34;</span>
+            <span style=color:#f92672>saslMechanism</span>: <span style=color:#e6db74>&#34;{{saslMechanism}}&#34;</span>
+            <span style=color:#f92672>saslJaasConfig</span>: <span style=color:#e6db74>&#34;org.apache.kafka.common.security.scram.ScramLoginModule required username=&#39;{{user}}&#39; password=&#39;{{password}}&#39;;&#34;</span>
+</code></pre></div>
+<footer class=footline>
+</footer>
+</div>
+</div>
+<div id=navigation>
+<a class="nav nav-prev" href=/camel-k/camel-user/ title="Install a Kafka User for Camel K Integration (duo C)"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/camel-k/integration-in/ title="Create Camel K integration to permit MQTT/Kafka transformation and enrich data for incoming parcels (duo C)" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+</div>
+</section>
+<div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
+<div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
+</div>
+<script src=/js/clipboard.min.js?1674468874></script>
+<script src=/js/perfect-scrollbar.min.js?1674468874></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1674468874></script>
+<script src=/js/jquery.sticky.js?1674468874></script>
+<script src=/js/featherlight.min.js?1674468874></script>
+<script src=/js/highlight.pack.js?1674468874></script>
+<script>hljs.initHighlightingOnLoad()</script>
+<script src=/js/modernizr.custom-3.6.0.js?1674468874></script>
+<script src=/js/learn.js?1674468874></script>
+<script src=/js/hugo-learn.js?1674468874></script>
+<script src=/mermaid/mermaid.js?1674468874></script>
+<script>mermaid.initialize({startOnLoad:!0})</script>
+</body>
+</html>

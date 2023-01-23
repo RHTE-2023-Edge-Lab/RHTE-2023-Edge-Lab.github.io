@@ -5,7 +5,7 @@
 <meta name=generator content="Hugo 0.91.2">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
-<title>Fix permissions on /dev/ttyUSB0 (Linux only) :: RHTE 2023 Edge Lab</title>
+<title>Install a Kafka User for Camel K Integration (duo C) :: RHTE 2023 Edge Lab</title>
 <link href=/css/nucleus.css?1674468874 rel=stylesheet>
 <link href=/css/fontawesome-all.min.css?1674468874 rel=stylesheet>
 <link href=/css/hybrid.css?1674468874 rel=stylesheet>
@@ -20,7 +20,7 @@
 <script src=/js/jquery-3.3.1.min.js?1674468874></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
-<body data-url=/esp8266/fix-permissions/>
+<body data-url=/camel-k/camel-user/>
 <nav id=sidebar class=showVisitedLinks>
 <div id=header-wrapper>
 <div id=header>
@@ -161,14 +161,13 @@ Test the MQTT broker (duo A and B)
 </li>
 </ul>
 </li>
-<li data-nav-id=/esp8266/ title="Program the ESP8266" class="dd-item
-parent">
+<li data-nav-id=/esp8266/ title="Program the ESP8266" class=dd-item>
 <a href=/esp8266/>
 <b>A & B. </b>Program the ESP8266
 <i class="fas fa-check read-icon"></i>
 </a>
 <ul>
-<li data-nav-id=/esp8266/fix-permissions/ title="Fix permissions on /dev/ttyUSB0 (Linux only)" class="dd-item active">
+<li data-nav-id=/esp8266/fix-permissions/ title="Fix permissions on /dev/ttyUSB0 (Linux only)" class=dd-item>
 <a href=/esp8266/fix-permissions/>
 Fix permissions on /dev/ttyUSB0 (Linux only)
 <i class="fas fa-check read-icon"></i>
@@ -238,13 +237,14 @@ Check the Kafka broker deployment (duo C)
 </li>
 </ul>
 </li>
-<li data-nav-id=/camel-k/ title="Camel-K Integration" class=dd-item>
+<li data-nav-id=/camel-k/ title="Camel-K Integration" class="dd-item
+parent">
 <a href=/camel-k/>
 <b>C. </b>Camel-K Integration
 <i class="fas fa-check read-icon"></i>
 </a>
 <ul>
-<li data-nav-id=/camel-k/camel-user/ title="Install a Kafka User for Camel K Integration (duo C)" class=dd-item>
+<li data-nav-id=/camel-k/camel-user/ title="Install a Kafka User for Camel K Integration (duo C)" class="dd-item active">
 <a href=/camel-k/camel-user/>
 Install a Kafka User for Camel K Integration (duo C)
 <i class="fas fa-check read-icon"></i>
@@ -313,7 +313,7 @@ Test the Camel K Integrations (duo C)
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=/>Welcome</a> > <a href=/esp8266/>Program the ESP8266</a> > Fix permissions on /dev/ttyUSB0 (Linux only)
+<a href=/>Welcome</a> > <a href=/camel-k/>Camel-K Integration</a> > Install a Kafka User for Camel K Integration (duo C)
 </span>
 </div>
 <div class=progress>
@@ -327,21 +327,40 @@ Test the Camel K Integrations (duo C)
 </div>
 <div id=body-inner>
 <h1>
-Fix permissions on /dev/ttyUSB0 (Linux only)
+Install a Kafka User for Camel K Integration (duo C)
 </h1>
-<p>The /dev/ttyUSB0 device belongs to the &ldquo;dialout&rdquo; group. Therefore, your user should belong to this group to configure the ESP8266.</p>
-<p>Run this command:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>sudo usermod -a -G dialout <span style=color:#66d9ef>$(</span>id -un<span style=color:#66d9ef>)</span>
-</code></pre></div><p>Then, close Visual Studio Code and re-run it with the new group membership:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>su -c code <span style=color:#66d9ef>$(</span>id -un<span style=color:#66d9ef>)</span>
+<p>Fist create a secret containing the Kafka User password.<br>
+To do so, connect to the OpenShift console, select the namespace of your team and click the <strong>+</strong> button in the top-right corner. Then, copy and paste the following content.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>kind</span>: <span style=color:#ae81ff>Secret</span>
+<span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>v1</span>
+<span style=color:#f92672>metadata</span>:
+  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>camel-user</span>
+<span style=color:#f92672>stringData</span>:
+  <span style=color:#f92672>password</span>: <span style=color:#ae81ff>s3cr3t</span>
+<span style=color:#f92672>type</span>: <span style=color:#ae81ff>Opaque</span>
+</code></pre></div><p>Then create the Kafka user for the Camel K Integration. You can use the OpenShift console as used in the previous step.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>kafka.strimzi.io/v1beta2</span>
+<span style=color:#f92672>kind</span>: <span style=color:#ae81ff>KafkaUser</span>
+<span style=color:#f92672>metadata</span>:
+  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>camel</span>
+  <span style=color:#f92672>labels</span>:
+    <span style=color:#f92672>strimzi.io/cluster</span>: <span style=color:#ae81ff>warehouse</span>
+<span style=color:#f92672>spec</span>:
+  <span style=color:#f92672>authentication</span>:
+    <span style=color:#f92672>password</span>:
+      <span style=color:#f92672>valueFrom</span>:
+        <span style=color:#f92672>secretKeyRef</span>:
+          <span style=color:#f92672>name</span>: <span style=color:#ae81ff>camel-user</span>
+          <span style=color:#f92672>key</span>: <span style=color:#ae81ff>password</span>
+    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>scram-sha-512</span>
 </code></pre></div>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=/esp8266/ title="Program the ESP8266"> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/esp8266/connect-esp8266/ title="Connect your ESP8266" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=/camel-k/ title="Camel-K Integration"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/camel-k/kamelet/ title="Create needed Kamelet to able Camel K to connect your Kafka (duo C)" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>

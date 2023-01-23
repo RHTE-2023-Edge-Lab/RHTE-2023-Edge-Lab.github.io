@@ -5,7 +5,7 @@
 <meta name=generator content="Hugo 0.91.2">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
-<title>Fix permissions on /dev/ttyUSB0 (Linux only) :: RHTE 2023 Edge Lab</title>
+<title>Test the Camel K Integrations (duo C) :: RHTE 2023 Edge Lab</title>
 <link href=/css/nucleus.css?1674468874 rel=stylesheet>
 <link href=/css/fontawesome-all.min.css?1674468874 rel=stylesheet>
 <link href=/css/hybrid.css?1674468874 rel=stylesheet>
@@ -20,7 +20,7 @@
 <script src=/js/jquery-3.3.1.min.js?1674468874></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
-<body data-url=/esp8266/fix-permissions/>
+<body data-url=/camel-k/test/>
 <nav id=sidebar class=showVisitedLinks>
 <div id=header-wrapper>
 <div id=header>
@@ -161,14 +161,13 @@ Test the MQTT broker (duo A and B)
 </li>
 </ul>
 </li>
-<li data-nav-id=/esp8266/ title="Program the ESP8266" class="dd-item
-parent">
+<li data-nav-id=/esp8266/ title="Program the ESP8266" class=dd-item>
 <a href=/esp8266/>
 <b>A & B. </b>Program the ESP8266
 <i class="fas fa-check read-icon"></i>
 </a>
 <ul>
-<li data-nav-id=/esp8266/fix-permissions/ title="Fix permissions on /dev/ttyUSB0 (Linux only)" class="dd-item active">
+<li data-nav-id=/esp8266/fix-permissions/ title="Fix permissions on /dev/ttyUSB0 (Linux only)" class=dd-item>
 <a href=/esp8266/fix-permissions/>
 Fix permissions on /dev/ttyUSB0 (Linux only)
 <i class="fas fa-check read-icon"></i>
@@ -238,7 +237,8 @@ Check the Kafka broker deployment (duo C)
 </li>
 </ul>
 </li>
-<li data-nav-id=/camel-k/ title="Camel-K Integration" class=dd-item>
+<li data-nav-id=/camel-k/ title="Camel-K Integration" class="dd-item
+parent">
 <a href=/camel-k/>
 <b>C. </b>Camel-K Integration
 <i class="fas fa-check read-icon"></i>
@@ -274,7 +274,7 @@ Final verification (duo C)
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/camel-k/test/ title="Test the Camel K Integrations (duo C)" class=dd-item>
+<li data-nav-id=/camel-k/test/ title="Test the Camel K Integrations (duo C)" class="dd-item active">
 <a href=/camel-k/test/>
 Test the Camel K Integrations (duo C)
 <i class="fas fa-check read-icon"></i>
@@ -313,7 +313,7 @@ Test the Camel K Integrations (duo C)
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=/>Welcome</a> > <a href=/esp8266/>Program the ESP8266</a> > Fix permissions on /dev/ttyUSB0 (Linux only)
+<a href=/>Welcome</a> > <a href=/camel-k/>Camel-K Integration</a> > Test the Camel K Integrations (duo C)
 </span>
 </div>
 <div class=progress>
@@ -327,21 +327,41 @@ Test the Camel K Integrations (duo C)
 </div>
 <div id=body-inner>
 <h1>
-Fix permissions on /dev/ttyUSB0 (Linux only)
+Test the Camel K Integrations (duo C)
 </h1>
-<p>The /dev/ttyUSB0 device belongs to the &ldquo;dialout&rdquo; group. Therefore, your user should belong to this group to configure the ESP8266.</p>
-<p>Run this command:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>sudo usermod -a -G dialout <span style=color:#66d9ef>$(</span>id -un<span style=color:#66d9ef>)</span>
-</code></pre></div><p>Then, close Visual Studio Code and re-run it with the new group membership:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>su -c code <span style=color:#66d9ef>$(</span>id -un<span style=color:#66d9ef>)</span>
-</code></pre></div>
+<p>Go to the OpenShift Administrator console and click the command line terminal icon in the top-right corner to open a <strong>Web Terminal</strong>.<br>
+Copy and paste the following commands to retrieve events from your Kafka topics.</p>
+<ol>
+<li>Connect to one of your kafka pod</li>
+</ol>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>oc rsh warehouse-kafka-0
+</code></pre></div><ol start=2>
+<li>Create a client.properties file</li>
+</ol>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>cat <span style=color:#e6db74>&lt;&lt;EOF&gt; /tmp/client.properties
+</span><span style=color:#e6db74>sasl.mechanism=SCRAM-SHA-512
+</span><span style=color:#e6db74>security.protocol=SASL_PLAINTEXT
+</span><span style=color:#e6db74>sasl.jaas.config=org.apache.kafka.common.security.scram.ScramLoginModule required \
+</span><span style=color:#e6db74>   username=&#34;mm2&#34; \
+</span><span style=color:#e6db74>   password=&#34;s3cr3t&#34;;
+</span><span style=color:#e6db74>EOF</span>
+</code></pre></div><ol start=3>
+<li>Connect to your warehouse-in Kafka topic to see your incoming parcels. Scan the parcel RFID with your ESP8266 used for incoming parcels.</li>
+</ol>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>./bin/kafka-console-consumer.sh --bootstrap-server warehouse-kafka-bootstrap:9092 --topic warehouse-in --consumer.config /tmp/client.properties --from-beginning
+</code></pre></div><ol start=4>
+<li>Press CTRL + C and connect now to your warehouse-out Kafka topic to see your outcoming parcels. Scan the parcel RFID with your ESP8266 used for outcoming parcels.</li>
+</ol>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>./bin/kafka-console-consumer.sh --bootstrap-server warehouse-kafka-bootstrap:9092 --topic warehouse-out --consumer.config /tmp/client.properties --from-beginning
+</code></pre></div><p>You should see similar results as the followings:</p>
+<p><img src=/images/camelk-topic-result.png alt=Result></p>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=/esp8266/ title="Program the ESP8266"> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/esp8266/connect-esp8266/ title="Connect your ESP8266" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=/camel-k/verification/ title="Final verification (duo C)"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/testing/ title=Testing style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>

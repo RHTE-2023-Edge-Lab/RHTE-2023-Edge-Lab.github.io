@@ -5,7 +5,7 @@
 <meta name=generator content="Hugo 0.91.2">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
-<title>Fix permissions on /dev/ttyUSB0 (Linux only) :: RHTE 2023 Edge Lab</title>
+<title>Final verification (duo C) :: RHTE 2023 Edge Lab</title>
 <link href=/css/nucleus.css?1674468874 rel=stylesheet>
 <link href=/css/fontawesome-all.min.css?1674468874 rel=stylesheet>
 <link href=/css/hybrid.css?1674468874 rel=stylesheet>
@@ -20,7 +20,7 @@
 <script src=/js/jquery-3.3.1.min.js?1674468874></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
-<body data-url=/esp8266/fix-permissions/>
+<body data-url=/camel-k/verification/>
 <nav id=sidebar class=showVisitedLinks>
 <div id=header-wrapper>
 <div id=header>
@@ -161,14 +161,13 @@ Test the MQTT broker (duo A and B)
 </li>
 </ul>
 </li>
-<li data-nav-id=/esp8266/ title="Program the ESP8266" class="dd-item
-parent">
+<li data-nav-id=/esp8266/ title="Program the ESP8266" class=dd-item>
 <a href=/esp8266/>
 <b>A & B. </b>Program the ESP8266
 <i class="fas fa-check read-icon"></i>
 </a>
 <ul>
-<li data-nav-id=/esp8266/fix-permissions/ title="Fix permissions on /dev/ttyUSB0 (Linux only)" class="dd-item active">
+<li data-nav-id=/esp8266/fix-permissions/ title="Fix permissions on /dev/ttyUSB0 (Linux only)" class=dd-item>
 <a href=/esp8266/fix-permissions/>
 Fix permissions on /dev/ttyUSB0 (Linux only)
 <i class="fas fa-check read-icon"></i>
@@ -238,7 +237,8 @@ Check the Kafka broker deployment (duo C)
 </li>
 </ul>
 </li>
-<li data-nav-id=/camel-k/ title="Camel-K Integration" class=dd-item>
+<li data-nav-id=/camel-k/ title="Camel-K Integration" class="dd-item
+parent">
 <a href=/camel-k/>
 <b>C. </b>Camel-K Integration
 <i class="fas fa-check read-icon"></i>
@@ -268,7 +268,7 @@ Create Camel K integration to permit MQTT/Kafka transformation and enrich data f
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/camel-k/verification/ title="Final verification (duo C)" class=dd-item>
+<li data-nav-id=/camel-k/verification/ title="Final verification (duo C)" class="dd-item active">
 <a href=/camel-k/verification/>
 Final verification (duo C)
 <i class="fas fa-check read-icon"></i>
@@ -313,12 +313,17 @@ Test the Camel K Integrations (duo C)
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=/>Welcome</a> > <a href=/esp8266/>Program the ESP8266</a> > Fix permissions on /dev/ttyUSB0 (Linux only)
+<a href=/>Welcome</a> > <a href=/camel-k/>Camel-K Integration</a> > Final verification (duo C)
 </span>
 </div>
 <div class=progress>
 <div class=wrapper>
-<nav id=TableOfContents></nav>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#camel-integration>Camel Integration</a></li>
+<li><a href=#kafka-user>Kafka User</a></li>
+</ul>
+</nav>
 </div>
 </div>
 </div>
@@ -327,21 +332,33 @@ Test the Camel K Integrations (duo C)
 </div>
 <div id=body-inner>
 <h1>
-Fix permissions on /dev/ttyUSB0 (Linux only)
+Final verification (duo C)
 </h1>
-<p>The /dev/ttyUSB0 device belongs to the &ldquo;dialout&rdquo; group. Therefore, your user should belong to this group to configure the ESP8266.</p>
-<p>Run this command:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>sudo usermod -a -G dialout <span style=color:#66d9ef>$(</span>id -un<span style=color:#66d9ef>)</span>
-</code></pre></div><p>Then, close Visual Studio Code and re-run it with the new group membership:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>su -c code <span style=color:#66d9ef>$(</span>id -un<span style=color:#66d9ef>)</span>
-</code></pre></div>
+<h2 id=camel-integration>Camel Integration</h2>
+<ul>
+<li>Navigate in the OpenShift Administrator console, <strong>Operators</strong> > <strong>Installed Operators</strong>.</li>
+<li>Click on the <strong>Red Hat Integration - Camel K</strong> operator.</li>
+<li>Open the <strong>All instances</strong> tab.</li>
+<li>Select the <strong>Current namespace only</strong> option.</li>
+<li>Make sure you have the following objects:</li>
+</ul>
+<p><img src=/images/camelk-integration.png alt="CamelK integration"></p>
+<h2 id=kafka-user>Kafka User</h2>
+<ul>
+<li>Navigate in the OpenShift Administrator console, <strong>Operators</strong> > <strong>Installed Operators</strong>.</li>
+<li>Click on the <strong>Red Hat Integration - AMQ Streams</strong> operator.</li>
+<li>Open the <strong>Kafka User</strong> tab.</li>
+<li>Select the <strong>Current namespace only</strong> option.</li>
+<li>Make sure you have the following object:</li>
+</ul>
+<p><img src=/images/camelk-kafka-user.png alt="CamelK KafkaUser"></p>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=/esp8266/ title="Program the ESP8266"> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/esp8266/connect-esp8266/ title="Connect your ESP8266" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=/camel-k/integration-out/ title="Create Camel K integration to permit MQTT/Kafka transformation and enrich data for outcoming parcels (duo C)"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/camel-k/test/ title="Test the Camel K Integrations (duo C)" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
