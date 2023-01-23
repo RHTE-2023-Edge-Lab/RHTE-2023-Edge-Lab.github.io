@@ -4,6 +4,8 @@ draft: false
 weight: 2
 ---
 
+Create a Kafka User for your Kafka cluster as well as a secret containing its password. This Kafka User will be used by MirrorMaker2 deployed in the headquarter to authenticate to your namespaced Kafka Cluster.
+
 To do so, connect to the OpenShift console, select the namespace of your team and click the **+** button in the top-right corner. Then, copy and paste the following content.
 
 ```yaml

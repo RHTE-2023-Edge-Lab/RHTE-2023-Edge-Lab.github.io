@@ -4,9 +4,10 @@ draft: false
 weight: 1
 ---
 
-Deploy the Kafka Broker in your namespace by creating 2 Custom Resource Definitions (CRD).  
-First create a secret containing the Certificate Authority (CA).
+Deploy the Kafka Broker in your namespace by creating 2 Custom Resource Definitions (CRD).
 
+
+First create a secret containing the Certificate Authority (CA).  
 To do so, connect to the OpenShift console, select the namespace of your team and click the **+** button in the top-right corner. Then, copy and paste the following content.
 
 ```yaml
