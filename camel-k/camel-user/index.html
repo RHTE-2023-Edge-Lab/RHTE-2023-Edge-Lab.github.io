@@ -5,19 +5,19 @@
 <meta name=generator content="Hugo 0.91.2">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
-<title>Install a Kafka User for Camel K Integration (duo C) :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1674468874 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1674468874 rel=stylesheet>
-<link href=/css/hybrid.css?1674468874 rel=stylesheet>
-<link href=/css/featherlight.min.css?1674468874 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1674468874 rel=stylesheet>
-<link href=/css/auto-complete.css?1674468874 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1674468874 rel=stylesheet>
-<link href=/css/theme.css?1674468874 rel=stylesheet>
-<link href=/css/tabs.css?1674468874 rel=stylesheet>
-<link href=/css/hugo-theme.css?1674468874 rel=stylesheet>
-<link href=/css/theme-red.css?1674468874 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1674468874></script>
+<title>Create a Kafka User (duo C) :: RHTE 2023 Edge Lab</title>
+<link href=/css/nucleus.css?1674469196 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1674469196 rel=stylesheet>
+<link href=/css/hybrid.css?1674469196 rel=stylesheet>
+<link href=/css/featherlight.min.css?1674469196 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1674469196 rel=stylesheet>
+<link href=/css/auto-complete.css?1674469196 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1674469196 rel=stylesheet>
+<link href=/css/theme.css?1674469196 rel=stylesheet>
+<link href=/css/tabs.css?1674469196 rel=stylesheet>
+<link href=/css/hugo-theme.css?1674469196 rel=stylesheet>
+<link href=/css/theme-red.css?1674469196 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1674469196></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=/camel-k/camel-user/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1674468874></script>
-<script type=text/javascript src=/js/auto-complete.js?1674468874></script>
+<script type=text/javascript src=/js/lunr.min.js?1674469196></script>
+<script type=text/javascript src=/js/auto-complete.js?1674469196></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1674468874></script>
+<script type=text/javascript src=/js/search.js?1674469196></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -244,27 +244,27 @@ parent">
 <i class="fas fa-check read-icon"></i>
 </a>
 <ul>
-<li data-nav-id=/camel-k/camel-user/ title="Install a Kafka User for Camel K Integration (duo C)" class="dd-item active">
+<li data-nav-id=/camel-k/camel-user/ title="Create a Kafka User (duo C)" class="dd-item active">
 <a href=/camel-k/camel-user/>
-Install a Kafka User for Camel K Integration (duo C)
+Create a Kafka User (duo C)
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/camel-k/kamelet/ title="Create needed Kamelet to able Camel K to connect your Kafka (duo C)" class=dd-item>
+<li data-nav-id=/camel-k/kamelet/ title="Create a Kamelet (duo C)" class=dd-item>
 <a href=/camel-k/kamelet/>
-Create needed Kamelet to able Camel K to connect your Kafka (duo C)
+Create a Kamelet (duo C)
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/camel-k/integration-in/ title="Create Camel K integration to permit MQTT/Kafka transformation and enrich data for incoming parcels (duo C)" class=dd-item>
+<li data-nav-id=/camel-k/integration-in/ title="Create Camel K integration for incoming parcels (duo C)" class=dd-item>
 <a href=/camel-k/integration-in/>
-Create Camel K integration to permit MQTT/Kafka transformation and enrich data for incoming parcels (duo C)
+Create Camel K integration for incoming parcels (duo C)
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/camel-k/integration-out/ title="Create Camel K integration to permit MQTT/Kafka transformation and enrich data for outcoming parcels (duo C)" class=dd-item>
+<li data-nav-id=/camel-k/integration-out/ title="Create Camel K integration for outcoming parcels (duo C)" class=dd-item>
 <a href=/camel-k/integration-out/>
-Create Camel K integration to permit MQTT/Kafka transformation and enrich data for outcoming parcels (duo C)
+Create Camel K integration for outcoming parcels (duo C)
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
@@ -313,7 +313,7 @@ Test the Camel K Integrations (duo C)
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=/>Welcome</a> > <a href=/camel-k/>Camel-K Integration</a> > Install a Kafka User for Camel K Integration (duo C)
+<a href=/>Welcome</a> > <a href=/camel-k/>Camel-K Integration</a> > Create a Kafka User (duo C)
 </span>
 </div>
 <div class=progress>
@@ -327,8 +327,9 @@ Test the Camel K Integrations (duo C)
 </div>
 <div id=body-inner>
 <h1>
-Install a Kafka User for Camel K Integration (duo C)
+Create a Kafka User (duo C)
 </h1>
+<p>Create a Kafka User for Camel K Integration.</p>
 <p>Fist create a secret containing the Kafka User password.<br>
 To do so, connect to the OpenShift console, select the namespace of your team and click the <strong>+</strong> button in the top-right corner. Then, copy and paste the following content.</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>kind</span>: <span style=color:#ae81ff>Secret</span>
@@ -360,23 +361,23 @@ To do so, connect to the OpenShift console, select the namespace of your team an
 </div>
 <div id=navigation>
 <a class="nav nav-prev" href=/camel-k/ title="Camel-K Integration"> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/camel-k/kamelet/ title="Create needed Kamelet to able Camel K to connect your Kafka (duo C)" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-next" href=/camel-k/kamelet/ title="Create a Kamelet (duo C)" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1674468874></script>
-<script src=/js/perfect-scrollbar.min.js?1674468874></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1674468874></script>
-<script src=/js/jquery.sticky.js?1674468874></script>
-<script src=/js/featherlight.min.js?1674468874></script>
-<script src=/js/highlight.pack.js?1674468874></script>
+<script src=/js/clipboard.min.js?1674469196></script>
+<script src=/js/perfect-scrollbar.min.js?1674469196></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1674469196></script>
+<script src=/js/jquery.sticky.js?1674469196></script>
+<script src=/js/featherlight.min.js?1674469196></script>
+<script src=/js/highlight.pack.js?1674469196></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1674468874></script>
-<script src=/js/learn.js?1674468874></script>
-<script src=/js/hugo-learn.js?1674468874></script>
-<script src=/mermaid/mermaid.js?1674468874></script>
+<script src=/js/modernizr.custom-3.6.0.js?1674469196></script>
+<script src=/js/learn.js?1674469196></script>
+<script src=/js/hugo-learn.js?1674469196></script>
+<script src=/mermaid/mermaid.js?1674469196></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
