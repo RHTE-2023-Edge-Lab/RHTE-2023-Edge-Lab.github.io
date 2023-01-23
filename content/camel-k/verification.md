@@ -8,7 +8,7 @@ weight: 5
 
 * Navigate in the OpenShift Administrator console, **Operators** > **Installed Operators**.
 * Click on the **Red Hat Integration - Camel K** operator.
-* Open the **All instances** tab.
+* Open the **Integration** tab.
 * Select the **Current namespace only** option.
 * Make sure you have the following objects:
 

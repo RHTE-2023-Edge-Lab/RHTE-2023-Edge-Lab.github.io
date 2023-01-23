@@ -1,5 +1,5 @@
 ---
-title: "Create needed Kamelet to able Camel K to connect your Kafka (duo C)"
+title: "Create a Kamelet (duo C)"
 draft: false
 weight: 2
 ---

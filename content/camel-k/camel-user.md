@@ -1,8 +1,10 @@
 ---
-title: "Install a Kafka User for Camel K Integration (duo C)"
+title: "Create a Kafka User (duo C)"
 draft: false
 weight: 1
 ---
+Create a Kafka User for Camel K Integration.
+
 
 Fist create a secret containing the Kafka User password.  
 To do so, connect to the OpenShift console, select the namespace of your team and click the **+** button in the top-right corner. Then, copy and paste the following content.

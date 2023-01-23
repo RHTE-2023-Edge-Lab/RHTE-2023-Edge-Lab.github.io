@@ -1,5 +1,5 @@
 ---
-title: "Create Camel K integration to permit MQTT/Kafka transformation and enrich data for incoming parcels (duo C)"
+title: "Create Camel K integration for incoming parcels (duo C)"
 draft: false
 weight: 3
 ---
