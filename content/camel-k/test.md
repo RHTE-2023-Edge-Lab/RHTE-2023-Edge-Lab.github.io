@@ -4,7 +4,7 @@ draft: false
 weight: 6
 ---
 
-Go to the OpenShift Administrator console and click the command line terminal icon in the top-right corner to open a **Web Terminal**.  
+Go to the OpenShift Administrator console and click the command line terminal icon **>_** in the top-right corner to open a **Web Terminal**.  
 Copy and paste the following commands to retrieve events from your Kafka topics.
 
 1. Connect to one of your kafka pod  

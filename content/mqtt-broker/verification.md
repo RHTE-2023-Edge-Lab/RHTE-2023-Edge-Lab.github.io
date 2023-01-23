@@ -9,6 +9,7 @@ weight: 4
 * Navigate in the OpenShift Administrator console, **Operators** > **Installed Operators**.
 * Click on the **AMQ Broker for RHEL 8.x** operator.
 * Open the **All instances** tab.
+* Select the **Current namespace only** option.
 * Make sure you have the following objects:
 
 ![MQTT Instances](/images/mqtt-instances.png)

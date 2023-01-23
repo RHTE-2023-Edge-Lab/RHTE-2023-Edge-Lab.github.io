@@ -4,7 +4,7 @@ draft: false
 weight: 4
 ---
 
-Go to the OpenShift Administrator console and click the command line terminal icon in the top-right corner to open a **Web Terminal**.
+Go to the OpenShift Administrator console and click the command line terminal icon **>_** in the top-right corner to open a **Web Terminal**.
 In the Web Terminal, open two tabs: one to send messages, one to receive messages.
 
 On the first terminal, connect to your MQTT Broker to read messages.
