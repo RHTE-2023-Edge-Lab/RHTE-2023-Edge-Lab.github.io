@@ -6,6 +6,8 @@ weight: 2
 
 ## Data flow
 
+![use_case](/images/detailled-schema.svg)
+
 **1.** The ESP8266 scans incoming and outgoing parcels using an RFID scanner. One ESP8266 is dedicated for incoming parcels and one ESP8266 is dedicated for outgoing parcels.  
 **2.** The ESP8266 dedicated to incoming parcels writes the RFID tag **identifier** in the **mqtt-in** MQTT topic. The ESP8266 dedicated to outgoing parcels writes the RFID tag **identifier** in the **mqtt-out** MQTT topic.  
 **3.** The Camel K operator transforms and enriches MQTT messages stored in MQTT topics and injects those enriched data in the **kafka-in** and **kafka-out** Kafka topics.  
@@ -27,7 +29,3 @@ Currently, this lab is hosted on RHPDS because of logistics and expenses conside
 
 * The headquarter could be deployed on a Managed Services offering of OpenShift (**ROSA** or **ARO**)
 * The warehouses could be deployed on a **Single Node OpenShift** or **Compact Cluster**
-
-## Schema
-
-![use_case](/images/detailled-schema.svg)
