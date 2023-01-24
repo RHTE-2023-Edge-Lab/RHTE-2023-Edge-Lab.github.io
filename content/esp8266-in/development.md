@@ -10,6 +10,14 @@ Replace the content of **src/main.cpp** with the following code.
 
 **Warning**: you will have to adapt the code a little bit. See below for explanations.
 
+You need to retrieve the load balancer url of the MQTT service.  
+Go to the OpenShift Administrator console and click the command line terminal icon **>_** in the top-right corner to open a **Web Terminal**. Copy and paste this command into the Openshift Web Terminal. 
+```shell
+oc get svc mqtt-lb -ojsonpath="{.status.loadBalancer.ingress[0].hostname}"
+```
+
+Copy the result of the previous command and adapt the code bellow.
+
 ```cpp
 #include <Arduino.h>
 #include <SPI.h>
@@ -27,11 +35,11 @@ const char* password = "<wifi_password>";  //mot de passe Wifi
 
 
 // MQTT Broker
-const char *mqtt_broker = "<AWS LB address for MQTT service>";
+const char *mqtt_broker = "<LB address for MQTT service>";
 const char *mqtt_topic = "esp8266-in";
-const char *mqtt_username = "<MQTT user>";
-const char *mqtt_password = "<MQTT password>";
-const int mqtt_port = <MQTT port>;
+const char *mqtt_username = "admin";
+const char *mqtt_password = "public";
+const int mqtt_port = 1883;
 
 void setup()
 {
