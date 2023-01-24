@@ -21,6 +21,6 @@ LOAD_BALANCER_URL=$(oc get svc mqtt-lb -ojsonpath="{.status.loadBalancer.ingress
 mosquitto_sub -t esp8266-in -h ${LOAD_BALANCER_URL} -p 1883 -u admin -P public
 ```
 
-You should see similar results as the following screenshot:
+Place an RFID tag on the reader. You should see similar results as the following screenshot:
 
 ![PlatformIO result](/images/platformIO-esp-test.png)

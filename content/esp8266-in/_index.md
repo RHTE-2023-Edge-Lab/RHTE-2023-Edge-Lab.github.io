@@ -1,5 +1,5 @@
 +++
-title = "Program the ESP8266"
+title = "Program the ESP8266 [in]"
 weight = 5
 chapter = true
 pre = "<b>Duo A. </b>"
