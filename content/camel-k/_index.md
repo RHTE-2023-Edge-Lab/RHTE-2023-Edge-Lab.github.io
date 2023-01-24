@@ -1,8 +1,8 @@
 +++
 title = "Camel-K Integration"
-weight = 7
+weight = 8
 chapter = true
-pre = "<b>C. </b>"
+pre = "<b>Duo C. </b>"
 +++
 
 # Deploy the Camel K Integration

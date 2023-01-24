@@ -2,7 +2,7 @@
 title = "MQTT Broker"
 weight = 4
 chapter = true
-pre = "<b>A & B. </b>"
+pre = "<b>Duo A & B. </b>"
 +++
 
 # MQTT Broker

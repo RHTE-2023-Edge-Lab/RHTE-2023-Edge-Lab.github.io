@@ -2,7 +2,7 @@
 title = "Pre Requisites"
 weight = 3
 chapter = true
-pre = "<b>A & B. </b>"
+pre = "<b>Duo A & B. </b>"
 +++
 
 ### Chapter 2

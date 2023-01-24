@@ -1,8 +1,8 @@
 +++
 title = "Kafka Broker"
-weight = 6
+weight = 7
 chapter = true
-pre = "<b>C. </b>"
+pre = "<b>Duo C. </b>"
 +++
 
 # Kafka Broker
