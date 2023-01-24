@@ -4,7 +4,7 @@ draft: false
 weight: 3
 ---
 
-Open VScode and click on the home icon in the status bar.
+Open VScode and click on the home icon in the status bar. **Restart your VSCode if the home icon does not appear.**
 
 ![PlatformIO Home](/images/platformIO-home.png)
 
