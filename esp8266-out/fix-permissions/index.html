@@ -5,7 +5,7 @@
 <meta name=generator content="Hugo 0.91.2">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
-<title>Windows :: RHTE 2023 Edge Lab</title>
+<title>Fix permissions on /dev/ttyUSB0 (Linux only) :: RHTE 2023 Edge Lab</title>
 <link href=/css/nucleus.css?1674578833 rel=stylesheet>
 <link href=/css/fontawesome-all.min.css?1674578833 rel=stylesheet>
 <link href=/css/hybrid.css?1674578833 rel=stylesheet>
@@ -20,7 +20,7 @@
 <script src=/js/jquery-3.3.1.min.js?1674578833></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
-<body data-url=/pre-requisites/windows/>
+<body data-url=/esp8266-out/fix-permissions/>
 <nav id=sidebar class=showVisitedLinks>
 <div id=header-wrapper>
 <div id=header>
@@ -97,8 +97,7 @@ Pair up!
 </li>
 </ul>
 </li>
-<li data-nav-id=/pre-requisites/ title="Pre Requisites" class="dd-item
-parent">
+<li data-nav-id=/pre-requisites/ title="Pre Requisites" class=dd-item>
 <a href=/pre-requisites/>
 <b>A & B. </b>Pre Requisites
 <i class="fas fa-check read-icon"></i>
@@ -116,7 +115,7 @@ MacOS
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/pre-requisites/windows/ title=Windows class="dd-item active">
+<li data-nav-id=/pre-requisites/windows/ title=Windows class=dd-item>
 <a href=/pre-requisites/windows/>
 Windows
 <i class="fas fa-check read-icon"></i>
@@ -238,13 +237,14 @@ Check the Kafka broker deployment (duo C)
 </li>
 </ul>
 </li>
-<li data-nav-id=/esp8266-out/ title="Program the ESP8266" class=dd-item>
+<li data-nav-id=/esp8266-out/ title="Program the ESP8266" class="dd-item
+parent">
 <a href=/esp8266-out/>
 <b>B. </b>Program the ESP8266
 <i class="fas fa-check read-icon"></i>
 </a>
 <ul>
-<li data-nav-id=/esp8266-out/fix-permissions/ title="Fix permissions on /dev/ttyUSB0 (Linux only)" class=dd-item>
+<li data-nav-id=/esp8266-out/fix-permissions/ title="Fix permissions on /dev/ttyUSB0 (Linux only)" class="dd-item active">
 <a href=/esp8266-out/fix-permissions/>
 Fix permissions on /dev/ttyUSB0 (Linux only)
 <i class="fas fa-check read-icon"></i>
@@ -357,7 +357,7 @@ Test the Camel K Integrations (duo C)
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=/>Welcome</a> > <a href=/pre-requisites/>Pre Requisites</a> > Windows
+<a href=/>Welcome</a> > <a href=/esp8266-out/>Program the ESP8266</a> > Fix permissions on /dev/ttyUSB0 (Linux only)
 </span>
 </div>
 <div class=progress>
@@ -371,16 +371,21 @@ Test the Camel K Integrations (duo C)
 </div>
 <div id=body-inner>
 <h1>
-Windows
+Fix permissions on /dev/ttyUSB0 (Linux only)
 </h1>
-<p>TODO</p>
+<p>The /dev/ttyUSB0 device belongs to the &ldquo;dialout&rdquo; group. Therefore, your user should belong to this group to configure the ESP8266.</p>
+<p>Run this command:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>sudo usermod -a -G dialout <span style=color:#66d9ef>$(</span>id -un<span style=color:#66d9ef>)</span>
+</code></pre></div><p>Then, close Visual Studio Code and re-run it with the new group membership:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>su -c code <span style=color:#66d9ef>$(</span>id -un<span style=color:#66d9ef>)</span>
+</code></pre></div>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=/pre-requisites/macos/ title=MacOS> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/mqtt-broker/ title="MQTT Broker" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=/esp8266-out/ title="Program the ESP8266"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/esp8266-out/connect-esp8266/ title="Connect your ESP8266" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>

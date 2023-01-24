@@ -5,22 +5,22 @@
 <meta name=generator content="Hugo 0.91.2">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
-<title>Connect your ESP8266 :: RHTE 2023 Edge Lab</title>
-<link href=/css/nucleus.css?1674573133 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1674573133 rel=stylesheet>
-<link href=/css/hybrid.css?1674573133 rel=stylesheet>
-<link href=/css/featherlight.min.css?1674573133 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1674573133 rel=stylesheet>
-<link href=/css/auto-complete.css?1674573133 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1674573133 rel=stylesheet>
-<link href=/css/theme.css?1674573133 rel=stylesheet>
-<link href=/css/tabs.css?1674573133 rel=stylesheet>
-<link href=/css/hugo-theme.css?1674573133 rel=stylesheet>
-<link href=/css/theme-red.css?1674573133 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1674573133></script>
+<title>Create a PlatformIO project :: RHTE 2023 Edge Lab</title>
+<link href=/css/nucleus.css?1674578833 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1674578833 rel=stylesheet>
+<link href=/css/hybrid.css?1674578833 rel=stylesheet>
+<link href=/css/featherlight.min.css?1674578833 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1674578833 rel=stylesheet>
+<link href=/css/auto-complete.css?1674578833 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1674578833 rel=stylesheet>
+<link href=/css/theme.css?1674578833 rel=stylesheet>
+<link href=/css/tabs.css?1674578833 rel=stylesheet>
+<link href=/css/hugo-theme.css?1674578833 rel=stylesheet>
+<link href=/css/theme-red.css?1674578833 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1674578833></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
-<body data-url=/esp8266/connect-esp8266/>
+<body data-url=/esp8266-in/create-project/>
 <nav id=sidebar class=showVisitedLinks>
 <div id=header-wrapper>
 <div id=header>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1674573133></script>
-<script type=text/javascript src=/js/auto-complete.js?1674573133></script>
+<script type=text/javascript src=/js/lunr.min.js?1674578833></script>
+<script type=text/javascript src=/js/auto-complete.js?1674578833></script>
 <script type=text/javascript>var baseurl="https://RHTE-2023-Edge-Lab.github.io/"</script>
-<script type=text/javascript src=/js/search.js?1674573133></script>
+<script type=text/javascript src=/js/search.js?1674578833></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -161,45 +161,45 @@ Test the MQTT broker (duo A and B)
 </li>
 </ul>
 </li>
-<li data-nav-id=/esp8266/ title="Program the ESP8266" class="dd-item
+<li data-nav-id=/esp8266-in/ title="Program the ESP8266" class="dd-item
 parent">
-<a href=/esp8266/>
-<b>A & B. </b>Program the ESP8266
+<a href=/esp8266-in/>
+<b>A. </b>Program the ESP8266
 <i class="fas fa-check read-icon"></i>
 </a>
 <ul>
-<li data-nav-id=/esp8266/fix-permissions/ title="Fix permissions on /dev/ttyUSB0 (Linux only)" class=dd-item>
-<a href=/esp8266/fix-permissions/>
+<li data-nav-id=/esp8266-in/fix-permissions/ title="Fix permissions on /dev/ttyUSB0 (Linux only)" class=dd-item>
+<a href=/esp8266-in/fix-permissions/>
 Fix permissions on /dev/ttyUSB0 (Linux only)
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/esp8266/connect-esp8266/ title="Connect your ESP8266" class="dd-item active">
-<a href=/esp8266/connect-esp8266/>
+<li data-nav-id=/esp8266-in/connect-esp8266/ title="Connect your ESP8266" class=dd-item>
+<a href=/esp8266-in/connect-esp8266/>
 Connect your ESP8266
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/esp8266/create-project/ title="Create a PlatformIO project" class=dd-item>
-<a href=/esp8266/create-project/>
+<li data-nav-id=/esp8266-in/create-project/ title="Create a PlatformIO project" class="dd-item active">
+<a href=/esp8266-in/create-project/>
 Create a PlatformIO project
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/esp8266/libraries/ title="Add required libraries" class=dd-item>
-<a href=/esp8266/libraries/>
+<li data-nav-id=/esp8266-in/libraries/ title="Add required libraries" class=dd-item>
+<a href=/esp8266-in/libraries/>
 Add required libraries
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/esp8266/development/ title="Develop the ESP8266 firmware" class=dd-item>
-<a href=/esp8266/development/>
+<li data-nav-id=/esp8266-in/development/ title="Develop the ESP8266 firmware" class=dd-item>
+<a href=/esp8266-in/development/>
 Develop the ESP8266 firmware
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/esp8266/test/ title="Test the ESP8266 firmware" class=dd-item>
-<a href=/esp8266/test/>
+<li data-nav-id=/esp8266-in/test/ title="Test the ESP8266 firmware" class=dd-item>
+<a href=/esp8266-in/test/>
 Test the ESP8266 firmware
 <i class="fas fa-check read-icon"></i>
 </a>
@@ -233,6 +233,50 @@ Create the incoming and outcoming Kafka Topics (duo C)
 <li data-nav-id=/kafka-broker/kafka-test/ title="Check the Kafka broker deployment (duo C)" class=dd-item>
 <a href=/kafka-broker/kafka-test/>
 Check the Kafka broker deployment (duo C)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+</ul>
+</li>
+<li data-nav-id=/esp8266-out/ title="Program the ESP8266" class=dd-item>
+<a href=/esp8266-out/>
+<b>B. </b>Program the ESP8266
+<i class="fas fa-check read-icon"></i>
+</a>
+<ul>
+<li data-nav-id=/esp8266-out/fix-permissions/ title="Fix permissions on /dev/ttyUSB0 (Linux only)" class=dd-item>
+<a href=/esp8266-out/fix-permissions/>
+Fix permissions on /dev/ttyUSB0 (Linux only)
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/esp8266-out/connect-esp8266/ title="Connect your ESP8266" class=dd-item>
+<a href=/esp8266-out/connect-esp8266/>
+Connect your ESP8266
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/esp8266-out/create-project/ title="Create a PlatformIO project" class=dd-item>
+<a href=/esp8266-out/create-project/>
+Create a PlatformIO project
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/esp8266-out/libraries/ title="Add required libraries" class=dd-item>
+<a href=/esp8266-out/libraries/>
+Add required libraries
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/esp8266-out/development/ title="Develop the ESP8266 firmware" class=dd-item>
+<a href=/esp8266-out/development/>
+Develop the ESP8266 firmware
+<i class="fas fa-check read-icon"></i>
+</a>
+</li>
+<li data-nav-id=/esp8266-out/test/ title="Test the ESP8266 firmware" class=dd-item>
+<a href=/esp8266-out/test/>
+Test the ESP8266 firmware
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
@@ -313,7 +357,7 @@ Test the Camel K Integrations (duo C)
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=/>Welcome</a> > <a href=/esp8266/>Program the ESP8266</a> > Connect your ESP8266
+<a href=/>Welcome</a> > <a href=/esp8266-in/>Program the ESP8266</a> > Create a PlatformIO project
 </span>
 </div>
 <div class=progress>
@@ -327,33 +371,39 @@ Test the Camel K Integrations (duo C)
 </div>
 <div id=body-inner>
 <h1>
-Connect your ESP8266
+Create a PlatformIO project
 </h1>
-<p>Connect ESP8266 to your computer via USB connector.</p>
-<p><img src=/images/esp8266-usb.jpeg alt="ESP8266 USB"></p>
+<p>Open VScode and click on the home icon in the status bar. <strong>Restart your VSCode if the home icon does not appear.</strong></p>
+<p><img src=/images/platformIO-home.png alt="PlatformIO Home"></p>
+<p>Then, in the PlatformIO splash screen (PIO HOME tab), click <strong>New Project</strong>.</p>
+<p><img src=/images/platformIO-new-project1.png alt="PlatformIO New project"></p>
+<p>Then choose a name for your project (free choice), select the board <strong>WeMos D1 R2 and mini</strong>, leave the <strong>Arduino</strong> framework selected and click <strong>Finish</strong>.</p>
+<p><img src=/images/platformIO-new-project2.png alt="PlatformIO New project"></p>
+<p>Then, you should see the following files in the left pane of your VScode.</p>
+<p><img src=/images/platformIO-new-project3.png alt="PlatformIO New project"></p>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=/esp8266/fix-permissions/ title="Fix permissions on /dev/ttyUSB0 (Linux only)"> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/esp8266/create-project/ title="Create a PlatformIO project" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=/esp8266-in/connect-esp8266/ title="Connect your ESP8266"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/esp8266-in/libraries/ title="Add required libraries" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1674573133></script>
-<script src=/js/perfect-scrollbar.min.js?1674573133></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1674573133></script>
-<script src=/js/jquery.sticky.js?1674573133></script>
-<script src=/js/featherlight.min.js?1674573133></script>
-<script src=/js/highlight.pack.js?1674573133></script>
+<script src=/js/clipboard.min.js?1674578833></script>
+<script src=/js/perfect-scrollbar.min.js?1674578833></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1674578833></script>
+<script src=/js/jquery.sticky.js?1674578833></script>
+<script src=/js/featherlight.min.js?1674578833></script>
+<script src=/js/highlight.pack.js?1674578833></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1674573133></script>
-<script src=/js/learn.js?1674573133></script>
-<script src=/js/hugo-learn.js?1674573133></script>
-<script src=/mermaid/mermaid.js?1674573133></script>
+<script src=/js/modernizr.custom-3.6.0.js?1674578833></script>
+<script src=/js/learn.js?1674578833></script>
+<script src=/js/hugo-learn.js?1674578833></script>
+<script src=/mermaid/mermaid.js?1674578833></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

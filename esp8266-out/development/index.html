@@ -5,7 +5,7 @@
 <meta name=generator content="Hugo 0.91.2">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
-<title>Windows :: RHTE 2023 Edge Lab</title>
+<title>Develop the ESP8266 firmware :: RHTE 2023 Edge Lab</title>
 <link href=/css/nucleus.css?1674578833 rel=stylesheet>
 <link href=/css/fontawesome-all.min.css?1674578833 rel=stylesheet>
 <link href=/css/hybrid.css?1674578833 rel=stylesheet>
@@ -20,7 +20,7 @@
 <script src=/js/jquery-3.3.1.min.js?1674578833></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
-<body data-url=/pre-requisites/windows/>
+<body data-url=/esp8266-out/development/>
 <nav id=sidebar class=showVisitedLinks>
 <div id=header-wrapper>
 <div id=header>
@@ -97,8 +97,7 @@ Pair up!
 </li>
 </ul>
 </li>
-<li data-nav-id=/pre-requisites/ title="Pre Requisites" class="dd-item
-parent">
+<li data-nav-id=/pre-requisites/ title="Pre Requisites" class=dd-item>
 <a href=/pre-requisites/>
 <b>A & B. </b>Pre Requisites
 <i class="fas fa-check read-icon"></i>
@@ -116,7 +115,7 @@ MacOS
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/pre-requisites/windows/ title=Windows class="dd-item active">
+<li data-nav-id=/pre-requisites/windows/ title=Windows class=dd-item>
 <a href=/pre-requisites/windows/>
 Windows
 <i class="fas fa-check read-icon"></i>
@@ -238,7 +237,8 @@ Check the Kafka broker deployment (duo C)
 </li>
 </ul>
 </li>
-<li data-nav-id=/esp8266-out/ title="Program the ESP8266" class=dd-item>
+<li data-nav-id=/esp8266-out/ title="Program the ESP8266" class="dd-item
+parent">
 <a href=/esp8266-out/>
 <b>B. </b>Program the ESP8266
 <i class="fas fa-check read-icon"></i>
@@ -268,7 +268,7 @@ Add required libraries
 <i class="fas fa-check read-icon"></i>
 </a>
 </li>
-<li data-nav-id=/esp8266-out/development/ title="Develop the ESP8266 firmware" class=dd-item>
+<li data-nav-id=/esp8266-out/development/ title="Develop the ESP8266 firmware" class="dd-item active">
 <a href=/esp8266-out/development/>
 Develop the ESP8266 firmware
 <i class="fas fa-check read-icon"></i>
@@ -357,12 +357,21 @@ Test the Camel K Integrations (duo C)
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=/>Welcome</a> > <a href=/pre-requisites/>Pre Requisites</a> > Windows
+<a href=/>Welcome</a> > <a href=/esp8266-out/>Program the ESP8266</a> > Develop the ESP8266 firmware
 </span>
 </div>
 <div class=progress>
 <div class=wrapper>
-<nav id=TableOfContents></nav>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#compile-your-code>Compile your code</a></li>
+<li><a href=#flash-your-esp8266-with-your-code>Flash your ESP8266 with your code</a></li>
+</ul>
+</li>
+</ul>
+</nav>
 </div>
 </div>
 </div>
@@ -371,16 +380,131 @@ Test the Camel K Integrations (duo C)
 </div>
 <div id=body-inner>
 <h1>
-Windows
+Develop the ESP8266 firmware
 </h1>
-<p>TODO</p>
+<p>In the left pane of VScode, click the top-left icon to diplay the project&rsquo;s files.</p>
+<p>Replace the content of <strong>src/main.cpp</strong> with the following code.</p>
+<p><strong>Warning</strong>: you will have to adapt the code a little bit. See below for explanations.</p>
+<p>You need to retrieve the load balancer url of the MQTT service.<br>
+Go to the OpenShift Administrator console and click the command line terminal icon <strong>>_</strong> in the top-right corner to open a <strong>Web Terminal</strong>. Copy and paste this command into the Openshift Web Terminal.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>oc get svc mqtt-lb -ojsonpath<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{.status.loadBalancer.ingress[0].hostname}&#34;</span>
+</code></pre></div><p>Copy the result of the previous command and adapt the code bellow.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;Arduino.h&gt;</span><span style=color:#75715e>
+</span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;SPI.h&gt;</span><span style=color:#75715e>
+</span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;MFRC522.h&gt;</span><span style=color:#75715e>
+</span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;ESP8266WiFi.h&gt;</span><span style=color:#75715e>
+</span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;PubSubClient.h&gt;</span><span style=color:#75715e>
+</span><span style=color:#75715e></span>
+MFRC522 mfrc522;
+WiFiClient espClient;
+PubSubClient <span style=color:#a6e22e>client</span>(espClient);
+
+<span style=color:#75715e>//WIFI
+</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span><span style=color:#f92672>*</span> ssid <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&lt;wifi_ssid&gt;&#34;</span>;  <span style=color:#75715e>//  SSID Wifi
+</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span><span style=color:#f92672>*</span> password <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&lt;wifi_password&gt;&#34;</span>;  <span style=color:#75715e>//mot de passe Wifi
+</span><span style=color:#75715e></span>
+
+<span style=color:#75715e>// MQTT Broker
+</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>mqtt_broker <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&lt;LB address for MQTT service&gt;&#34;</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>mqtt_topic <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;esp8266-out&#34;</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>mqtt_username <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;admin&#34;</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>mqtt_password <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;public&#34;</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> mqtt_port <span style=color:#f92672>=</span> <span style=color:#ae81ff>1883</span>;
+
+<span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setup</span>()
+{
+  Serial.begin(<span style=color:#ae81ff>9600</span>);     <span style=color:#75715e>// Initialize serial communications with the PC
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>while</span> (<span style=color:#f92672>!</span>Serial);        <span style=color:#75715e>// Do nothing if no serial port is opened (added for Arduinos based on ATMEGA32U4)
+</span><span style=color:#75715e></span>  Serial.println(<span style=color:#e6db74>&#34;Initializing...&#34;</span>);
+  SPI.begin();            <span style=color:#75715e>// Init SPI bus
+</span><span style=color:#75715e></span>  mfrc522.PCD_Init();     <span style=color:#75715e>// Init MFRC522
+</span><span style=color:#75715e></span>  delay(<span style=color:#ae81ff>4</span>);               <span style=color:#75715e>// Optional delay.
+</span><span style=color:#75715e></span>
+  <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span>mfrc522.PCD_PerformSelfTest()) {
+    Serial.println(<span style=color:#e6db74>&#34;MFRC522 not ready !&#34;</span>);
+  }
+  Serial.println(<span style=color:#e6db74>&#34;Ready !&#34;</span>);
+
+  <span style=color:#75715e>// Wifi initialization
+</span><span style=color:#75715e></span>  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+  Serial.print(<span style=color:#e6db74>&#34;Connecting to Wifi...&#34;</span>);
+  <span style=color:#66d9ef>while</span> (WiFi.status() <span style=color:#f92672>!=</span> WL_CONNECTED)
+  {
+    delay(<span style=color:#ae81ff>500</span>);
+    Serial.print(<span style=color:#e6db74>&#34;.&#34;</span>);
+  }
+  Serial.println();
+  Serial.print(<span style=color:#e6db74>&#34;Connected, IP address: &#34;</span>);
+  Serial.println(WiFi.localIP());
+  randomSeed(micros());
+
+  <span style=color:#75715e>// MQTT initialization
+</span><span style=color:#75715e></span>  client.setServer(mqtt_broker, mqtt_port);
+}
+
+<span style=color:#66d9ef>void</span> <span style=color:#a6e22e>reconnect</span>() {
+  <span style=color:#75715e>// Loop until we&#39;re reconnected
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>while</span> (<span style=color:#f92672>!</span>client.connected()) {
+    Serial.print(<span style=color:#e6db74>&#34;Attempting MQTT connection...&#34;</span>);
+    <span style=color:#75715e>// Create a random client ID
+</span><span style=color:#75715e></span>    String clientId <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;ESP8266Client-&#34;</span>;
+    clientId <span style=color:#f92672>+=</span> String(random(<span style=color:#ae81ff>0xffff</span>), HEX);
+    <span style=color:#75715e>// Attempt to connect
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>if</span> (client.connect(clientId.c_str(), mqtt_username, mqtt_password)) {
+      Serial.println(<span style=color:#e6db74>&#34;connected to MQTT Broker&#34;</span>);
+    } <span style=color:#66d9ef>else</span> {
+      Serial.print(<span style=color:#e6db74>&#34;failed, rc=&#34;</span>);
+      Serial.print(client.state());
+      Serial.println(<span style=color:#e6db74>&#34; try again in 5 seconds&#34;</span>);
+      <span style=color:#75715e>// Wait 5 seconds before retrying
+</span><span style=color:#75715e></span>      delay(<span style=color:#ae81ff>5000</span>);
+    }
+  }
+}
+
+<span style=color:#66d9ef>void</span> <span style=color:#a6e22e>loop</span>()
+{
+  <span style=color:#75715e>// MQTT connection to the broker + protocol handling
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span>client.connected()) {
+    reconnect();
+  }
+  client.loop();
+
+  <span style=color:#75715e>// Reset the loop if no new card present on the sensor/reader. This saves the entire process when idle.
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>if</span> ( <span style=color:#f92672>!</span> mfrc522.PICC_IsNewCardPresent()) {
+    <span style=color:#66d9ef>return</span>;
+  }
+
+  <span style=color:#75715e>// Select one of the cards
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>if</span> ( <span style=color:#f92672>!</span> mfrc522.PICC_ReadCardSerial()) {
+    <span style=color:#66d9ef>return</span>;
+  }
+
+  <span style=color:#75715e>// Compute and print UID
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>char</span> uid[<span style=color:#ae81ff>30</span>];
+  <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span> buffer <span style=color:#f92672>=</span> uid;
+  <span style=color:#66d9ef>for</span> (byte i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> mfrc522.uid.size; i<span style=color:#f92672>++</span>) {
+    <span style=color:#66d9ef>int</span> n <span style=color:#f92672>=</span> sprintf(buffer, <span style=color:#e6db74>&#34;%s%02x&#34;</span>, i <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>?</span> <span style=color:#e6db74>&#34;:&#34;</span> <span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;&#34;</span>, mfrc522.uid.uidByte[i]);
+    <span style=color:#66d9ef>if</span> (n <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span>) {
+      buffer <span style=color:#f92672>+=</span> n;
+    }
+  }
+  Serial.println(uid);
+  client.publish(mqtt_topic, uid);
+  delay(<span style=color:#ae81ff>500</span>);
+}
+</code></pre></div><h3 id=compile-your-code>Compile your code</h3>
+<p><img src=/images/platformIO-esp-build.png alt="PlatformIO build"></p>
+<h3 id=flash-your-esp8266-with-your-code>Flash your ESP8266 with your code</h3>
+<p><img src=/images/platformIO-esp-write.png alt="PlatformIO write"></p>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=/pre-requisites/macos/ title=MacOS> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/mqtt-broker/ title="MQTT Broker" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=/esp8266-out/libraries/ title="Add required libraries"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/esp8266-out/test/ title="Test the ESP8266 firmware" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
