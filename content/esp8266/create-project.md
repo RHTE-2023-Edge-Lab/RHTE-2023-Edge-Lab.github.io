@@ -8,7 +8,7 @@ Open VScode and click on the home icon in the status bar. **Restart your VSCode 
 
 ![PlatformIO Home](/images/platformIO-home.png)
 
-Then, in the PlatformIO splash screen, click **New Project**.
+Then, in the PlatformIO splash screen (PIO HOME tab), click **New Project**.
 
 ![PlatformIO New project](/images/platformIO-new-project1.png)
 
