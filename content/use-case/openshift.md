@@ -52,9 +52,9 @@ To launch the web terminal, click the command line terminal icon **>_** on the u
 
 ## OpenShift cluster details
 
-* **OCP Cluster console URL :** `https://console-openshift-console.apps.{{< param openshift_domain >}}/dashboards`
+* **OCP Cluster console URL :** `https://console-openshift-console.apps.cluster-5t9gs.5t9gs.sandbox744.opentlc.com/dashboards`
 
-* **OCP Cluster API URL :** `https://api.{{< param openshift_domain >}}:6443`
+* **OCP Cluster API URL :** `https://api.cluster-5t9gs.5t9gs.sandbox744.opentlc.com:6443`
 
 There is a dedicated OpenShift user for each warehouse.
 On your table you will find a poster with the relevant information.  
