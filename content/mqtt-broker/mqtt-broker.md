@@ -16,7 +16,7 @@ metadata:
   name: mqtt
 spec:
   acceptors:
-  - connectionsAllowed: 5
+  - connectionsAllowed: 20
     expose: true
     name: mqtt
     port: 1883
