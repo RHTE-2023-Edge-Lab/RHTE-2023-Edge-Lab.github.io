@@ -30,8 +30,8 @@ WiFiClient espClient;
 PubSubClient client(espClient);
 
 //WIFI
-const char* ssid = "<wifi_ssid>";  //  SSID Wifi
-const char* password = "<wifi_password>";  //mot de passe Wifi
+const char* ssid = "Red Hat 2023 - 2";  //  SSID Wifi
+const char* password = "redhatdublin";  //mot de passe Wifi
 
 
 // MQTT Broker
